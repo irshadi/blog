@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import "../../css/index.css";
 
 export const HomeView = () => {
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-from-gray-200 from-white">
+      <section className="text-primary">
         <span className="text-4xl font-semibold leading-none">
           Hello,
           <br />
