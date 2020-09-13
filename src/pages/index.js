@@ -1,10 +1,14 @@
 import React from "react";
-import { NavigationBar } from "../components/NavigationBar";
 import { PageWrapper } from "../components/PageWrapper";
+import { ThemeContextProvider } from "../contexts/theme";
 import { HomeView } from "../views/Home";
 
 const HomePage = () => {
-  return <PageWrapper Views={HomeView} />;
+  return (
+    <ThemeContextProvider>
+      <PageWrapper Views={HomeView} />
+    </ThemeContextProvider>
+  );
 };
 
 export default HomePage;

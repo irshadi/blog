@@ -9,7 +9,7 @@ export const NavigationBar = () => {
         irshadi.id
       </Link>
       <div className="flex justify-end w-3/12 px-2">
-        <IoMdMoon className="text-2xl font-semibold cursor-pointer" />
+        <IoMdMoon className="text-2xl font-semibold cursor-pointer text-gray-500 transition duration-500 hover:text-gray-800" />
       </div>
     </nav>
   );
