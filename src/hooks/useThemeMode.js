@@ -4,6 +4,7 @@ import { THEME_MODE } from "../constants/theme";
 
 export const useThemeMode = ({ defaultTheme }) => {
   const [theme, _setTheme] = React.useState(defaultTheme);
+  const isUsingDarkMode = theme === THEME_MODE.DARK;
 
   const setTheme = () => {
     const preferredTheme =
@@ -11,12 +12,27 @@ export const useThemeMode = ({ defaultTheme }) => {
     _setTheme(preferredTheme);
   };
 
+  const setDocumentSelectorTheme = React.useCallback(
+    theme => {
+      const root = window.document.documentElement;
+      root.classList.remove(
+        isUsingDarkMode ? THEME_MODE.LIGHT : THEME_MODE.DARK
+      );
+      root.classList.add(theme);
+      // root.style();
+      // console.log(root);
+      localStorage.setItem(STORAGE_VALUE.THEME, theme);
+    },
+    [isUsingDarkMode]
+  );
+
   React.useEffect(() => {
-    localStorage.setItem(STORAGE_VALUE.THEME, theme);
-  }, [theme]);
+    setDocumentSelectorTheme(theme);
+  }, [setDocumentSelectorTheme, theme]);
 
   return {
     theme,
-    setTheme
+    setTheme,
+    isUsingDarkMode
   };
 };

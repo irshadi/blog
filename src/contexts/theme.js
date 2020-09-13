@@ -7,8 +7,19 @@ const ThemeContext = React.createContext({});
 
 // eslint-disable-next-line react/prop-types
 const ThemeContextProvider = ({ children }) => {
+  // Check User Preffered Media Color
+  const { matches: prefferedUserColor } = window.matchMedia(
+    `(prefers-color-scheme: light)`
+  );
+  const hasPredefinedColor = localStorage.getItem(STORAGE_VALUE.THEME);
+  const prefferedUserMediaColor = prefferedUserColor
+    ? THEME_MODE.LIGHT
+    : THEME_MODE.DARK;
+  // Assign Theme Mode based on User Prefferend Media Color
   const defaultThemeValue =
-    localStorage.getItem(STORAGE_VALUE.THEME) || THEME_MODE.LIGHT;
+    hasPredefinedColor !== null ? hasPredefinedColor : prefferedUserMediaColor;
+
+  console.log({ hasPredefinedColor, prefferedUserMediaColor });
   const value = useThemeMode({ defaultTheme: defaultThemeValue });
   return (
     <ThemeContext.Provider value={{ ...value }}>
