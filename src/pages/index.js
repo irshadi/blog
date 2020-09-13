@@ -1,8 +1,10 @@
 import React from "react";
+import { NavigationBar } from "../components/NavigationBar";
+import { PageWrapper } from "../components/PageWrapper";
 import { HomeView } from "../views/Home";
 
 const HomePage = () => {
-  return <HomeView />;
+  return <PageWrapper Views={HomeView} />;
 };
 
 export default HomePage;
