@@ -6,7 +6,7 @@ import { NavigationBar } from "../NavigationBar";
 export const PageWrapper = ({ Views }) => {
   return (
     <ThemeContextProvider>
-      <div className="px-24 bg-primary">
+      <div className="px-24 bg-primary min-h-screen">
         <NavigationBar />
         <Views />
       </div>

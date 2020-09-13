@@ -13,14 +13,12 @@ export const useThemeMode = ({ defaultTheme }) => {
   };
 
   const setDocumentSelectorTheme = React.useCallback(
-    theme => {
+    (theme) => {
       const root = window.document.documentElement;
       root.classList.remove(
         isUsingDarkMode ? THEME_MODE.LIGHT : THEME_MODE.DARK
       );
       root.classList.add(theme);
-      // root.style();
-      // console.log(root);
       localStorage.setItem(STORAGE_VALUE.THEME, theme);
     },
     [isUsingDarkMode]
@@ -33,6 +31,6 @@ export const useThemeMode = ({ defaultTheme }) => {
   return {
     theme,
     setTheme,
-    isUsingDarkMode
+    isUsingDarkMode,
   };
 };

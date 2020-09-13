@@ -19,7 +19,6 @@ const ThemeContextProvider = ({ children }) => {
   const defaultThemeValue =
     hasPredefinedColor !== null ? hasPredefinedColor : prefferedUserMediaColor;
 
-  console.log({ hasPredefinedColor, prefferedUserMediaColor });
   const value = useThemeMode({ defaultTheme: defaultThemeValue });
   return (
     <ThemeContext.Provider value={{ ...value }}>

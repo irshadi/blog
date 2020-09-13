@@ -1,21 +1,39 @@
-:root {
-  @apply .light;
-}
-
 .dark {
-  --color-bg-primary: #2d3748;
   --color-bg-secondary: #2d3748;
   --color-text-primary: #fff;
   --color-text-secondary: #a0aec0;
   --color-text-accent: #81e6d9;
+  animation-name: animate-dark;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
 }
 
 .light {
-  --color-bg-primary: #fff;
   --color-bg-secondary: #ffffff;
   --color-text-primary: #2d3748;
   --color-text-secondary: #a0aec0;
   --color-text-accent: #2b6cb0;
+  animation-name: animate-light;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate-light {
+  0% {
+    background-color: #2d3748;
+  }
+  100.0% {
+    background-color: #fff;
+  }
+}
+
+@keyframes animate-dark {
+  0% {
+    background-color: #fff;
+  }
+  100.0% {
+    background-color: #2d3748;
+  }
 }
 
 @tailwind base;
