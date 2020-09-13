@@ -1,11 +1,12 @@
 import React from "react";
 import { NavigationBar } from "../NavigationBar";
 
+// eslint-disable-next-line react/prop-types
 export const PageWrapper = ({ Views }) => {
   return (
-    <React.Fragment>
+    <div className="px-24">
       <NavigationBar />
       <Views />
-    </React.Fragment>
+    </div>
   );
 };
