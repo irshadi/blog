@@ -6,7 +6,7 @@ import { useThemeModeContext } from "../../contexts/theme";
 import { THEME_MODE } from "../../constants/theme";
 
 export const NavigationBar = () => {
-  const { theme, setTheme, isUsingDarkMode } = useThemeModeContext();
+  const { theme, setTheme } = useThemeModeContext();
   const THEME_ICON_MAP = {
     [THEME_MODE.LIGHT]: IoMdMoon,
     [THEME_MODE.DARK]: ImSun
@@ -21,7 +21,7 @@ export const NavigationBar = () => {
       <div className="flex justify-end w-3/12 px-2">
         <ThemeIcon
           onClick={setTheme}
-          className="text-2xl font-semibold cursor-pointer text-gray-500 transition duration-500 dark:text-white"
+          className="text-2xl font-semibold cursor-pointer transition duration-500 text-icon hover:text-hover"
         />
       </div>
     </nav>
