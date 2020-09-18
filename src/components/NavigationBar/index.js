@@ -7,6 +7,7 @@ import { THEME_MODE } from "../../constants/theme";
 
 export const NavigationBar = () => {
   const { theme, setTheme } = useThemeModeContext();
+
   const THEME_ICON_MAP = {
     [THEME_MODE.LIGHT]: IoMdMoon,
     [THEME_MODE.DARK]: ImSun

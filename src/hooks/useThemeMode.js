@@ -2,8 +2,8 @@ import React from "react";
 import { STORAGE_VALUE } from "../constants/storageValue";
 import { THEME_MODE } from "../constants/theme";
 
-export const useThemeMode = ({ defaultTheme }) => {
-  const [theme, _setTheme] = React.useState(defaultTheme);
+export const useThemeMode = () => {
+  const [theme, _setTheme] = React.useState(THEME_MODE.LIGHT);
   const isUsingDarkMode = theme === THEME_MODE.DARK;
 
   const setTheme = () => {
@@ -13,7 +13,7 @@ export const useThemeMode = ({ defaultTheme }) => {
   };
 
   const setDocumentSelectorTheme = React.useCallback(
-    (theme) => {
+    theme => {
       const root = window.document.documentElement;
       root.classList.remove(
         isUsingDarkMode ? THEME_MODE.LIGHT : THEME_MODE.DARK
@@ -24,13 +24,38 @@ export const useThemeMode = ({ defaultTheme }) => {
     [isUsingDarkMode]
   );
 
+  const _getUserPredefinedTheme = React.useCallback(() => {
+    // Check User Preffered Media Color
+    const { matches: prefferedUserColor } = window.matchMedia(
+      `(prefers-color-scheme: light)`
+    );
+
+    const hasPredefinedColor = localStorage.getItem(STORAGE_VALUE.THEME);
+    const prefferedUserMediaColor = prefferedUserColor
+      ? THEME_MODE.LIGHT
+      : THEME_MODE.DARK;
+
+    // Assign Theme Mode based on User Prefferend Media Color
+    const defaultThemeValue =
+      hasPredefinedColor in THEME_MODE
+        ? hasPredefinedColor
+        : prefferedUserMediaColor;
+
+    _setTheme(defaultThemeValue);
+    setDocumentSelectorTheme(defaultThemeValue);
+  }, [_setTheme]);
+
   React.useEffect(() => {
+    _getUserPredefinedTheme();
+  }, [_getUserPredefinedTheme]);
+
+  React.useLayoutEffect(() => {
     setDocumentSelectorTheme(theme);
   }, [setDocumentSelectorTheme, theme]);
 
   return {
     theme,
     setTheme,
-    isUsingDarkMode,
+    isUsingDarkMode
   };
 };
