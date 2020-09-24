@@ -4,7 +4,7 @@ import { useThemeMode } from "../hooks/useThemeMode";
 const ThemeContext = React.createContext({});
 
 // eslint-disable-next-line react/prop-types
-const ThemeContextProvider = ({ children }) => {
+export const ThemeContextProvider = ({ children }) => {
   const value = useThemeMode();
   return (
     <ThemeContext.Provider value={{ ...value }}>
@@ -13,8 +13,6 @@ const ThemeContextProvider = ({ children }) => {
   );
 };
 
-const useThemeModeContext = () => {
+export const useThemeModeContext = () => {
   return React.useContext(ThemeContext);
 };
-
-export { ThemeContextProvider, useThemeModeContext };
