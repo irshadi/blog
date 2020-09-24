@@ -5,7 +5,7 @@ const defaultInfo =
 
 export const AuthorCard = ({ name = "John Doe", info = defaultInfo, url }) => {
   return (
-    <div className="flex justify-between w-full">
+    <div className="flex justify-between w-full p-8">
       <div className="flex items-center">
         <div
           className="rounded-full h-16 w-16 flex items-center justify-center"

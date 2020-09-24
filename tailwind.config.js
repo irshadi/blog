@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       backgroundColor: {
         primary: "var(--color-bg-primary)",
-        secondary: "var(--color-bg-secondary)"
+        secondary: "var(--color-bg-secondary)",
+        card: "var(--color-bg-card)"
       },
       textColor: {
         accent: "var(--color-text-accent)",
