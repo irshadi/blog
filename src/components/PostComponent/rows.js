@@ -3,7 +3,7 @@ import React from "react";
 
 export const RowPost = ({ title, content, img, metadata, createdAt }) => {
   return (
-    <div className="flex flex-col bg-card w-1/3 rounded-lg shadow-xl opacity-50 hover:opacity-100 duration-200">
+    <div className="flex flex-col bg-card w-1/3 rounded-lg shadow-xl opacity-75 hover:opacity-100 duration-200">
       <img className="rounded-t-lg rounded-b-none overflow-hidden" src={img} />
       <div className="p-6 flex flex-col">
         <span className="text-primary font-semibold text-xl">{title}</span>

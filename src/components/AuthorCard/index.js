@@ -8,7 +8,7 @@ export const AuthorCard = ({ name = "John Doe", info = defaultInfo, url }) => {
     <div className="flex justify-between w-full p-8">
       <div className="flex items-center">
         <div
-          class="rounded-full h-16 w-16 flex items-center justify-center"
+          className="rounded-full h-16 w-16 flex items-center justify-center"
           style={{
             backgroundImage: `url(${url})`,
             backgroundRepeat: "no-repeat",
