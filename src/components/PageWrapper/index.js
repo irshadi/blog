@@ -1,4 +1,5 @@
 import React from "react";
+import { PostModeContextProvider } from "../../contexts/postMode";
 import { ThemeContextProvider } from "../../contexts/theme";
 import { NavigationBar } from "../NavigationBar";
 
@@ -8,7 +9,9 @@ export const PageWrapper = ({ Views }) => {
     <ThemeContextProvider>
       <div className="px-24 bg-primary min-h-screen">
         <NavigationBar />
-        <Views />
+        <PostModeContextProvider>
+          <Views />
+        </PostModeContextProvider>
       </div>
     </ThemeContextProvider>
   );
