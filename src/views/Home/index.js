@@ -4,6 +4,7 @@ import "../../css/index.css";
 import { TextHero } from "../../components/TextHero";
 import { AuthorCard } from "../../components/AuthorCard";
 import { SortSelections } from "../../components/SortSelections";
+import { RowPost } from "../../components/PostComponent/rows";
 
 export const HomeView = () => {
   return (
@@ -19,6 +20,15 @@ export const HomeView = () => {
         <div className="flex w-6/12">
           <SortSelections />
         </div>
+      </div>
+      <div className="flex w-full py-20">
+        <RowPost
+          title="Advance React Hooks"
+          img="https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp"
+          content="With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of"
+          createdAt={new Date()}
+          metadata="6 min read"
+        />
       </div>
     </div>
   );
