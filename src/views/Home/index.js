@@ -5,6 +5,7 @@ import { TextHero } from "../../components/TextHero";
 import { AuthorCard } from "../../components/AuthorCard";
 import { SortSelections } from "../../components/SortSelections";
 import { Posts } from "../../components/PostComponent";
+import { PostPagination } from "../../components/Pagination";
 
 const posts = [
   {
@@ -74,8 +75,9 @@ export const HomeView = () => {
           <SortSelections />
         </div>
       </div>
-      <div className="flex w-full py-20">
+      <div className="flex flex-col w-full py-20">
         <Posts posts={posts} />
+        <PostPagination />
       </div>
     </div>
   );
