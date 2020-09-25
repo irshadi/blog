@@ -1,6 +1,7 @@
 import React from "react";
 import { PostModeContextProvider } from "../../contexts/postMode";
 import { ThemeContextProvider } from "../../contexts/theme";
+import { Footer } from "../Footer";
 import { NavigationBar } from "../NavigationBar";
 
 // eslint-disable-next-line react/prop-types
@@ -12,6 +13,7 @@ export const PageWrapper = ({ Views }) => {
         <PostModeContextProvider>
           <Views />
         </PostModeContextProvider>
+        <Footer />
       </div>
     </ThemeContextProvider>
   );
