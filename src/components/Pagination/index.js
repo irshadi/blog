@@ -8,7 +8,7 @@ export const PostPagination = () => {
   } = usePostModeContext();
 
   return (
-    <div className="flex w-1/3">
+    <div className="flex w-1/3 mt-6">
       {hasPreviousPage && <OutlineButton label={currentPage - 1} />}
       <OutlineButton label={currentPage} selected />
       <OutlineButton label={currentPage + 1} disabled={hasNextPage} />

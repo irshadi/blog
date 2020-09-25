@@ -6,61 +6,11 @@ import { AuthorCard } from "../../components/AuthorCard";
 import { SortSelections } from "../../components/SortSelections";
 import { Posts } from "../../components/PostComponent";
 import { PostPagination } from "../../components/Pagination";
-
-const posts = [
-  {
-    title: "Advance React Hooks",
-    img:
-      "https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp",
-    content:
-      "With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of",
-    createdAt: new Date(),
-    metadata: "6 min read",
-    category: "engineering"
-  },
-  {
-    title: "Introduction to React Hooks",
-    img:
-      "https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp",
-    content:
-      "With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of",
-    createdAt: new Date(),
-    metadata: "3 min read",
-    category: "engineering"
-  },
-  {
-    title: "A quiet evening",
-    img:
-      "https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp",
-    content:
-      "With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of",
-    createdAt: new Date(),
-    metadata: "3 min read",
-    category: "blog"
-  },
-  {
-    title: "Memoized Computation Value",
-    img:
-      "https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp",
-    content:
-      "With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of",
-    createdAt: new Date(),
-    metadata: "3 min read",
-    category: "engineering"
-  },
-  {
-    title: "React Side Effect",
-    img:
-      "https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp",
-    content:
-      "With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of",
-    createdAt: new Date(),
-    metadata: "3 min read",
-    category: "engineering"
-  }
-];
+import { usePostModeContext } from "../../contexts/postMode";
 
 export const HomeView = () => {
+  const { posts } = usePostModeContext();
+  console.log(posts);
   return (
     <div className="flex flex-col">
       <TextHero />
