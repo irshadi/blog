@@ -10,7 +10,8 @@ import { usePostModeContext } from "../../contexts/postMode";
 
 export const HomeView = () => {
   const { posts } = usePostModeContext();
-  console.log(posts);
+  console.log(posts, "POST");
+
   return (
     <div className="flex flex-col">
       <TextHero />
@@ -26,7 +27,7 @@ export const HomeView = () => {
         </div>
       </div>
       <div className="flex flex-col w-full py-20">
-        <Posts posts={posts} />
+        <Posts posts={posts.nodes} />
         <PostPagination />
       </div>
     </div>
