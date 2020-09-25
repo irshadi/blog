@@ -5,6 +5,7 @@ import { IconWrapper } from "../Icons";
 import { Tiles } from "../Icons/Tiles";
 import { Rows } from "../Icons/Rows";
 import { POST_MODE } from "../../constants/postMode";
+import { POST_ACTION } from "../../hooks/usePostSelection";
 
 // Define Fill Color
 const getFillColor = (isUsingDarkMode, selectedMode) => {
@@ -17,11 +18,21 @@ const getFillColor = (isUsingDarkMode, selectedMode) => {
 
 export const SortSelections = () => {
   const { isUsingDarkMode } = useThemeModeContext();
-  const { postMode: selectedPostMode, setPostMode } = usePostModeContext();
+  const {
+    state: { postMode: selectedPostMode },
+    dispatch
+  } = usePostModeContext();
 
   return (
     <div className="flex items-center justify-end w-full h-full">
-      <IconWrapper onClick={() => setPostMode(POST_MODE.ROWS)}>
+      <IconWrapper
+        onClick={() =>
+          dispatch({
+            type: POST_ACTION.SET_POST_MODE,
+            postMode: POST_MODE.ROWS
+          })
+        }
+      >
         <Rows
           fill={getFillColor(
             isUsingDarkMode,
@@ -29,7 +40,14 @@ export const SortSelections = () => {
           )}
         />
       </IconWrapper>
-      <IconWrapper onClick={() => setPostMode(POST_MODE.TILES)}>
+      <IconWrapper
+        onClick={() =>
+          dispatch({
+            type: POST_ACTION.SET_POST_MODE,
+            postMode: POST_MODE.TILES
+          })
+        }
+      >
         <Tiles
           fill={getFillColor(
             isUsingDarkMode,

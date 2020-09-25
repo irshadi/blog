@@ -5,13 +5,15 @@ import { RowPost } from "./RowPost";
 import { TilePost } from "./TilePost";
 
 export const Posts = ({ posts = [] }) => {
-  const { postMode } = usePostModeContext();
+  const {
+    state: { postMode }
+  } = usePostModeContext();
 
   return postMode === POST_MODE.ROWS ? (
     <div className="flex flex-wrap w-full justify-start transition duration-500 ease-in-out ">
-      {posts.map(({ ...val }, idx) => (
-        <div className="mb-6 w-1/3" key={idx}>
-          <RowPost {...val} />
+      {posts.map(({ id, frontmatter }, idx) => (
+        <div className="mb-6 w-1/3" key={id}>
+          <RowPost {...frontmatter} />
         </div>
       ))}
     </div>
