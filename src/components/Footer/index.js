@@ -5,13 +5,15 @@ import { SiBehance, SiLinkedin, SiGithub, SiTwitter } from "react-icons/si";
 export const Footer = () => {
   return (
     <footer className="flex flex-col w-full pb-12">
-      <hr className="my-8 border-b-2 text-icon" />
+      <hr className="my-8 border-b-1 text-icon" />
       <div className="flex justify-between items-center">
         <div className="text-secondary text-md">
           © {new Date().getFullYear()} irshadi.id
         </div>
         <div className="flex">
-          <IconWrapper>
+          <IconWrapper
+            onClick={() => window.open("https://github.com/irshadi", "_blank")}
+          >
             <Icons IconComponent={SiGithub} />
           </IconWrapper>
           <IconWrapper>
