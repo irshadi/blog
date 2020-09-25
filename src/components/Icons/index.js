@@ -10,3 +10,9 @@ export const IconWrapper = ({ children, onClick }) => {
     </div>
   );
 };
+
+export const Icons = ({ IconComponent }) => {
+  return (
+    <IconComponent className="mx-2 text-xl cursor-pointer transition duration-500 text-icon hover:text-hover" />
+  );
+};
