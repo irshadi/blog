@@ -2,8 +2,8 @@ import React from "react";
 import { useThemeModeContext } from "../../contexts/theme";
 import { usePostModeContext } from "../../contexts/postMode";
 import { IconWrapper } from "../Icons";
-import { Rows } from "../Icons/Rows";
 import { Tiles } from "../Icons/Tiles";
+import { Rows } from "../Icons/Rows";
 import { POST_MODE } from "../../constants/postMode";
 
 // Define Fill Color
