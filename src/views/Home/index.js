@@ -7,10 +7,10 @@ import { SortSelections } from "../../components/SortSelections";
 import { Posts } from "../../components/PostComponent";
 import { PostPagination } from "../../components/Pagination";
 import { usePostModeContext } from "../../contexts/postMode";
+import { Dump } from "../../components/Dump";
 
 export const HomeView = () => {
   const { posts } = usePostModeContext();
-  console.log(posts, "POST");
 
   return (
     <div className="flex flex-col">
@@ -27,6 +27,7 @@ export const HomeView = () => {
         </div>
       </div>
       <div className="flex flex-col w-full py-20">
+        <Dump data={posts} />
         <Posts posts={posts.nodes} />
         <PostPagination />
       </div>
