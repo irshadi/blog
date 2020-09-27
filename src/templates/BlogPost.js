@@ -1,5 +1,6 @@
 import React from "react";
 
-export const BlogPost = ({ ...props }) => {
+export default data => {
+  console.log(data, "<<<< DARA");
   return <div>Blog Post</div>;
 };

@@ -27,7 +27,7 @@ export const HomeView = () => {
         </div>
       </div>
       <div className="flex flex-col w-full py-20">
-        <Dump data={posts.edges} />
+        {/* <Dump data={posts.edges} /> */}
         <Posts posts={posts.edges} />
         <PostPagination />
       </div>
