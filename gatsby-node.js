@@ -1,18 +1,17 @@
 /* eslint-disable no-undef */
 const { createFilePath } = require(`gatsby-source-filesystem`);
-// const { FILE_TYPE_MAP } = require("./src/constants/fileType");
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
-
-  console.log({ node, actions, getNode });
+  console.log(node.internal.type, "TYPE");
   if (node.internal.type === "Mdx") {
-    const value = createFilePath({ node, getNode });
+    const slug = createFilePath({ node, getNode });
 
+    console.log(slug, "< SLUG");
     createNodeField({
-      name: `slug`,
       node,
-      value
+      name: "slug",
+      value: slug
     });
   }
 };

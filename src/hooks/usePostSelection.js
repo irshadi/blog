@@ -42,13 +42,18 @@ export const usePostSelection = () => {
     graphql`
       query GET_POSTS {
         allMdx {
-          nodes {
-            id
-            frontmatter {
-              title
-              createdAt
-              category
-              img
+          edges {
+            node {
+              id
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                createdAt
+                category
+                img
+              }
             }
           }
         }

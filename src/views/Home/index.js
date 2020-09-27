@@ -11,7 +11,7 @@ import { Dump } from "../../components/Dump";
 
 export const HomeView = () => {
   const { posts } = usePostModeContext();
-
+  console.log(posts.edges, "<<<<");
   return (
     <div className="flex flex-col">
       <TextHero />
@@ -27,8 +27,8 @@ export const HomeView = () => {
         </div>
       </div>
       <div className="flex flex-col w-full py-20">
-        <Dump data={posts} />
-        <Posts posts={posts.nodes} />
+        <Dump data={posts.edges} />
+        <Posts posts={posts.edges} />
         <PostPagination />
       </div>
     </div>
