@@ -5,13 +5,18 @@
  */
 
 module.exports = {
-  /* Your site config here */
   siteMetadata: {
     title: "Irshadi Bagasputro",
     description: "This is my coding blog where I write about my coding journey."
   },
   plugins: [
-    "gatsby-plugin-postcss",
+    {
+      resolve: "gatsby-plugin-chakra-ui",
+      options: {
+        isResettingCSS: true,
+        isUsingColorMode: true
+      }
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

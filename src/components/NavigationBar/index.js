@@ -1,30 +1,24 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link as GatsbyLink } from "gatsby";
 import { IoMdMoon } from "react-icons/io";
 import { ImSun } from "react-icons/im";
-import { useThemeModeContext } from "../../contexts/theme";
-import { THEME_MODE } from "../../constants/theme";
+import { Flex, Link, Text, useColorMode } from "@chakra-ui/core";
+import { isUsingDarkMode } from "../../constants/theme";
+import { IconButton } from "../Button";
 
 export const NavigationBar = () => {
-  const { theme, setTheme } = useThemeModeContext();
+  const { colorMode, toggleColorMode } = useColorMode();
 
-  const THEME_ICON_MAP = {
-    [THEME_MODE.LIGHT]: IoMdMoon,
-    [THEME_MODE.DARK]: ImSun
-  };
-  const ThemeIcon = THEME_ICON_MAP[theme];
+  const ThemeIcon = isUsingDarkMode(colorMode) ? IoMdMoon : ImSun;
 
   return (
-    <nav className="w-full pt-12 flex justify-between">
-      <Link to="/" replace className="text-xl font-semibold text-primary">
-        irshadi.id
+    <Flex as="nav" w="100%" justifyContent="space-between">
+      <Link as={GatsbyLink} to="/" replace _hover={{ border: "none" }}>
+        <Text cursor="pointer" fontSize="1.75em" fontWeight="bold">
+          irshadi.id
+        </Text>
       </Link>
-      <div className="flex justify-end w-3/12 px-2">
-        <ThemeIcon
-          onClick={setTheme}
-          className="text-2xl font-semibold cursor-pointer transition duration-500 text-icon hover:text-hover"
-        />
-      </div>
-    </nav>
+      <IconButton Icon={ThemeIcon} onClick={toggleColorMode} />
+    </Flex>
   );
 };

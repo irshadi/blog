@@ -11,7 +11,7 @@ import { Dump } from "../../components/Dump";
 
 export const HomeView = () => {
   const { posts } = usePostModeContext();
-  console.log(posts.edges, "<<<<");
+
   return (
     <div className="flex flex-col">
       <TextHero />
