@@ -9,10 +9,9 @@ export const PageWrapper = ({ Views }) => {
   return (
     <Box p="5em">
       <NavigationBar />
-      {/* <PostModeContextProvider>
-          <Views />
-        </PostModeContextProvider>
-        */}
+      <PostModeContextProvider>
+        <Views />
+      </PostModeContextProvider>
       <Footer />
     </Box>
   );

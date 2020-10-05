@@ -1,4 +1,5 @@
 import { theme } from "@chakra-ui/core";
+import { customIcons } from "./customIcons";
 
 const customTheme = {
   ...theme,
@@ -22,6 +23,10 @@ const customTheme = {
     "4xl": "2.25rem",
     "5xl": "3rem",
     "6xl": "4rem"
+  },
+  icons: {
+    ...theme.icons,
+    ...customIcons
   }
 };
 

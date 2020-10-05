@@ -1,3 +1,4 @@
+import { Flex, Image, Text } from "@chakra-ui/core";
 import React from "react";
 
 const defaultInfo =
@@ -5,21 +6,15 @@ const defaultInfo =
 
 export const AuthorCard = ({ name = "John Doe", info = defaultInfo, url }) => {
   return (
-    <div className="flex justify-between w-full p-8">
-      <div className="flex items-center">
-        <div
-          className="rounded-full h-16 w-16 flex items-center justify-center"
-          style={{
-            backgroundImage: `url(${url})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover"
-          }}
-        />
-      </div>
-      <div className="flex flex-col">
-        <span className="pl-10 text-secondary font-semibold">{name}</span>
-        <span className="pl-10 text-secondary flex flex-shrink">{info}</span>
-      </div>
-    </div>
+    <Flex alignItems="center" justify="space-between" py="2.5em">
+      <Image w="5em" alignSelf="center" rounded="full" src={url} />
+
+      <Flex flexDir="column" flexWrap="wrap" px="2em">
+        <Text pb="0.75em" fontWeight="semibold">
+          {name}
+        </Text>
+        <Text>{info}</Text>
+      </Flex>
+    </Flex>
   );
 };
