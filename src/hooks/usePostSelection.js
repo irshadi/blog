@@ -34,7 +34,7 @@ const postsReducer = (state, { type, postMode, postConfig }) => {
 
 export const usePostSelection = () => {
   const [state, dispatch] = React.useReducer(postsReducer, {
-    postMode: POST_MODE.TILES,
+    postMode: POST_MODE.ROWS,
     pageConfig: { ...defaultPageConfig }
   });
 
