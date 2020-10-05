@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/core";
 /* eslint-disable react/prop-types */
 import { Link } from "gatsby";
 import React from "react";
@@ -24,19 +25,15 @@ export const Posts = ({ posts }) => {
     [POST_MODE.TILES]: TilePost
   };
 
-  const isPostSetAsRows = postMode === POST_MODE.ROWS;
-
-  // Assign Post Component Based on Selected Post Mode Type
-  const className = isPostSetAsRows ? "mb-6 w-1/3" : "mb-6 w-full";
   const PostComponent = POST_MODE_COMPONENT_MAP[postMode];
 
   return (
-    <div className="flex flex-wrap w-full justify-start">
+    <Flex flexWrap={["wrap"]} flexDir={["column", "row"]}>
       {posts.map(({ node: { id, frontmatter, fields } }) => (
-        <PostWrapper key={id} link={fields.slug} className={className}>
+        <PostWrapper key={id} link={fields.slug} mx="1em" w="30%">
           <PostComponent {...frontmatter} />
         </PostWrapper>
       ))}
-    </div>
+    </Flex>
   );
 };

@@ -31,9 +31,9 @@ export const HomeView = () => {
       </div>
       <div className="flex flex-col w-full py-20">
         <Dump data={posts.edges} />
-        <Posts posts={posts.edges} />
         <PostPagination />
       </div> */}
+      <Posts posts={posts.edges} />
     </Box>
   );
 };

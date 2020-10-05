@@ -11,7 +11,7 @@ export const SortSelections = () => {
     state: { postMode: selectedPostMode },
     dispatch
   } = usePostModeContext();
-  console.log({ selectedPostMode, c: selectedPostMode === POST_MODE.ROWS });
+
   return (
     <Flex w="100%" justifyContent="flex-end" alignItems="center">
       <IconButton
