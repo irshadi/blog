@@ -4,7 +4,9 @@ import { OutlineButton } from "../Button";
 
 export const PostPagination = () => {
   const {
-    pageConfig: { currentPage, hasNextPage, hasPreviousPage }
+    state: {
+      pageConfig: { currentPage, hasNextPage, hasPreviousPage }
+    }
   } = usePostModeContext();
 
   return (

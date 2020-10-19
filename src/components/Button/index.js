@@ -1,26 +1,32 @@
 import React from "react";
+import { Box, Button } from "@chakra-ui/core";
 
-export const OutlineButton = ({
-  label,
-  onClick = () => {},
-  disabled,
-  selected,
-  ...props
-}) => {
-  let selectedClassName =
-    "mr-4 bg-transparent text-secondary font-semibold py-2 px-4 opacity-50";
-  if (selected) {
-    selectedClassName =
-      "mr-4 bg-transparent text-secondary font-semibold py-2 px-4";
-  }
+export const IconWrapper = ({ onClick, children, ...props }) => {
   return (
-    <button
-      className={selectedClassName}
+    <Button
       onClick={onClick}
-      disabled={disabled}
+      variant="ghost"
+      w="2.5em"
+      px="0em"
+      rounded="full"
       {...props}
     >
-      {label}
-    </button>
+      {children}
+    </Button>
+  );
+};
+
+export const IconButton = ({ Icon, onClick, opacity = "100%" }) => {
+  return (
+    <Button
+      onClick={onClick}
+      variant="ghost"
+      w="2.5em"
+      px="0em"
+      rounded="full"
+      opacity={opacity}
+    >
+      <Box as={Icon} />
+    </Button>
   );
 };
