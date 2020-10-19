@@ -22,6 +22,7 @@ export const SortSelections = () => {
           })
         }
         Icon={MdViewModule}
+        opacity={selectedPostMode === POST_MODE.ROWS ? "100%" : "50%"}
       />
       <IconButton
         onClick={() =>
@@ -31,39 +32,8 @@ export const SortSelections = () => {
           })
         }
         Icon={MdViewList}
+        opacity={selectedPostMode === POST_MODE.TILES ? "100%" : "50%"}
       />
     </Flex>
-    // <div className="flex items-center justify-end w-full h-full">
-    //   <IconWrapper
-    //     onClick={() =>
-    //       dispatch({
-    //         type: POST_ACTION.SET_POST_MODE,
-    //         postMode: POST_MODE.ROWS
-    //       })
-    //     }
-    //   >
-    //     <Rows
-    //       fill={getFillColor(
-    //         isUsingDarkMode,
-    //         selectedPostMode === POST_MODE.ROWS
-    //       )}
-    //     />
-    //   </IconWrapper>
-    //   <IconWrapper
-    //     onClick={() =>
-    //       dispatch({
-    //         type: POST_ACTION.SET_POST_MODE,
-    //         postMode: POST_MODE.TILES
-    //       })
-    //     }
-    //   >
-    //     <Tiles
-    //       fill={getFillColor(
-    //         isUsingDarkMode,
-    //         selectedPostMode === POST_MODE.TILES
-    //       )}
-    //     />
-    //   </IconWrapper>
-    // </div>
   );
 };

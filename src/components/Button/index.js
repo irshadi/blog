@@ -16,9 +16,16 @@ export const IconWrapper = ({ onClick, children, ...props }) => {
   );
 };
 
-export const IconButton = ({ Icon, onClick }) => {
+export const IconButton = ({ Icon, onClick, opacity = "100%" }) => {
   return (
-    <Button onClick={onClick} variant="ghost" w="2.5em" px="0em" rounded="full">
+    <Button
+      onClick={onClick}
+      variant="ghost"
+      w="2.5em"
+      px="0em"
+      rounded="full"
+      opacity={opacity}
+    >
       <Box as={Icon} />
     </Button>
   );
