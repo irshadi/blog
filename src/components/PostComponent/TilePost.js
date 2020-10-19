@@ -17,7 +17,6 @@ export const TilePost = ({
         <Text py="1em">{content}</Text>
         <Flex>
           <Text>{createdAt}</Text>
-          {/* <Text>{metadata}</Text> */}
         </Flex>
       </Box>
     </Flex>

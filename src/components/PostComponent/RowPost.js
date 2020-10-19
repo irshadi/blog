@@ -17,7 +17,6 @@ export const RowPost = ({
         <Text py="1em">{content}</Text>
         <Flex>
           <Text>{createdAt}</Text>
-          {/* <Text>{metadata}</Text> */}
         </Flex>
       </Box>
     </Box>

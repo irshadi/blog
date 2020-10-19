@@ -1,6 +1,7 @@
 import React from "react";
+import { PageWrapper } from "../components/PageWrapper";
+import { BlogPost } from "../views/BlogPost";
 
 export default data => {
-  console.log(data, "<<<< DARA");
-  return <div>Blog Post</div>;
+  return <PageWrapper Views={BlogPost} query={data} />;
 };

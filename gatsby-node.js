@@ -20,6 +20,7 @@ exports.createPages = ({ actions, graphql }) => {
               createdAt
               category
               img
+              author
             }
           }
         }
@@ -37,12 +38,13 @@ exports.createPages = ({ actions, graphql }) => {
     } = result;
 
     // Create Page for Each Mdx File
-    edges.forEach(({ node: { fields } }) => {
+    edges.forEach(({ node: { fields, frontmatter } }) => {
       createPage({
         path: fields.slug,
         component: BlogPostTemplate,
         context: {
-          slug: fields.slug
+          slug: fields.slug,
+          data: frontmatter
         }
       });
     });

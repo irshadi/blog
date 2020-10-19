@@ -18,21 +18,6 @@ export const HomeView = () => {
     <Box py="2em">
       <TextHero />
       <PostSortHeader />
-      {/* <div className="flex w-full">
-        <div className="flex w-6/12">
-          <AuthorCard
-            name="Irshadi Bagasputro"
-            url="https://avatars2.githubusercontent.com/u/45032138?s=460&u=c489ba890ad0e185abb0b799066fe9cffd5826b9&v=4"
-          />
-        </div>
-        <div className="flex w-6/12">
-          <SortSelections />
-        </div>
-      </div>
-      <div className="flex flex-col w-full py-20">
-        <Dump data={posts.edges} />
-        <PostPagination />
-      </div> */}
       <Posts posts={posts.edges} />
     </Box>
   );
