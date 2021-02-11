@@ -16,10 +16,11 @@ const PostLinkWrapper = ({ link, children, ...props }) => {
   );
 };
 
-export const Posts = ({ posts }) => {
+export const Posts = () => {
   const { colorMode } = useColorMode();
   const {
-    state: { postMode }
+    state: { postMode },
+    posts
   } = usePostModeContext();
 
   const POST_MODE_COMPONENT_MAP = {
@@ -41,16 +42,18 @@ export const Posts = ({ posts }) => {
 
   return (
     <PostWrapper>
-      {posts.map(({ node: { id, frontmatter, fields } }) => (
-        <PostLinkWrapper key={id} link={fields.slug}>
-          <PostComponent
-            {...frontmatter}
-            bg={THEME_MODE_STYLE.BACKGROUND[colorMode]}
-            opacity="75%"
-            _hover={{ opacity: "100%" }}
-          />
-        </PostLinkWrapper>
-      ))}
+      {posts.nodes.map(({ id, slug, ...rest }) => {
+        return (
+          <PostLinkWrapper key={id} link={slug}>
+            <PostComponent
+              bg={THEME_MODE_STYLE.BACKGROUND[colorMode]}
+              opacity="75%"
+              _hover={{ opacity: "100%" }}
+              {...rest}
+            />
+          </PostLinkWrapper>
+        );
+      })}
     </PostWrapper>
   );
 };

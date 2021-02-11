@@ -40,20 +40,22 @@ export const usePostSelection = () => {
 
   const { allMdx: posts = [] } = useStaticQuery(
     graphql`
-      query GET_POSTS {
-        allMdx {
-          edges {
-            node {
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                createdAt
-                category
-                img
-              }
+      query SITE_INDEX_QUERY {
+        allMdx(
+          sort: { fields: [frontmatter___createdAt], order: DESC }
+          filter: { frontmatter: { published: { eq: true } } }
+        ) {
+          nodes {
+            id
+            slug
+            excerpt(pruneLength: 250)
+            frontmatter {
+              title
+              createdAt
+              title
+              createdAt
+              category
+              img
             }
           }
         }
