@@ -7,7 +7,10 @@
 module.exports = {
   siteMetadata: {
     title: "Irshadi Bagasputro",
-    description: "This is my coding blog where I write about my coding journey."
+    description:
+      "This is my coding blog where I write about my coding journey.",
+    avatar:
+      "https://avatars2.githubusercontent.com/u/45032138?s=460&u=c489ba890ad0e185abb0b799066fe9cffd5826b9&v=4"
   },
   plugins: [
     {
