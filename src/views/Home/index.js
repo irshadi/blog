@@ -13,6 +13,7 @@ export const HomeView = () => {
       <TextHero />
       <PostSortHeader />
       <Posts />
+      <Dump />
     </Box>
   );
 };
