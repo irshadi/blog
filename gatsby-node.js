@@ -9,18 +9,22 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              createdAt
-              category
-              img
-            }
+      allMdx(
+        sort: { fields: [frontmatter___createdAt], order: DESC }
+        filter: { frontmatter: { published: { eq: true } } }
+      ) {
+        nodes {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            title
+            createdAt
+            category
+            img
+            author
+          }
+          fields {
+            slug
           }
         }
       }
@@ -32,12 +36,12 @@ exports.createPages = ({ actions, graphql }) => {
 
     const {
       data: {
-        allMdx: { edges }
+        allMdx: { nodes }
       }
     } = result;
 
     // Create Page for Each Mdx File
-    edges.forEach(({ node: { fields } }) => {
+    nodes.forEach(({ fields }) => {
       createPage({
         path: fields.slug,
         component: BlogPostTemplate,
@@ -54,8 +58,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === "Mdx") {
     const slug = createFilePath({ node, getNode });
     createNodeField({
-      node,
       name: "slug",
+      node,
       value: slug
     });
   }

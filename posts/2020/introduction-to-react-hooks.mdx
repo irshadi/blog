@@ -1,0 +1,40 @@
+---
+title: Introduction to React Hooks
+createdAt: 2020-06-01
+category: engineering
+img: https://novela.narative.co/static/5f8eac72cc66a0e5148406174d0cda0e/0acdf/hero-2.webp
+author: Irshadi Bagasputro
+published: true
+---
+
+# H1 Heading
+
+My first post!!
+
+## H2 Heading
+
+### H3 Heading
+
+```jsx
+import React from "react";
+
+const Dump = props => (
+  <div
+    style={{
+      fontSize: 20,
+      border: "1px solid #efefef",
+      padding: 10,
+      background: "white"
+    }}
+  >
+    {Object.entries(props).map(([key, val]) => (
+      <pre key={key}>
+        <strong style={{ color: "white", background: "red" }}>{key} ?</strong>
+        {JSON.stringify(val, "", " ")}
+      </pre>
+    ))}
+  </div>
+);
+
+export default Dump;
+```

@@ -5,12 +5,12 @@ import { Footer } from "../Footer";
 import { NavigationBar } from "../NavigationBar";
 
 // eslint-disable-next-line react/prop-types
-export const PageWrapper = ({ Views }) => {
+export const PageWrapper = ({ Views, query }) => {
   return (
     <Box p="5em">
       <NavigationBar />
       <PostModeContextProvider>
-        <Views />
+        <Views query={query} />
       </PostModeContextProvider>
       <Footer />
     </Box>
