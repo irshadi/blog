@@ -14,10 +14,8 @@ const CopyButton = props => {
 
 export const CodeBlock = ({ codeString, language }) => {
   const { copyToClipboard } = useClipboardCopy();
-  const handleClickCopy = () => {
-    console.log(codeString, "HEY");
-    copyToClipboard(codeString);
-  };
+  const handleClickCopy = () => copyToClipboard(codeString);
+
   return (
     <Highlight
       {...defaultProps}
@@ -25,18 +23,21 @@ export const CodeBlock = ({ codeString, language }) => {
       language={language}
       theme={theme}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={style}>
-          <CopyButton onClick={handleClickCopy} />
-          {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </pre>
-      )}
+      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+        console.log(style, "<STY");
+        return (
+          <pre className={className} style={{ ...style }}>
+            <CopyButton onClick={handleClickCopy} />
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        );
+      }}
     </Highlight>
   );
 };

@@ -4,6 +4,9 @@ import { MDXProvider } from "@mdx-js/react";
 import { CodeBlock } from "./src/components/Code";
 
 const components = {
+  h2: ({ children }) => {
+    return null;
+  },
   pre: ({ children: { props } }) => {
     if (props.mdxType === "code") {
       return (
