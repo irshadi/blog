@@ -4,6 +4,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { CodeBlock } from "./src/components/MDXRenderer/Code";
 import { H1, H2, H3, H4, H5, H6 } from "./src/components/MDXRenderer/Heading";
 import { BlockQuote, Code, P } from "./src/components/MDXRenderer/Text";
+import { List, OrderedList } from "./src/components/MDXRenderer/Lists";
 
 const components = {
   h1: ({ children }) => {
@@ -33,6 +34,9 @@ const components = {
   "p.inlineCode": ({ children }) => {
     return <Code>{children}</Code>;
   },
+  li: ({ children }) => {
+    return <List>{children}</List>;
+  },
   pre: ({ children: { props } }) => {
     if (props.mdxType === "code") {
       return (
@@ -46,6 +50,6 @@ const components = {
   }
 };
 
-export const wrapRootElement = ({ element }) => (
-  <MDXProvider components={components}>{element}</MDXProvider>
-);
+export const wrapRootElement = ({ element }) => {
+  return <MDXProvider components={components}>{element}</MDXProvider>;
+};
