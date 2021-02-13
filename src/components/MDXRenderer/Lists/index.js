@@ -1,10 +1,10 @@
 import React from "react";
-import { ListItem, Text } from "@chakra-ui/core";
+import { Text } from "@chakra-ui/react";
 
 export const List = ({ children }) => {
   return (
-    <ListItem mx="1.25em" py="0.75em" px="1.5em">
-      <Text>{children}</Text>
-    </ListItem>
+    <Text as="li" mx="1.25em" py="0.75em" px="1.5em">
+      {children}
+    </Text>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { SiBehance, SiLinkedin, SiGithub, SiTwitter } from "react-icons/si";
-import { Divider, Flex, Heading } from "@chakra-ui/core";
+import { Divider, Flex, Heading } from "@chakra-ui/react";
 import { IconButton } from "../Button";
 
 export const Footer = () => {

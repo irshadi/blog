@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, useColorMode } from "@chakra-ui/core";
+import { Box, Flex, Grid, useColorMode } from "@chakra-ui/react";
 /* eslint-disable react/prop-types */
 import { Link } from "gatsby";
 import React from "react";

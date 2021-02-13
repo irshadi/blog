@@ -1,10 +1,22 @@
 import React from "react";
+import {} from "@chakra-ui/gatsby-plugin";
 import theme from "prism-react-renderer/themes/nightOwl";
 import { MDXProvider } from "@mdx-js/react";
 import { CodeBlock } from "./src/components/MDXRenderer/Code";
 import { H1, H2, H3, H4, H5, H6 } from "./src/components/MDXRenderer/Heading";
 import { BlockQuote, Code, P } from "./src/components/MDXRenderer/Text";
 import { List, OrderedList } from "./src/components/MDXRenderer/Lists";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableData,
+  TableFoot,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "./src/components/MDXRenderer/Tables";
+import { StylesProvider } from "@chakra-ui/react";
 
 const components = {
   h1: ({ children }) => {
@@ -37,12 +49,38 @@ const components = {
   li: ({ children }) => {
     return <List>{children}</List>;
   },
+  table: ({ children }) => {
+    return <Table>{children}</Table>;
+  },
+  thead: ({ children }) => {
+    return <TableHead>{children}</TableHead>;
+  },
+  tbody: ({ children }) => {
+    return <TableBody>{children}</TableBody>;
+  },
+  tfoot: ({ children }) => {
+    return <TableFoot>{children}</TableFoot>;
+  },
+  tr: ({ children }) => {
+    return <TableRow>{children}</TableRow>;
+  },
+  th: ({ children }) => {
+    return <TableHeader>{children}</TableHeader>;
+  },
+  td: ({ children }) => {
+    return <TableData>{children}</TableData>;
+  },
+  caption: ({ children }) => {
+    return <TableCaption>{children}</TableCaption>;
+  },
   pre: ({ children: { props } }) => {
-    if (props.mdxType === "code") {
+    const { mdxType, children, className } = props;
+    if (mdxType === "code") {
+      const codeString = children.trim();
       return (
         <CodeBlock
-          codeString={props.children.trim()}
-          language={props.className && props.className.replace("language-", "")}
+          codeString={codeString}
+          language={className && className.replace("language-", "")}
           {...props}
         />
       );

@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { Box, Flex, Image, Text, useColorMode } from "@chakra-ui/core";
+import { Box, Flex, Image, Text, useColorMode } from "@chakra-ui/react";
 import { THEME_MODE_STYLE } from "../../constants/theme";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 

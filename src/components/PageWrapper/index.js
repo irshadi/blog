@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/react";
 import { PostModeContextProvider } from "../../contexts/postMode";
 import { Footer } from "../Footer";
 import { NavigationBar } from "../NavigationBar";

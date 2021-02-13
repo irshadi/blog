@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Code as _Code, Alert as BoxQuote } from "@chakra-ui/core";
+import { Text, Code as _Code, Alert as BoxQuote } from "@chakra-ui/react";
 
 export const P = ({ children }) => <Text py="0.25em">{children}</Text>;
 

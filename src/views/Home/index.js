@@ -5,7 +5,7 @@ import { TextHero } from "./section/TextHero";
 import { PostSortHeader } from "./section/PostSortHeader";
 import { Posts } from "../../components/PostComponent";
 import { Dump } from "../../components/Dump";
-import { Box } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/react";
 
 export const HomeView = () => {
   return (

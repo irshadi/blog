@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@chakra-ui/core";
+import { Box, Button } from "@chakra-ui/react";
 
 export const IconWrapper = ({ onClick, children, ...props }) => {
   return (

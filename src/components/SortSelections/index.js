@@ -1,6 +1,6 @@
 import React from "react";
 import { usePostModeContext } from "../../contexts/postMode";
-import { Flex } from "@chakra-ui/core";
+import { Flex } from "@chakra-ui/react";
 import { IconButton } from "../Button";
 import { POST_MODE } from "../../constants/postMode";
 import { POST_ACTION } from "../../hooks/usePostSelection";

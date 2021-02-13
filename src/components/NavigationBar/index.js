@@ -2,7 +2,7 @@ import React from "react";
 import { Link as GatsbyLink } from "gatsby";
 import { IoMdMoon } from "react-icons/io";
 import { ImSun } from "react-icons/im";
-import { Flex, Heading, Link, Text, useColorMode } from "@chakra-ui/core";
+import { Flex, Heading, Link, Text, useColorMode } from "@chakra-ui/react";
 import { isUsingDarkMode } from "../../constants/theme";
 import { IconButton } from "../Button";
 
