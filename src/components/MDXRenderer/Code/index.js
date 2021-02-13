@@ -2,7 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 import { Button, ButtonGroup } from "@chakra-ui/core";
-import { useClipboardCopy } from "../../hooks/useClipboardCopy";
+import { useClipboardCopy } from "../../../hooks/useClipboardCopy";
 
 const CopyButton = props => {
   return (
@@ -24,7 +24,6 @@ export const CodeBlock = ({ codeString, language }) => {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        console.log(style, "<STY");
         return (
           <pre className={className} style={{ ...style }}>
             <CopyButton onClick={handleClickCopy} />
