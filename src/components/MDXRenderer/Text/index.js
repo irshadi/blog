@@ -1,7 +1,11 @@
 import React from "react";
-import { Text, Alert as BoxQuote } from "@chakra-ui/core";
+import { Text, Code as _Code, Alert as BoxQuote } from "@chakra-ui/core";
 
 export const P = ({ children }) => <Text py="0.25em">{children}</Text>;
+
+export const Code = ({ children }) => {
+  return <_Code bg="gray.100">{children}</_Code>;
+};
 
 export const BlockQuote = ({ children }) => {
   return (

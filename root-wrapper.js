@@ -3,7 +3,7 @@ import theme from "prism-react-renderer/themes/nightOwl";
 import { MDXProvider } from "@mdx-js/react";
 import { CodeBlock } from "./src/components/MDXRenderer/Code";
 import { H1, H2, H3, H4, H5, H6 } from "./src/components/MDXRenderer/Heading";
-import { BlockQuote, P } from "./src/components/MDXRenderer/Text";
+import { BlockQuote, Code, P } from "./src/components/MDXRenderer/Text";
 
 const components = {
   h1: ({ children }) => {
@@ -29,6 +29,9 @@ const components = {
   },
   blockquote: ({ children }) => {
     return <BlockQuote>{children}</BlockQuote>;
+  },
+  "p.inlineCode": ({ children }) => {
+    return <Code>{children}</Code>;
   },
   pre: ({ children: { props } }) => {
     if (props.mdxType === "code") {
