@@ -1,3 +1,3 @@
 export const STORAGE_VALUE = {
-  THEME: "THEME"
+  COLOR_MODE: "chakra-ui-color-mode"
 };
