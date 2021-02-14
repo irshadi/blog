@@ -8,7 +8,7 @@ export const useClipboardCopy = () => {
      */
     if (!clipboard || typeof clipboard.writeText !== `function`) {
       const textarea = document.createElement(`textarea`);
-      textarea.value = str;
+      textarea.value = code;
       textarea.setAttribute(`readonly`, true);
       textarea.setAttribute(`contenteditable`, true);
       textarea.style.position = `absolute`;

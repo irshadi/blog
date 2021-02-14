@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from "@chakra-ui/core";
+import { Flex } from "@chakra-ui/react";
 import { AuthorCard } from "../../../../components/AuthorCard";
 import { SortSelections } from "../../../../components/SortSelections";
 

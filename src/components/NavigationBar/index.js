@@ -2,14 +2,18 @@ import React from "react";
 import { Link as GatsbyLink } from "gatsby";
 import { IoMdMoon } from "react-icons/io";
 import { ImSun } from "react-icons/im";
-import { Flex, Heading, Link, Text, useColorMode } from "@chakra-ui/core";
-import { isUsingDarkMode } from "../../constants/theme";
+import {
+  Flex,
+  Heading,
+  Link,
+  useColorMode,
+  useColorModeValue
+} from "@chakra-ui/react";
 import { IconButton } from "../Button";
 
 export const NavigationBar = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-
-  const ThemeIcon = isUsingDarkMode(colorMode) ? IoMdMoon : ImSun;
+  const { toggleColorMode } = useColorMode();
+  const ThemeIcon = useColorModeValue(ImSun, IoMdMoon);
 
   return (
     <Flex as="nav" w="100%" justifyContent="space-between">

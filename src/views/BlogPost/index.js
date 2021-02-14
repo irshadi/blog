@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { Box, Flex, Image, Text, useColorMode } from "@chakra-ui/core";
-import { THEME_MODE_STYLE } from "../../constants/theme";
+import { Box, Flex, Image, Text, useColorMode } from "@chakra-ui/react";
+import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 export const BlogPost = ({ query: { data } }) => {
@@ -20,7 +20,7 @@ export const BlogPost = ({ query: { data } }) => {
       <Flex
         justify="center"
         w="100%"
-        color={THEME_MODE_STYLE.TEXT.SECONDARY[colorMode]}
+        color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
       >
         <Flex maxW="75%">
           <Image

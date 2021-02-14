@@ -1,9 +1,9 @@
-import { Box, Flex, Grid, useColorMode } from "@chakra-ui/core";
+import { Box, Flex, Grid, useColorMode } from "@chakra-ui/react";
 /* eslint-disable react/prop-types */
 import { Link } from "gatsby";
 import React from "react";
 import { POST_MODE } from "../../constants/postMode";
-import { THEME_MODE_STYLE } from "../../constants/theme";
+import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
 import { usePostModeContext } from "../../contexts/postMode";
 import { RowPost } from "./RowPost";
 import { TilePost } from "./TilePost";
@@ -46,7 +46,7 @@ export const Posts = () => {
         return (
           <PostLinkWrapper key={id} link={slug}>
             <PostComponent
-              bg={THEME_MODE_STYLE.BACKGROUND[colorMode]}
+              bg={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
               opacity="75%"
               _hover={{ opacity: "100%" }}
               {...rest}
