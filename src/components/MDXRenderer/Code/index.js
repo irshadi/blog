@@ -1,11 +1,12 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Text, useColorModeValue } from "@chakra-ui/react";
 import { useClipboardCopy } from "../../../hooks/useClipboardCopy";
 import { MdContentCopy } from "react-icons/md";
 
 const CopyButton = ({ isCopied, ...props }) => {
+  const color = useColorModeValue("gray.700", "gray.200");
   return (
     <Button
       positon="absolute"
@@ -14,9 +15,7 @@ const CopyButton = ({ isCopied, ...props }) => {
       variant="solid"
       {...props}
       float="right"
-      // top="1em"
-      // right="1em"
-      color="gray.700"
+      color={color}
     >
       <MdContentCopy />
       <Text px="0.5em">{isCopied ? "Copied" : "Copy"}</Text>
