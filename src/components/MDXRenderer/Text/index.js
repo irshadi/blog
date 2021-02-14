@@ -6,15 +6,9 @@ import { TEXT_COLOR_MODE } from "../../../constants/theme";
 export const P = ({ children }) => <Text py="0.25em">{children}</Text>;
 
 export const Code = ({ children }) => {
-  const { colorMode } = useColorMode();
-
   const backgroundColor = useColorModeValue("gray.200", "gray.600");
   const color = useColorModeValue("gray.700", "gray.200");
-  console.log({
-    colorMode,
-    backgroundColor,
-    color
-  });
+
   return (
     <_Code bg={backgroundColor} color={color}>
       {children}
@@ -23,14 +17,17 @@ export const Code = ({ children }) => {
 };
 
 export const BlockQuote = ({ children }) => {
+  const backgroundColor = useColorModeValue("gray.200", "gray.700");
+  const borderColor = useColorModeValue("gray.700", "gray.200");
+
   return (
     <BoxQuote
       variant="left-accent"
-      bg="gray.100"
-      borderColor="gray.400"
+      bg={backgroundColor}
+      borderColor={borderColor}
       py="0.5em"
     >
-      <Text>{children}</Text>
+      <Text color={borderColor}>{children}</Text>
     </BoxQuote>
   );
 };
