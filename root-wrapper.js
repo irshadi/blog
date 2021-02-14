@@ -4,7 +4,12 @@ import theme from "prism-react-renderer/themes/nightOwl";
 import { MDXProvider } from "@mdx-js/react";
 import { CodeBlock } from "./src/components/MDXRenderer/Code";
 import { H1, H2, H3, H4, H5, H6 } from "./src/components/MDXRenderer/Heading";
-import { BlockQuote, Code, P } from "./src/components/MDXRenderer/Text";
+import {
+  BlockQuote,
+  Code,
+  Keyboard,
+  P
+} from "./src/components/MDXRenderer/Text";
 import { List, OrderedList } from "./src/components/MDXRenderer/Lists";
 import {
   Table,
@@ -17,6 +22,7 @@ import {
   TableRow
 } from "./src/components/MDXRenderer/Tables";
 import { StylesProvider } from "@chakra-ui/react";
+import { Link } from "./src/components/MDXRenderer/Link";
 
 const components = {
   h1: ({ children }) => {
@@ -72,6 +78,12 @@ const components = {
   },
   caption: ({ children }) => {
     return <TableCaption>{children}</TableCaption>;
+  },
+  a: ({ children }) => {
+    return <Link>{children}</Link>;
+  },
+  kbd: ({ children }) => {
+    return <Keyboard>{children}</Keyboard>;
   },
   pre: ({ children: { props } }) => {
     const { mdxType, children, className } = props;

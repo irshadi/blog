@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Code as _Code, Alert as BoxQuote } from "@chakra-ui/react";
+import { Text, Code as _Code, Alert as BoxQuote, Kbd } from "@chakra-ui/react";
 
 export const P = ({ children }) => <Text py="0.25em">{children}</Text>;
 
@@ -18,4 +18,8 @@ export const BlockQuote = ({ children }) => {
       <Text>{children}</Text>
     </BoxQuote>
   );
+};
+
+export const Keyboard = ({ children }) => {
+  return <Kbd>{children}</Kbd>;
 };
