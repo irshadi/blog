@@ -6,8 +6,16 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 export const BlogPost = ({ query: { data } }) => {
   const {
-    mdx: { frontmatter, body, fields, excerpt }
+    mdx: {
+      frontmatter: { createdAt },
+      body,
+      fields: {
+        readingTime: { text: readingTime }
+      },
+      excerpt
+    }
   } = data;
+  console.log(data, "<<<");
   const { colorMode } = useColorMode();
 
   return (
@@ -35,7 +43,7 @@ export const BlogPost = ({ query: { data } }) => {
         </Flex>
         <Flex alignItems="center">
           <Text fontSize={["lg"]} paddingX="0.5em">
-            {data.createdAt} · {data.metadata || "XX min read"}
+            {createdAt} · {readingTime}
           </Text>
         </Flex>
       </Flex>
