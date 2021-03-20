@@ -12,12 +12,15 @@ export const query = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        createdAt(formatString: "YYYY MMMM Do")
+        createdAt(formatString: "MMMM Do, YYYY")
       }
       body
       excerpt
       fields {
         slug
+        readingTime {
+          text
+        }
       }
     }
   }

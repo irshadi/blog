@@ -47,12 +47,10 @@ export const usePostSelection = () => {
         nodes {
           id
           slug
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 100)
           frontmatter {
             title
-            createdAt
-            title
-            createdAt
+            createdAt(formatString: "MMMM Do, YYYY")
             category
             img
           }
