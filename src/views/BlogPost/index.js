@@ -59,11 +59,10 @@ export const BlogPost = ({ query: { data } }) => {
 
       <Progress
         pos="fixed"
-        bottom="0"
+        top="0"
         left="0"
-        width={"100vw"}
+        width="100vw"
         zIndex={5}
-        // style={{ transform: "rotate(90deg" }}
         boxShadow="2xl"
         value={scrollPosition * 100}
         size="xs"
