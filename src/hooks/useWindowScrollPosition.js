@@ -4,7 +4,7 @@ import React from "react";
  * Hooks that provide scroll position on a given page
  */
 export const useWindowScrollPosition = () => {
-  const [scrollPosition, _setScrollPosition] = React.useState();
+  const [scrollPosition, _setScrollPosition] = React.useState(0);
 
   // Helper for calculating scroll position by current DOM
   const handleCaptureScrollPosition = React.useCallback(() => {
@@ -12,7 +12,6 @@ export const useWindowScrollPosition = () => {
       documentElement: { scrollTop, scrollHeight, clientHeight }
     } = document;
     const position = scrollTop / (scrollHeight - clientHeight);
-
     _setScrollPosition(position);
   }, [_setScrollPosition]);
 
@@ -23,7 +22,5 @@ export const useWindowScrollPosition = () => {
       window.removeEventListener("scroll", handleCaptureScrollPosition);
   }, [handleCaptureScrollPosition]);
 
-  return {
-    scrollPosition
-  };
+  return { scrollPosition };
 };
