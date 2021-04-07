@@ -1,7 +1,7 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import { Box, Flex, Image, Text, useColorMode } from "@chakra-ui/react";
 import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
+import { useWindowScrollPosition } from "../../hooks/useWindowScrollPosition";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 export const BlogPost = ({ query: { data } }) => {
@@ -15,12 +15,13 @@ export const BlogPost = ({ query: { data } }) => {
       excerpt
     }
   } = data;
-  console.log(data, "<<<");
   const { colorMode } = useColorMode();
+  const { scrollPosition } = useWindowScrollPosition();
 
   return (
     <Flex justify="center" flexDirection="column" w="100%">
       <Flex justify="center" w="100%">
+        {scrollPosition}Pos
         <Text fontSize={["6xl"]} fontWeight="700">
           {data.title}
         </Text>
