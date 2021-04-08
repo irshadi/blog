@@ -1,6 +1,7 @@
 import React from "react";
 import { POST_MODE } from "../constants/postMode";
 import { useStaticQuery, graphql } from "gatsby";
+import { STORAGE_VALUE } from "../constants/storageValue";
 
 const defaultPageConfig = {
   currentPage: 1,
@@ -34,9 +35,19 @@ const postsReducer = (state, { type, postMode, postConfig }) => {
 
 export const usePostSelection = () => {
   const [state, dispatch] = React.useReducer(postsReducer, {
-    postMode: POST_MODE.ROWS,
+    postMode:
+      JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE)) ??
+      POST_MODE.ROWS,
     pageConfig: { ...defaultPageConfig }
   });
+
+  const setPostMode = postMode => {
+    localStorage.setItem(STORAGE_VALUE.POST_MODE, JSON.stringify(postMode));
+    dispatch({
+      type: POST_ACTION.SET_POST_MODE,
+      postMode
+    });
+  };
 
   const { allMdx: posts = [] } = useStaticQuery(graphql`
     query SITE_INDEX_QUERY {
@@ -62,6 +73,7 @@ export const usePostSelection = () => {
   return {
     state,
     dispatch,
+    setPostMode,
     posts
   };
 };
