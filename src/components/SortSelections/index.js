@@ -3,7 +3,6 @@ import { usePostModeContext } from "../../contexts/postMode";
 import { Flex } from "@chakra-ui/react";
 import { IconButton } from "../Button";
 import { POST_MODE } from "../../constants/postMode";
-import { POST_ACTION } from "../../hooks/usePostSelection";
 import { MdViewList, MdViewModule } from "react-icons/md";
 
 export const SortSelections = () => {
