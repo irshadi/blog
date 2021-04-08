@@ -41,12 +41,17 @@ exports.createPages = ({ actions, graphql }) => {
     } = result;
 
     // Create Page for Each Mdx File
-    nodes.forEach(({ fields }) => {
+    nodes.forEach(({ fields }, index) => {
+      const previous = index === nodes.length - 1 ? null : nodes[index + 1];
+      const next = !index ? null : nodes[index - 1];
+
       createPage({
         path: fields.slug,
         component: BlogPostTemplate,
         context: {
-          slug: fields.slug
+          slug: fields.slug,
+          previous,
+          next
         }
       });
     });
