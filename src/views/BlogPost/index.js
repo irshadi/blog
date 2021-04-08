@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  useColorMode,
-  Progress,
-  ScaleFade
-} from "@chakra-ui/react";
+import { Flex, Image, Text, useColorMode, Progress } from "@chakra-ui/react";
 import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
 import { useWindowScrollPosition } from "../../hooks/useWindowScrollPosition";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { FooterPostSuggestion } from "../../components/PostComponent/FooterPostSuggestion";
 
-export const BlogPost = ({ query: { data } }) => {
+export const BlogPost = ({ query: { data, pageContext } }) => {
   const {
     mdx: {
       frontmatter: { createdAt },
@@ -23,6 +16,7 @@ export const BlogPost = ({ query: { data } }) => {
       excerpt
     }
   } = data;
+  const { previous, next } = pageContext;
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
 
@@ -70,6 +64,8 @@ export const BlogPost = ({ query: { data } }) => {
       />
 
       <MDXRenderer>{body}</MDXRenderer>
+
+      <FooterPostSuggestion />
     </Flex>
   );
 };
