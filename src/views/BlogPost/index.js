@@ -66,7 +66,11 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
 
       <MDXRenderer>{body}</MDXRenderer>
 
-      <FooterPostSuggestion data={allMdx} morePost={[previous, next]} />
+      <FooterPostSuggestion
+        category={pageContext.category}
+        data={allMdx}
+        morePost={[previous, next]}
+      />
     </Flex>
   );
 };
