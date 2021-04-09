@@ -8,7 +8,7 @@ const ComponentName = data => {
 };
 
 export const query = graphql`
-  query PostBySlug($slug: String!) {
+  query PostBySlug($slug: String!, $category: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
@@ -21,6 +21,22 @@ export const query = graphql`
         readingTime {
           text
         }
+      }
+    }
+    allMdx(
+      filter: { frontmatter: { category: { eq: $category } } }
+      limit: 5
+      sort: { order: ASC, fields: frontmatter___createdAt }
+    ) {
+      nodes {
+        excerpt(truncate: true)
+        frontmatter {
+          author
+          createdAt(formatString: "DD MMMM YYYY")
+          title
+        }
+        timeToRead
+        slug
       }
     }
   }

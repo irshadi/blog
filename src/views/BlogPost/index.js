@@ -8,13 +8,14 @@ import { FooterPostSuggestion } from "../../components/PostComponent/FooterPostS
 export const BlogPost = ({ query: { data, pageContext } }) => {
   const {
     mdx: {
-      frontmatter: { createdAt },
+      frontmatter: { createdAt, category },
       body,
       fields: {
         readingTime: { text: readingTime }
       },
       excerpt
-    }
+    },
+    allMdx
   } = data;
   const { previous, next } = pageContext;
   const { colorMode } = useColorMode();
@@ -65,7 +66,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
 
       <MDXRenderer>{body}</MDXRenderer>
 
-      <FooterPostSuggestion />
+      <FooterPostSuggestion data={allMdx} morePost={[previous, next]} />
     </Flex>
   );
 };

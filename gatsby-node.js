@@ -40,8 +40,15 @@ exports.createPages = ({ actions, graphql }) => {
       }
     } = result;
 
+    // Create Article Recomendations
+    // const recomendations = Array.from(new Array(4), (_, index) => {
+    //   return nodes.filter(
+    //     ({ frontmatter: { category } }) => category === currentCategory
+    //   );
+    // });
+
     // Create Page for Each Mdx File
-    nodes.forEach(({ fields }, index) => {
+    nodes.forEach(({ fields, frontmatter: { category } }, index) => {
       const previous = index === nodes.length - 1 ? null : nodes[index + 1];
       const next = !index ? null : nodes[index - 1];
 
@@ -49,6 +56,7 @@ exports.createPages = ({ actions, graphql }) => {
         path: fields.slug,
         component: BlogPostTemplate,
         context: {
+          category,
           slug: fields.slug,
           previous,
           next
