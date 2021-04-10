@@ -39,7 +39,7 @@ export const TilePost = ({
         >
           {category}
         </CategoryTags>
-        <Heading w="100%" fontSize="xl" py="1.5em">
+        <Heading w="100%" fontSize="xl" py="1.5em" noOfLines={1}>
           {title}
         </Heading>
         <Flex w="100%" flexDir="column" justify="space-between" h="100%">

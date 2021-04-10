@@ -15,7 +15,7 @@ export const RowPost = ({ frontmatter, excerpt, fields, ...props }) => {
       </CategoryTags>
       <Image roundedTop="0.5em" src={img} />
       <Box p="2em">
-        <Heading fontSize="xl" pb=".75em">
+        <Heading fontSize="xl" mb=".75em" noOfLines={1}>
           {title}
         </Heading>
         <Text noOfLines={3}>{excerpt}</Text>
