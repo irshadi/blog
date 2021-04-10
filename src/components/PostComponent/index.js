@@ -1,16 +1,15 @@
-import { Box, Flex, Grid, useColorMode } from "@chakra-ui/react";
-/* eslint-disable react/prop-types */
-import { Link } from "gatsby";
 import React from "react";
+import { Box, Grid, useColorMode } from "@chakra-ui/react";
+import { Link } from "gatsby";
 import { POST_MODE } from "../../constants/postMode";
 import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
 import { usePostModeContext } from "../../contexts/postMode";
 import { RowPost } from "./RowPost";
 import { TilePost } from "./TilePost";
 
-export const PostLinkWrapper = ({ link, children, ...props }) => {
+export const PostLinkWrapper = ({ link, children, isLoading, ...props }) => {
   return (
-    <Link to={link} {...props}>
+    <Link aria-disabled={isLoading} to={link} {...props}>
       {children}
     </Link>
   );
@@ -44,15 +43,18 @@ export const Posts = () => {
 
   return (
     <PostWrapper py="2em">
-      {posts.nodes.map(({ id, ...rest }, idx) => {
+      {posts.nodes.map(({ id, ...rest }) => {
         return (
-          <PostLinkWrapper key={id} link={rest.fields.slug}>
+          <PostLinkWrapper
+            key={id}
+            link={rest.fields.slug}
+            isLoading={isLoading}
+          >
             <PostComponent
               bg={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
               opacity="75%"
               _hover={{ opacity: "100%" }}
-              // isLoading={isLoading}
-              isLoading={!idx ? true : false}
+              isLoading={isLoading}
               {...rest}
             />
           </PostLinkWrapper>

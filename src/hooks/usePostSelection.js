@@ -11,9 +11,8 @@ const defaultPageConfig = {
 
 export const CATEGORY_MAP = {
   ENGINEERING: "engineering",
-  BLOG: "blog",
   TECHNOLOGY: "technology",
-  COMPONENT: "component",
+  DESIGN: "design",
   PERSONAL_LIFE: "personal life"
 };
 
