@@ -1,5 +1,12 @@
 import React from "react";
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Image,
+  Text,
+  Skeleton,
+  SkeletonText
+} from "@chakra-ui/react";
 import { CategoryTags } from "../CategoryTags";
 
 export const TilePost = ({
@@ -7,12 +14,26 @@ export const TilePost = ({
   excerpt,
   fields,
   bg: _bg,
+  isLoading,
   ...props
 }) => {
   const { title, img, createdAt, category } = frontmatter;
   const {
     readingTime: { text: timeToRead }
   } = fields;
+
+  if (isLoading) {
+    return (
+      <Flex w="100%" h="15em" mb="2em">
+        <Skeleton w="40%" h="100%" rounded="0.5em" />
+        <Flex w="60%" h="100%" pb="1em" px="2.5em" flexDir="column">
+          <Skeleton my="2em" h="1.5em" />
+          <SkeletonText noOfLines={3} />
+          <Skeleton my="2em" w="50%" h="1em" />
+        </Flex>
+      </Flex>
+    );
+  }
 
   return (
     <Flex w="100%" h="15em" mb="2em" {...props}>

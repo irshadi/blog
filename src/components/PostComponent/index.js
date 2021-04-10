@@ -51,6 +51,7 @@ export const Posts = () => {
               bg={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
               opacity="75%"
               _hover={{ opacity: "100%" }}
+              // isLoading={isLoading}
               isLoading={!idx ? true : false}
               {...rest}
             />
