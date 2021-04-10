@@ -1,5 +1,4 @@
 import React from "react";
-import { STORAGE_VALUE } from "../constants/storageValue";
 
 export const CATEGORY_MAP = {
   ALL: "ALL",
