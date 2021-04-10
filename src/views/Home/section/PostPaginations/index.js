@@ -49,11 +49,13 @@ export const PostPaginations = ({ pageInfo, pageContext }) => {
     <Flex w="100%" justify="space-between" alignItems="center">
       <HStack w="50%" py=".75em" spacing={3}>
         {hasPreviousPage && (
-          <IndicatorWrapper>
-            <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
-              Prev
-            </Text>
-          </IndicatorWrapper>
+          <PostLinkWrapper to={() => generateLink(currentPage - 1)} replace>
+            <IndicatorWrapper>
+              <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
+                Prev
+              </Text>
+            </IndicatorWrapper>
+          </PostLinkWrapper>
         )}
         {pages.map(page => {
           return (
@@ -71,11 +73,13 @@ export const PostPaginations = ({ pageInfo, pageContext }) => {
           );
         })}
         {hasNextPage && (
-          <IndicatorWrapper>
-            <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
-              Next
-            </Text>
-          </IndicatorWrapper>
+          <PostLinkWrapper to={() => generateLink(currentPage + 1)} replace>
+            <IndicatorWrapper>
+              <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
+                Next
+              </Text>
+            </IndicatorWrapper>
+          </PostLinkWrapper>
         )}
       </HStack>
       <Flex w="50%" justify="flex-end">

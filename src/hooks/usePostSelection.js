@@ -1,5 +1,4 @@
 import React from "react";
-import { POST_MODE } from "../constants/postMode";
 import { STORAGE_VALUE } from "../constants/storageValue";
 
 export const CATEGORY_MAP = {
@@ -51,13 +50,11 @@ const postsReducer = (state, { type, ...action }) => {
   }
 };
 
-export const usePostSelection = () => {
+export const usePostSelection = ({ postMode }) => {
   const [state, dispatch] = React.useReducer(postsReducer, {
     isLoading: true,
     selectedCategory: CATEGORY_MAP.ALL,
-    postMode:
-      JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE)) ??
-      POST_MODE.ROWS
+    postMode
   });
 
   const setPostMode = postMode => {
