@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex, Avatar, Text } from "@chakra-ui/react";
-import avatar from "../../../static/avatar/irshadi.png";
 
 const defaultInfo =
   "Written by You. This is where your author bio lives. Share your work, your joys and of course, your Twitter handle.";
