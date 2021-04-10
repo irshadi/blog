@@ -13,9 +13,11 @@ export const query = graphql`
       frontmatter {
         title
         createdAt(formatString: "DD MMMM YYYY")
+        img
+        author
+        category
       }
       body
-      excerpt
       fields {
         slug
         readingTime {

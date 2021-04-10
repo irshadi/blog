@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Image, Flex, Text, Tag, Heading } from "@chakra-ui/react";
+import { Box, Image, Flex, Text, Heading } from "@chakra-ui/react";
 import { PostLinkWrapper } from ".";
+import { CategoryTags } from "../CategoryTags";
 
 export const FooterPost = ({
   fields: {
@@ -15,7 +16,7 @@ export const FooterPost = ({
     <PostLinkWrapper link={slug} replace={true}>
       <Box>
         <Image src={img} borderRadius="md" />
-        <Tag
+        <CategoryTags
           my="1.5em"
           py=".25em"
           px="1em"
@@ -25,7 +26,7 @@ export const FooterPost = ({
           letterSpacing="wider"
         >
           {category}
-        </Tag>
+        </CategoryTags>
 
         <Heading fontSize="medium">{title}</Heading>
         <Text pt="1em" noOfLines={2}>
