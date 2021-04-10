@@ -8,7 +8,7 @@ const defaultInfo =
 export const AuthorCard = ({ name = "John Doe", info = defaultInfo }) => {
   return (
     <Flex alignItems="center" justify="space-between" py="2.5em">
-      <Avatar name={name} size="lg" src={avatar} mr=".5em" />
+      <Avatar name={name} size="lg" src={avatar} mr=".5em" colorScheme="gray" />
       <Flex flexDir="column" flexWrap="wrap" px="2em">
         <Text pb="0.75em" fontWeight="semibold">
           {name}

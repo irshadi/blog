@@ -48,7 +48,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
         w="100%"
         color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
       >
-        <Avatar name={author} src={avatar} mr=".5em" />
+        <Avatar name={author} src={avatar} mr=".5em" colorScheme="gray" />
         <Text fontSize={["xl"]} fontWeight="bold" px="1em">
           {author}
         </Text>
