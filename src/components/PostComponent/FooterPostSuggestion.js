@@ -1,11 +1,25 @@
 import React from "react";
-import { Box, Divider, Flex, HStack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  HStack,
+  Text,
+  useColorModeValue
+} from "@chakra-ui/react";
 import { CompactPost, FooterPost } from "./AdditionalPostComponent";
 import isEmpty from "lodash/isEmpty";
+import { useColorMode } from "@chakra-ui/core";
+import { TEXT_COLOR_MODE } from "../../constants/theme";
 
 export const FooterPostSuggestion = ({ data, category }) => {
   const { nodes } = data;
   const [next, previous = {}, ...similiarPost] = nodes;
+  const { colorMode } = useColorMode();
+  const gradient = useColorModeValue(
+    "linear(to-b, gray.100, white)",
+    "linear(to-b, gray.600, gray.800)"
+  );
 
   const SimiliarPost = () =>
     similiarPost.map(({ frontmatter, fields }, id) => (
@@ -22,7 +36,7 @@ export const FooterPostSuggestion = ({ data, category }) => {
         my="2em"
       >
         <Text w="30%" fontWeight="bold" textTransform="capitalize">
-          More Article in {category}
+          More Article from Me
         </Text>
         <Divider w="70%" ml=".5em" />
       </Flex>
@@ -35,14 +49,19 @@ export const FooterPostSuggestion = ({ data, category }) => {
         </Flex>
         <Flex w="30%" flexDirection="column">
           <Box
-            p="2em"
             rounded="md"
-            boxShadow="lg"
+            boxShadow={colorMode === TEXT_COLOR_MODE.DARK ? "lg" : "md"}
             h="22.5em"
-            bgGradient="linear(to-b, gray.600, gray.800)"
+            bgGradient={gradient}
           >
             {!similiarPost.length ? (
-              <Flex h="100%" align="center" justify="center" flexDir="column">
+              <Flex
+                p="2em"
+                h="100%"
+                align="center"
+                justify="center"
+                flexDir="column"
+              >
                 <Text
                   fontWeight="bold"
                   textTransform="capitalize"
@@ -56,7 +75,17 @@ export const FooterPostSuggestion = ({ data, category }) => {
                 </Text>
               </Flex>
             ) : (
-              <SimiliarPost />
+              <Box px="2em" pb="2em" pt="1.5em">
+                <Text
+                  fontSize="small"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  pb=".5em"
+                >
+                  Article in {category}
+                </Text>
+                <SimiliarPost />
+              </Box>
             )}
           </Box>
         </Flex>
