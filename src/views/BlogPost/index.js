@@ -6,13 +6,12 @@ import {
   Text,
   useColorMode,
   Progress,
-  Divider
+  Heading
 } from "@chakra-ui/react";
 import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
 import { useWindowScrollPosition } from "../../hooks/useWindowScrollPosition";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { FooterPostSuggestion } from "../../components/PostComponent/FooterPostSuggestion";
-import { Heading, Stack } from "@chakra-ui/core";
 import { CategoryTags } from "../../components/CategoryTags";
 
 export const BlogPost = ({ query: { data, pageContext } }) => {
@@ -22,8 +21,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
       body,
       fields: {
         readingTime: { text: readingTime }
-      },
-      excerpt
+      }
     },
     allMdx
   } = data;
@@ -51,8 +49,9 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
       >
         <Avatar
           name={author}
-          src="https://avatars2.githubusercontent.com/u/45032138?s=460&u=c489ba890ad0e185abb0b799066fe9cffd5826b9&v=4"
+          src={"/avatar/irshadi.png"}
           mr=".5em"
+          colorScheme="gray"
         />
         <Text fontSize={["xl"]} fontWeight="bold" px="1em">
           {author}

@@ -42,10 +42,10 @@ export const Posts = ({ nodes }) => {
 
   return (
     <PostWrapper py="2em">
-      {nodes.map(({ id, ...rest }) => {
+      {nodes.map(({ ...rest }, idx) => {
         return (
           <PostLinkWrapper
-            key={id}
+            key={idx}
             link={rest.fields.slug}
             isLoading={isLoading}
           >
