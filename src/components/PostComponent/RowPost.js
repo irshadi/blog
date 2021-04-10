@@ -6,7 +6,8 @@ import {
   Image,
   Text,
   Skeleton,
-  SkeletonText
+  SkeletonText,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { CategoryTags } from "../CategoryTags";
 
@@ -21,6 +22,7 @@ export const RowPost = ({
   const {
     readingTime: { text: timeToRead }
   } = fields;
+  const variant = useColorModeValue("subtle", "solid");
 
   if (isLoading) {
     return (
@@ -35,7 +37,13 @@ export const RowPost = ({
 
   return (
     <Box w="100%" borderRadius="0.5em" {...props}>
-      <CategoryTags pos="absolute" boxShadow="md" ml="1.5em" fontSize="small">
+      <CategoryTags
+        variant={variant}
+        pos="absolute"
+        boxShadow="md"
+        ml="1.5em"
+        fontSize="small"
+      >
         {category}
       </CategoryTags>
       <Image roundedTop="0.5em" src={img} />
