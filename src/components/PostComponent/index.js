@@ -22,6 +22,7 @@ export const Posts = () => {
     state: { postMode },
     posts
   } = usePostModeContext();
+  console.log(posts, "<<<", posts.nodes[0], "<<<< sampe");
 
   const POST_MODE_COMPONENT_MAP = {
     [POST_MODE.ROWS]: RowPost,
@@ -42,9 +43,9 @@ export const Posts = () => {
 
   return (
     <PostWrapper>
-      {posts.nodes.map(({ id, slug, ...rest }) => {
+      {posts.nodes.map(({ id, ...rest }) => {
         return (
-          <PostLinkWrapper key={id} link={slug}>
+          <PostLinkWrapper key={id} link={rest.fields.slug}>
             <PostComponent
               bg={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
               opacity="75%"

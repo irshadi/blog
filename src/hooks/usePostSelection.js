@@ -9,6 +9,14 @@ const defaultPageConfig = {
   hasNextPage: false
 };
 
+export const CATEGORY_MAP = {
+  ENGINEERING: "engineering",
+  BLOG: "blog",
+  TECHNOLOGY: "technology",
+  COMPONENT: "component",
+  PERSONAL_LIFE: "personal life"
+};
+
 export const POST_ACTION = {
   SET_POST_MODE: "SET_POST_MODE",
   SET_POST_CONFIG: "SET_POST_CONFIG"
@@ -50,21 +58,36 @@ export const usePostSelection = () => {
   };
 
   const { allMdx: posts = [] } = useStaticQuery(graphql`
-    query SITE_INDEX_QUERY {
+    query MainPageQuery {
       allMdx(
         sort: { fields: [frontmatter___createdAt], order: DESC }
         filter: { frontmatter: { published: { eq: true } } }
+        limit: 6
       ) {
         nodes {
           id
-          slug
-          excerpt(pruneLength: 100)
+          excerpt(pruneLength: 150)
           frontmatter {
             title
-            createdAt(formatString: "MMMM Do, YYYY")
+            createdAt(formatString: "DD MMMM YYYY")
             category
             img
           }
+          fields {
+            readingTime {
+              text
+            }
+            slug
+          }
+        }
+        pageInfo {
+          hasNextPage
+          currentPage
+          itemCount
+          hasPreviousPage
+          pageCount
+          totalCount
+          perPage
         }
       }
     }
