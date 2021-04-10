@@ -1,8 +1,8 @@
 import React from "react";
 import { Flex, Text, HStack, useColorModeValue } from "@chakra-ui/react";
-import { PostLinkWrapper } from "../../../../components/PostComponent";
+import { navigate } from "gatsby-link";
 
-export const PostPaginations = ({ pageInfo, pageContext }) => {
+export const PostPaginations = ({ pageInfo }) => {
   const color = useColorModeValue("gray.100", "gray.600");
   const {
     hasNextPage,
@@ -17,13 +17,14 @@ export const PostPaginations = ({ pageInfo, pageContext }) => {
   const pages = Array.from(new Array(pageCount), (_, idx) => idx + 1);
 
   const generateLink = pageDestination => {
-    console.log("From Page", currentPage, "Go To", pageDestination);
     if (pageDestination > 1) {
-      return `/page/${currentPage + 1}`;
+      navigate(`/page/${String(currentPage + 1)}`);
+      return;
     }
 
     if (pageDestination === 1) {
-      return `/`;
+      navigate(`/`);
+      return;
     }
   };
 
@@ -49,37 +50,43 @@ export const PostPaginations = ({ pageInfo, pageContext }) => {
     <Flex w="100%" justify="space-between" alignItems="center">
       <HStack w="50%" py=".75em" spacing={3}>
         {hasPreviousPage && (
-          <PostLinkWrapper to={() => generateLink(currentPage - 1)} replace>
-            <IndicatorWrapper>
-              <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
-                Prev
+          <IndicatorWrapper
+            cursor="pointer"
+            onClick={() => generateLink(currentPage - 1)}
+          >
+            <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
+              Prev
+            </Text>
+          </IndicatorWrapper>
+        )}
+        {pages.map((page, id) => {
+          return (
+            <IndicatorWrapper
+              key={id}
+              w="3em"
+              page={page}
+              cursor="pointer"
+              onClick={() => generateLink(page)}
+            >
+              <Text
+                letterSpacing="wide"
+                fontWeight={currentPage === page ? "bold" : "semibold"}
+                opacity="100%"
+              >
+                {page}
               </Text>
             </IndicatorWrapper>
-          </PostLinkWrapper>
-        )}
-        {pages.map(page => {
-          return (
-            <PostLinkWrapper to={() => generateLink(page)} replace>
-              <IndicatorWrapper w="3em" page={page}>
-                <Text
-                  letterSpacing="wide"
-                  fontWeight={currentPage === page ? "bold" : "semibold"}
-                  opacity="100%"
-                >
-                  {page}
-                </Text>
-              </IndicatorWrapper>
-            </PostLinkWrapper>
           );
         })}
         {hasNextPage && (
-          <PostLinkWrapper to={() => generateLink(currentPage + 1)} replace>
-            <IndicatorWrapper>
-              <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
-                Next
-              </Text>
-            </IndicatorWrapper>
-          </PostLinkWrapper>
+          <IndicatorWrapper
+            cursor="pointer"
+            onClick={() => generateLink(currentPage + 1)}
+          >
+            <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
+              Next
+            </Text>
+          </IndicatorWrapper>
         )}
       </HStack>
       <Flex w="50%" justify="flex-end">
