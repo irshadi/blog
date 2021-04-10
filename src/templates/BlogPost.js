@@ -3,7 +3,7 @@ import { PageWrapper } from "../components/PageWrapper";
 import { BlogPost } from "../views/BlogPost";
 import { graphql } from "gatsby";
 
-const ComponentName = data => {
+const PostPage = data => {
   return <PageWrapper Views={BlogPost} query={data} />;
 };
 
@@ -49,4 +49,4 @@ export const query = graphql`
     }
   }
 `;
-export default ComponentName;
+export default PostPage;

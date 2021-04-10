@@ -1,17 +1,20 @@
 /* eslint-disable no-undef */
-const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.createPages = ({ actions, graphql }) => {
+const DEFAULT_ITEMS_PER_PAGE = 6;
+
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const BlogPostTemplate = path.resolve("src/templates/BlogPost.js");
+  const blogPostComponent = path.resolve("src/templates/BlogPost.js");
+  const blogListComponent = path.resolve("src/templates/BlogPages.js");
 
   return graphql(`
-    {
+    query getAllPosts {
       allMdx(
         sort: { fields: [frontmatter___createdAt], order: DESC }
-        filter: { frontmatter: { published: { eq: true } } }
+        filter: { frontmatter: {} }
       ) {
         nodes {
           id
@@ -25,7 +28,19 @@ exports.createPages = ({ actions, graphql }) => {
           }
           fields {
             slug
+            readingTime {
+              text
+            }
           }
+        }
+        pageInfo {
+          totalCount
+          perPage
+          pageCount
+          itemCount
+          hasPreviousPage
+          hasNextPage
+          currentPage
         }
       }
     }
@@ -40,14 +55,31 @@ exports.createPages = ({ actions, graphql }) => {
       }
     } = result;
 
+    const totalCount = nodes.length;
+    const perPage = DEFAULT_ITEMS_PER_PAGE;
+    const pageCount = Math.ceil(totalCount / perPage);
+
     // Create Page for Each Mdx File
     nodes.forEach(({ fields, frontmatter: { category } }) => {
       createPage({
         path: fields.slug,
-        component: BlogPostTemplate,
+        component: blogPostComponent,
         context: {
           category,
           slug: fields.slug
+        }
+      });
+    });
+
+    Array.from({ length: pageCount }).forEach((_, idx) => {
+      createPage({
+        path: !idx ? `/` : `/page/${idx + 1}`,
+        component: blogListComponent,
+        context: {
+          limit: perPage,
+          skip: idx * perPage,
+          pageCount,
+          currentPage: idx + 1
         }
       });
     });
