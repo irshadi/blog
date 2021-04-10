@@ -9,8 +9,9 @@ const PostModeContext = React.createContext({});
 export const PostModeContextProvider = ({ children }) => {
   const value = usePostSelection({
     postMode:
-      JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE)) ??
-      POST_MODE.ROWS
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE))
+        : POST_MODE.ROWS
   });
   return (
     <PostModeContext.Provider value={{ ...value }}>
