@@ -1,24 +1,18 @@
 import React from "react";
 import { POST_MODE } from "../constants/postMode";
-import { useStaticQuery, graphql } from "gatsby";
 import { STORAGE_VALUE } from "../constants/storageValue";
 
-const defaultPageConfig = {
-  currentPage: 1,
-  hasPreviousPage: false,
-  hasNextPage: false
-};
-
 export const CATEGORY_MAP = {
-  ENGINEERING: "engineering",
-  TECHNOLOGY: "technology",
-  DESIGN: "design",
-  PERSONAL_LIFE: "personal life"
+  ALL: "ALL",
+  ENGINEERING: "ENGINEERING",
+  TECHNOLOGY: "TECHNOLOGY",
+  DESIGN: "DESIGN",
+  "PERSONAL LIFE": "PERSONAL LIFE"
 };
 
 export const POST_ACTION = {
   SET_POST_MODE: "SET_POST_MODE",
-  SET_POST_CONFIG: "SET_POST_CONFIG",
+  SET_SELECTED_CATEGORY: "SET_SELECTED_CATEGORY",
 
   START_STIMULATE_LOADING: "START_STIMULATE_LOADING",
   STOP_STIMULATE_LOADING: "STOP_STIMULATE_LOADING"
@@ -33,11 +27,11 @@ const postsReducer = (state, { type, ...action }) => {
         postMode
       };
 
-    case POST_ACTION.SET_POST_CONFIG:
-      const { postConfig } = action;
+    case POST_ACTION.SET_SELECTED_CATEGORY:
+      const { selectedCategory } = action;
       return {
         ...state,
-        postConfig
+        selectedCategory
       };
 
     case POST_ACTION.START_STIMULATE_LOADING:
@@ -60,10 +54,10 @@ const postsReducer = (state, { type, ...action }) => {
 export const usePostSelection = () => {
   const [state, dispatch] = React.useReducer(postsReducer, {
     isLoading: true,
+    selectedCategory: CATEGORY_MAP.ALL,
     postMode:
       JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE)) ??
-      POST_MODE.ROWS,
-    pageConfig: { ...defaultPageConfig }
+      POST_MODE.ROWS
   });
 
   const setPostMode = postMode => {
@@ -74,52 +68,19 @@ export const usePostSelection = () => {
     });
   };
 
+  const setSelectedCategory = selectedCategory =>
+    dispatch({ type: POST_ACTION.SET_SELECTED_CATEGORY, selectedCategory });
+
   React.useEffect(() => {
     setTimeout(() => {
       dispatch({ type: POST_ACTION.STOP_STIMULATE_LOADING });
     }, 1500);
   }, [dispatch]);
 
-  const { allMdx: posts = [] } = useStaticQuery(graphql`
-    query MainPageQuery {
-      allMdx(
-        sort: { fields: [frontmatter___createdAt], order: DESC }
-        filter: { frontmatter: { published: { eq: true } } }
-        limit: 6
-      ) {
-        nodes {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            title
-            createdAt(formatString: "DD MMMM YYYY")
-            category
-            img
-          }
-          fields {
-            readingTime {
-              text
-            }
-            slug
-          }
-        }
-        pageInfo {
-          hasNextPage
-          currentPage
-          itemCount
-          hasPreviousPage
-          pageCount
-          totalCount
-          perPage
-        }
-      }
-    }
-  `);
-
   return {
     state,
     dispatch,
     setPostMode,
-    posts
+    setSelectedCategory
   };
 };

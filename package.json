@@ -25,6 +25,7 @@
     "emotion-theming": "^10.0.27",
     "framer-motion": "^3.3.0",
     "gatsby": "^2.24.54",
+    "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-chakra-ui": "^0.1.4",
     "gatsby-plugin-mdx": "^1.2.41",
     "gatsby-plugin-prettier-eslint": "^1.0.4",

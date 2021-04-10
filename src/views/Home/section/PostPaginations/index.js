@@ -1,24 +1,31 @@
 import React from "react";
 import { Flex, Text, HStack, useColorModeValue } from "@chakra-ui/react";
-import { usePostModeContext } from "../../../../contexts/postMode";
+import { PostLinkWrapper } from "../../../../components/PostComponent";
 
-export const PostPaginations = () => {
+export const PostPaginations = ({ pageInfo, pageContext }) => {
   const color = useColorModeValue("gray.100", "gray.600");
   const {
-    posts: {
-      pageInfo: {
-        hasNextPage,
-        hasPreviousPage,
-        itemCount,
-        currentPage,
-        pageCount,
-        totalCount,
-        perPage
-      }
-    }
-  } = usePostModeContext();
+    hasNextPage,
+    hasPreviousPage,
+    itemCount,
+    currentPage,
+    pageCount,
+    totalCount,
+    perPage
+  } = pageInfo;
 
   const pages = Array.from(new Array(pageCount), (_, idx) => idx + 1);
+
+  const generateLink = pageDestination => {
+    console.log("From Page", currentPage, "Go To", pageDestination);
+    if (pageDestination > 1) {
+      return `/page/${currentPage + 1}`;
+    }
+
+    if (pageDestination === 1) {
+      return `/`;
+    }
+  };
 
   const IndicatorWrapper = ({ children, ...props }) => (
     <Flex
@@ -40,25 +47,27 @@ export const PostPaginations = () => {
 
   return (
     <Flex w="100%" justify="space-between" alignItems="center">
-      {hasPreviousPage && (
-        <IndicatorWrapper>
-          <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
-            Next
-          </Text>
-        </IndicatorWrapper>
-      )}
       <HStack w="50%" py=".75em" spacing={3}>
+        {hasPreviousPage && (
+          <IndicatorWrapper>
+            <Text letterSpacing="wide" fontWeight="bold" opacity="100%">
+              Prev
+            </Text>
+          </IndicatorWrapper>
+        )}
         {pages.map(page => {
           return (
-            <IndicatorWrapper w="3em" page={page}>
-              <Text
-                letterSpacing="wide"
-                fontWeight={currentPage === page ? "bold" : "semibold"}
-                opacity="100%"
-              >
-                {page}
-              </Text>
-            </IndicatorWrapper>
+            <PostLinkWrapper to={() => generateLink(page)} replace>
+              <IndicatorWrapper w="3em" page={page}>
+                <Text
+                  letterSpacing="wide"
+                  fontWeight={currentPage === page ? "bold" : "semibold"}
+                  opacity="100%"
+                >
+                  {page}
+                </Text>
+              </IndicatorWrapper>
+            </PostLinkWrapper>
           );
         })}
         {hasNextPage && (

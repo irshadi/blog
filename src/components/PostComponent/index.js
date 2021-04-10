@@ -15,11 +15,10 @@ export const PostLinkWrapper = ({ link, children, isLoading, ...props }) => {
   );
 };
 
-export const Posts = () => {
+export const Posts = ({ nodes }) => {
   const { colorMode } = useColorMode();
   const {
-    state: { postMode, isLoading },
-    posts
+    state: { postMode, isLoading }
   } = usePostModeContext();
 
   const POST_MODE_COMPONENT_MAP = {
@@ -43,7 +42,7 @@ export const Posts = () => {
 
   return (
     <PostWrapper py="2em">
-      {posts.nodes.map(({ id, ...rest }) => {
+      {nodes.map(({ id, ...rest }) => {
         return (
           <PostLinkWrapper
             key={id}
