@@ -13,7 +13,6 @@ import { useWindowScrollPosition } from "../../hooks/useWindowScrollPosition";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { FooterPostSuggestion } from "../../components/PostComponent/FooterPostSuggestion";
 import { CategoryTags } from "../../components/CategoryTags";
-import avatar from "../../../static/avatar/irshadi.png";
 
 export const BlogPost = ({ query: { data, pageContext } }) => {
   const {
@@ -48,7 +47,12 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
         w="100%"
         color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
       >
-        <Avatar name={author} src={avatar} mr=".5em" colorScheme="gray" />
+        <Avatar
+          name={author}
+          src={"/avatar/irshadi.png"}
+          mr=".5em"
+          colorScheme="gray"
+        />
         <Text fontSize={["xl"]} fontWeight="bold" px="1em">
           {author}
         </Text>
