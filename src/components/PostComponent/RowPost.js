@@ -1,12 +1,37 @@
 import React from "react";
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  Skeleton,
+  SkeletonText
+} from "@chakra-ui/react";
 import { CategoryTags } from "../CategoryTags";
 
-export const RowPost = ({ frontmatter, excerpt, fields, ...props }) => {
+export const RowPost = ({
+  frontmatter,
+  excerpt,
+  fields,
+  isLoading,
+  ...props
+}) => {
   const { title, img, createdAt, category } = frontmatter;
   const {
     readingTime: { text: timeToRead }
   } = fields;
+
+  if (isLoading) {
+    return (
+      <Flex flexDir="column" justify="space-between">
+        <Skeleton h="8.5em" rounded="0.5em" />
+        <Skeleton my="2em" h="1.5em" />
+        <SkeletonText noOfLines={3} />
+        <Skeleton my="2em" w="50%" h="1em" />
+      </Flex>
+    );
+  }
 
   return (
     <Box w="100%" borderRadius="0.5em" {...props}>

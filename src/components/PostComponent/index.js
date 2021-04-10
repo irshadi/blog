@@ -19,10 +19,9 @@ export const PostLinkWrapper = ({ link, children, ...props }) => {
 export const Posts = () => {
   const { colorMode } = useColorMode();
   const {
-    state: { postMode },
+    state: { postMode, isLoading },
     posts
   } = usePostModeContext();
-  console.log(posts, "<<<", posts.nodes[0], "<<<< sampe");
 
   const POST_MODE_COMPONENT_MAP = {
     [POST_MODE.ROWS]: RowPost,
@@ -30,26 +29,29 @@ export const Posts = () => {
   };
 
   const POST_WRAPPER_MAP = {
-    [POST_MODE.ROWS]: ({ children }) => (
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+    [POST_MODE.ROWS]: ({ children, ...rest }) => (
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} {...rest}>
         {children}
       </Grid>
     ),
-    [POST_MODE.TILES]: ({ children }) => <Box>{children}</Box>
+    [POST_MODE.TILES]: ({ children, ...rest }) => (
+      <Box {...rest}>{children}</Box>
+    )
   };
 
   const PostWrapper = POST_WRAPPER_MAP[postMode];
   const PostComponent = POST_MODE_COMPONENT_MAP[postMode];
 
   return (
-    <PostWrapper>
-      {posts.nodes.map(({ id, ...rest }) => {
+    <PostWrapper py="2em">
+      {posts.nodes.map(({ id, ...rest }, idx) => {
         return (
           <PostLinkWrapper key={id} link={rest.fields.slug}>
             <PostComponent
               bg={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
               opacity="75%"
               _hover={{ opacity: "100%" }}
+              isLoading={!idx ? true : false}
               {...rest}
             />
           </PostLinkWrapper>

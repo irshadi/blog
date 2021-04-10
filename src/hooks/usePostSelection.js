@@ -19,21 +19,38 @@ export const CATEGORY_MAP = {
 
 export const POST_ACTION = {
   SET_POST_MODE: "SET_POST_MODE",
-  SET_POST_CONFIG: "SET_POST_CONFIG"
+  SET_POST_CONFIG: "SET_POST_CONFIG",
+
+  START_STIMULATE_LOADING: "START_STIMULATE_LOADING",
+  STOP_STIMULATE_LOADING: "STOP_STIMULATE_LOADING"
 };
 
-const postsReducer = (state, { type, postMode, postConfig }) => {
+const postsReducer = (state, { type, ...action }) => {
   switch (type) {
     case POST_ACTION.SET_POST_MODE:
+      const { postMode } = action;
       return {
         ...state,
         postMode
       };
 
     case POST_ACTION.SET_POST_CONFIG:
+      const { postConfig } = action;
       return {
         ...state,
         postConfig
+      };
+
+    case POST_ACTION.START_STIMULATE_LOADING:
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case POST_ACTION.STOP_STIMULATE_LOADING:
+      return {
+        ...state,
+        isLoading: false
       };
 
     default:
@@ -43,6 +60,7 @@ const postsReducer = (state, { type, postMode, postConfig }) => {
 
 export const usePostSelection = () => {
   const [state, dispatch] = React.useReducer(postsReducer, {
+    isLoading: true,
     postMode:
       JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE)) ??
       POST_MODE.ROWS,
@@ -56,6 +74,12 @@ export const usePostSelection = () => {
       postMode
     });
   };
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      dispatch({ type: POST_ACTION.STOP_STIMULATE_LOADING });
+    }, 1500);
+  }, [dispatch]);
 
   const { allMdx: posts = [] } = useStaticQuery(graphql`
     query MainPageQuery {
