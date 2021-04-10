@@ -12,7 +12,7 @@ export const query = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        createdAt(formatString: "MMMM Do, YYYY")
+        createdAt(formatString: "DD MMMM YYYY")
       }
       body
       excerpt
@@ -25,18 +25,24 @@ export const query = graphql`
     }
     allMdx(
       filter: { frontmatter: { category: { eq: $category } } }
-      limit: 5
+      limit: 6
       sort: { order: ASC, fields: frontmatter___createdAt }
     ) {
       nodes {
-        excerpt(truncate: true)
+        excerpt(truncate: true, pruneLength: 150)
         frontmatter {
+          img
           author
           createdAt(formatString: "DD MMMM YYYY")
+          category
           title
         }
-        timeToRead
-        slug
+        fields {
+          slug
+          readingTime {
+            text
+          }
+        }
       }
     }
   }

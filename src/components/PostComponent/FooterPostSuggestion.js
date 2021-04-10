@@ -1,43 +1,66 @@
 import React from "react";
-import { Box, Divider, Flex, Text } from "@chakra-ui/react";
-import { PostLinkWrapper } from ".";
+import { Box, Divider, Flex, HStack, Text } from "@chakra-ui/react";
+import { CompactPost, FooterPost } from "./AdditionalPostComponent";
+import isEmpty from "lodash/isEmpty";
 
-export const FooterPostSuggestion = ({ data, category, morePost }) => {
+export const FooterPostSuggestion = ({ data, category }) => {
   const { nodes } = data;
+  const [next, previous = {}, ...similiarPost] = nodes;
+
+  const SimiliarPost = () =>
+    similiarPost.map(({ frontmatter, fields }, id) => (
+      <CompactPost key={id} frontmatter={frontmatter} fields={fields} />
+    ));
 
   return (
-    <Flex w="100%" mt="3em" align="center">
-      <Box w="30%">
-        <Flex align="center" justify="space-between">
-          <Text w="70%" fontWeight="bold" textTransform="capitalize">
-            More Article in {category}
-          </Text>
-          <Divider w="30%" ml=".5em" />
-        </Flex>
-        <Box>
-          {nodes.map(({ excerpt, frontmatter, timeToRead, slug }, id) => {
-            return (
-              <PostLinkWrapper key={id} link={slug} replace={true}>
-                <Flex flexDir="column" py=".5em">
-                  <Text fontWeight="bold" py=".25em">
-                    {frontmatter.title}
-                  </Text>
-                  <Flex>
-                    <Text color="gray" fontSize="smaller" fontWeight="medium">
-                      {frontmatter.createdAt} · {timeToRead} Minutes
-                    </Text>
-                  </Flex>
-                </Flex>
-              </PostLinkWrapper>
-            );
-          })}
-        </Box>
-      </Box>
-      <Flex w="60%" align="center" flexDir="column" justify="space-between">
-        <Text py="2em" fontWeight="bold" w="25%" pr="1em">
-          Post
+    <Flex w="100%" align="center" flexDir="column" justify="start">
+      <Flex
+        w="100%"
+        justify="start"
+        align="center"
+        justify="space-between"
+        my="2em"
+      >
+        <Text w="30%" fontWeight="bold" textTransform="capitalize">
+          More Article in {category}
         </Text>
+        <Divider w="70%" ml=".5em" />
       </Flex>
+      <HStack w="100%" spacing={8} align="start" h="27.5em" overflowY="hidden">
+        <Flex w="35%" align="center" flexDir="column" justify="space-between">
+          {next && <FooterPost {...next} />}
+        </Flex>
+        <Flex w="35%" align="center" flexDir="column" justify="space-between">
+          {!isEmpty(previous) && <FooterPost {...previous} />}
+        </Flex>
+        <Flex w="30%" flexDirection="column">
+          <Box
+            p="2em"
+            rounded="md"
+            boxShadow="lg"
+            h="22.5em"
+            bgGradient="linear(to-b, gray.600, gray.800)"
+          >
+            {!similiarPost.length ? (
+              <Flex h="100%" align="center" justify="center" flexDir="column">
+                <Text
+                  fontWeight="bold"
+                  textTransform="capitalize"
+                  textAlign="center"
+                  fontSize="small"
+                >
+                  No article left in Category: {category}
+                </Text>
+                <Text pt=".75em" textAlign="center">
+                  Maybe browse for Another Article ?
+                </Text>
+              </Flex>
+            ) : (
+              <SimiliarPost />
+            )}
+          </Box>
+        </Flex>
+      </HStack>
     </Flex>
   );
 };
