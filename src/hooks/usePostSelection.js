@@ -66,7 +66,7 @@ export const usePostSelection = () => {
       ) {
         nodes {
           id
-          excerpt(pruneLength: 150)
+          excerpt(pruneLength: 250)
           frontmatter {
             title
             createdAt(formatString: "DD MMMM YYYY")
