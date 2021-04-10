@@ -8,7 +8,7 @@ import { usePostModeContext } from "../../contexts/postMode";
 import { RowPost } from "./RowPost";
 import { TilePost } from "./TilePost";
 
-const PostLinkWrapper = ({ link, children, ...props }) => {
+export const PostLinkWrapper = ({ link, children, ...props }) => {
   return (
     <Link to={link} {...props}>
       {children}
