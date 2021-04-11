@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   Link,
+  Button,
   useColorMode,
   useColorModeValue
 } from "@chakra-ui/react";
@@ -17,12 +18,28 @@ export const NavigationBar = () => {
 
   return (
     <Flex as="nav" w="100%" justifyContent="space-between">
-      <Link as={GatsbyLink} to="/" replace _hover={{ border: "none" }}>
+      <Link
+        w={["50%"]}
+        as={GatsbyLink}
+        to="/"
+        replace
+        _hover={{ border: "none" }}
+      >
         <Heading cursor="pointer" fontSize="1.75em" fontWeight="bold">
           irshadi.id
         </Heading>
       </Link>
-      <IconButton Icon={ThemeIcon} onClick={toggleColorMode} />
+      <Flex w={["50%"]} justify="space-between">
+        <Flex w="100%" flexDir="row" justify="flex-end">
+          <Link as={GatsbyLink} to="/blog/" replace _hover={{ border: "none" }}>
+            <Button variant="ghost">Blog</Button>
+          </Link>
+          <Link as={GatsbyLink} to="/about" replace _hover={{ border: "none" }}>
+            <Button variant="ghost">About</Button>
+          </Link>
+        </Flex>
+        <IconButton Icon={ThemeIcon} onClick={toggleColorMode} />
+      </Flex>
     </Flex>
   );
 };
