@@ -7,7 +7,8 @@ import {
   Box,
   Link,
   Avatar,
-  Button
+  Button,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
@@ -38,6 +39,9 @@ const LICENSE_AND_CERTIFICATIONS_MAP = {
 };
 
 export const AboutView = () => {
+  const bg = useColorModeValue("gray.100", "gray.700");
+  const bgLink = useColorModeValue("gray.200", "gray.800");
+  const color = useColorModeValue("gray.600", "gray.100");
   const Certifications = () =>
     Object.entries(LICENSE_AND_CERTIFICATIONS_MAP).map(([key, license]) => {
       return (
@@ -74,7 +78,7 @@ export const AboutView = () => {
               isExternal
               display="flex"
               justify="between"
-              bg="gray.200"
+              bg={bgLink}
               h="1.75em"
               my=".5em"
               rounded="full"
@@ -113,7 +117,7 @@ export const AboutView = () => {
             w={["100%"]}
             py={[".5em", 0]}
             textAlign={["center", "start"]}
-            color="gray.600"
+            color={color}
             letterSpacing="wide"
             fontWeight="medium"
             textTransform="uppercase"
@@ -159,7 +163,7 @@ export const AboutView = () => {
           mt={["2em", 0]}
           w={["100%", "40%"]}
           justify="center"
-          bg="gray.100"
+          bg={bg}
           rounded="0.25em"
           p="2em"
           flexDir="column"

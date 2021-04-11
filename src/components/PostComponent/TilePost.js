@@ -32,7 +32,6 @@ export const TilePost = ({
           justify={["center", "space-between"]}
           h="100%"
           pb="1em"
-          px="2.5em"
           flexDir="column"
         >
           <Skeleton
@@ -42,7 +41,7 @@ export const TilePost = ({
             mb={[".5em", "2em"]}
             h="1.5em"
           />
-          <Skeleton my="2em" h="1.5em" />
+          <Skeleton pb={[0, ".5em"]} h="1.5em" />
           <SkeletonText noOfLines={3} />
           <Skeleton my="2em" w="50%" h="1em" />
         </Flex>
@@ -66,12 +65,11 @@ export const TilePost = ({
         px={["1em", "2.5em"]}
         flexDir="column"
         alignItems="center"
-        justify={["center", "space-between"]}
+        justify={["center", "space-around"]}
       >
         <CategoryTags
           alignSelf={["center", "start"]}
           mt={["1.5em", 0]}
-          py={[0, ".25em"]}
           px="1em"
           borderRadius="full"
           textTransform="uppercase"
@@ -81,7 +79,7 @@ export const TilePost = ({
         >
           {category}
         </CategoryTags>
-        <Heading w="100%" fontSize="xl" my={[".5em", "1.5em"]} noOfLines={1}>
+        <Heading w="100%" fontSize="xl" pb={[0, ".5em"]} noOfLines={1}>
           {title}
         </Heading>
         <Flex w="100%" flexDir="column" justify="space-between" h="100%">
