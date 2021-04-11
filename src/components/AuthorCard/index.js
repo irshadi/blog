@@ -6,19 +6,20 @@ const defaultInfo =
 
 export const AuthorCard = ({ name = "John Doe", info = defaultInfo }) => {
   return (
-    <Flex alignItems="center" justify="space-between" py="2.5em">
-      <Avatar
-        name={name}
-        size="lg"
-        src={"/avatar/irshadi.png"}
-        mr=".5em"
-        colorScheme="gray"
-      />
-      <Flex flexDir="column" flexWrap="wrap" px="2em">
+    <Flex w={["100%"]} alignItems="center" justify="space-between">
+      <Flex w={["20%"]}>
+        <Avatar
+          name={name}
+          size="lg"
+          src={"/avatar/irshadi.png"}
+          colorScheme="gray"
+        />
+      </Flex>
+      <Flex w={["80%"]} flexDir="column" pl={["1.5em"]}>
         <Text pb="0.75em" fontWeight="semibold">
           {name}
         </Text>
-        <Text>{info}</Text>
+        <Text fontSize={["small", "medium"]}>{info}</Text>
       </Flex>
     </Flex>
   );
