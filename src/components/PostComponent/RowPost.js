@@ -34,6 +34,7 @@ export const RowPost = ({
       </Flex>
     );
   }
+  console.log(title, img, "<<<<<");
 
   return (
     <Box w="100%" borderRadius="0.5em" {...props}>
