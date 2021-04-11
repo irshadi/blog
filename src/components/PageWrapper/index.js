@@ -7,7 +7,7 @@ import { NavigationBar } from "../NavigationBar";
 // eslint-disable-next-line react/prop-types
 export const PageWrapper = ({ Views, query }) => {
   return (
-    <Box py="5em" px="12.5em">
+    <Box py={["5em", "6.5em"]} px={["10vw", "12.5vw", "17.5vw"]}>
       <NavigationBar />
       <PostModeContextProvider>
         <Views query={query} />

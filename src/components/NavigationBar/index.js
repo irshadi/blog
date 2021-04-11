@@ -17,7 +17,7 @@ export const NavigationBar = () => {
   const ThemeIcon = useColorModeValue(ImSun, IoMdMoon);
 
   return (
-    <Flex as="nav" w="100%" justifyContent="space-between">
+    <Flex as="nav" w="100%" justifyContent="space-between" alignItems="center">
       <Link
         w={["50%"]}
         as={GatsbyLink}
@@ -25,17 +25,23 @@ export const NavigationBar = () => {
         replace
         _hover={{ border: "none" }}
       >
-        <Heading cursor="pointer" fontSize="1.75em" fontWeight="bold">
+        <Heading
+          cursor="pointer"
+          fontSize={["1.5em", "1.75em"]}
+          fontWeight="bold"
+        >
           irshadi.id
         </Heading>
       </Link>
       <Flex w={["50%"]} justify="space-between">
         <Flex w="100%" flexDir="row" justify="flex-end">
-          <Link as={GatsbyLink} to="/blog/" replace _hover={{ border: "none" }}>
+          {/* <Link as={GatsbyLink} to="/blog/" replace _hover={{ border: "none" }}>
             <Button variant="ghost">Blog</Button>
-          </Link>
+          </Link> */}
           <Link as={GatsbyLink} to="/about" replace _hover={{ border: "none" }}>
-            <Button variant="ghost">About</Button>
+            <Button variant="ghost" fontSize="medium">
+              About
+            </Button>
           </Link>
         </Flex>
         <IconButton Icon={ThemeIcon} onClick={toggleColorMode} />
