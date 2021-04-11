@@ -41,8 +41,14 @@ export const AboutView = () => {
   const Certifications = () =>
     Object.entries(LICENSE_AND_CERTIFICATIONS_MAP).map(([key, license]) => {
       return (
-        <Flex w="100%" key={`${key}-${license.id}`} my="1em" align="center">
+        <Flex
+          w="100%"
+          key={`${key}-${license.id}`}
+          my={["1em"]}
+          align={["start", "center"]}
+        >
           <Avatar
+            size={["xs", "m"]}
             w={["2.5em", "3em", "4em"]}
             h={["2.5em", "3em", "4em"]}
             src={license.img}
@@ -84,19 +90,29 @@ export const AboutView = () => {
     });
 
   return (
-    <Flex my="2.5em" flexDir="column">
-      <Heading>About Me</Heading>
-      <Flex w="100%" py="2em">
+    <Flex my="2.5em" flexDir="column" justify={["center", "start"]}>
+      <Heading w="100%" textAlign={["center", "start"]}>
+        About Me
+      </Heading>
+      <Flex
+        w="100%"
+        py="2em"
+        flexDir={["column", "row"]}
+        justify={["center", "start"]}
+      >
         <Image
-          alignContent="end"
-          w="30%"
+          alignContent={["center", "end"]}
+          w={["100%", "30%"]}
           h="100%"
           src="./avatar/irshadi.png"
           rounded="0.25em"
         />
-        <Flex w="70%" flexDir="column" px="2em">
-          <Heading>Irshadi Bagasputro</Heading>
+        <Flex w={["100%", "70%"]} flexDir="column" px={[0, "2em"]} py={["2em"]}>
+          <Heading textAlign={["center", "start"]}>Irshadi Bagasputro</Heading>
           <Text
+            w={["100%"]}
+            py={[".5em", 0]}
+            textAlign={["center", "start"]}
             color="gray.600"
             letterSpacing="wide"
             fontWeight="medium"
@@ -124,8 +140,8 @@ export const AboutView = () => {
         </Flex>
       </Flex>
 
-      <Flex w={["100%"]}>
-        <Box w="60%" pr="2em">
+      <Flex w={["100%"]} flexDir={["column", "row"]}>
+        <Box w={["100%", "60%"]} pr={[0, "2em"]}>
           Graduate from Universitas Padjajaran majoring Library and Information
           Science, I start my career as UI/UX designer at JULO; an Indonesian
           Fintech Company. Somewhere along the way, I feel like I have shift in
@@ -136,11 +152,12 @@ export const AboutView = () => {
           <br />
           <br />
           After I finished my Bootcamp, I joined delman.io; an work there
-          eversince. 
+          eversince.
         </Box>
 
         <Flex
-          w="40%"
+          mt={["2em", 0]}
+          w={["100%", "40%"]}
           justify="center"
           bg="gray.100"
           rounded="0.25em"
