@@ -53,7 +53,7 @@ export const CompactPost = ({
   return (
     <PostLinkWrapper key={id} link={slug} replace={true}>
       <Flex flexDir="column" py=".5em">
-        <Text fontWeight="bold" py=".25em">
+        <Text fontSize={["xs", "medium"]} fontWeight="bold" py=".25em">
           {title}
         </Text>
         <Flex>

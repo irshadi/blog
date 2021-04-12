@@ -30,10 +30,17 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
   const { scrollPosition } = useWindowScrollPosition();
 
   return (
-    <Flex justify="center" flexDirection="column" w="100%" mt="1em">
-      <Heading alignSelf="center">{title}</Heading>
+    <Flex
+      justify="center"
+      flexDirection="column"
+      w="100%"
+      mt={["2.5em", "3.5em"]}
+    >
+      <Heading textAlign={["center"]}>{title}</Heading>
       <Flex justify="center">
-        <CategoryTags my="1em">{category}</CategoryTags>
+        <CategoryTags mt="2em" mb=".5em">
+          {category}
+        </CategoryTags>
       </Flex>
       <Flex justify="center" w="100%">
         <Text fontSize={["6xl"]} fontWeight="700">
@@ -41,7 +48,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
         </Text>
       </Flex>
       <Flex
-        py="2em"
+        py="2.5em"
         justify="center"
         alignItems="center"
         w="100%"
@@ -53,12 +60,14 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
           mr=".5em"
           colorScheme="gray"
         />
-        <Text fontSize={["xl"]} fontWeight="bold" px="1em">
-          {author}
-        </Text>
-        <Text fontSize={["lg"]} paddingX="0.5em">
-          {createdAt} · {readingTime}
-        </Text>
+        <Flex flexDir={["column", "row"]} alignItems={["center"]}>
+          <Text fontSize={["xl"]} fontWeight="bold" px="1em">
+            {author}
+          </Text>
+          <Text fontSize={["lg"]} paddingX="0.5em">
+            {createdAt} · {readingTime}
+          </Text>
+        </Flex>
       </Flex>
 
       <Image mt="1em" pb="2em" src={img} />

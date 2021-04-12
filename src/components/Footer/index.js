@@ -20,14 +20,20 @@ export const Footer = () => {
     <Flex
       w="100%"
       as="footer"
-      justifyContent="space-between"
+      flexDir={["column", "row"]}
+      justifyContent={["center", "space-between"]}
       alignItems="center"
     >
-      <Heading w="15%" fontSize="1em" fontWeight="semibold">
+      <Heading
+        w={["100%", "50%", "15%"]}
+        fontSize="1em"
+        fontWeight="semibold"
+        textAlign={["center", "start"]}
+      >
         © {new Date().getFullYear()} irshadi.id
       </Heading>
-      <Divider w="70%" />
-      <Flex w="15%" justify="flex-end">
+      <Divider w="70%" visibility={["hidden", "visible"]} />
+      <Flex w="15%" justify={["center", "flex-end"]} pt={["1em", "0em"]}>
         {externalSocialMediaLinks.map(({ name, icon, link }, id) => (
           <IconButton
             key={`${id}-${name}`}

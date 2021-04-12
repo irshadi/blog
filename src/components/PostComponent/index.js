@@ -28,7 +28,11 @@ export const Posts = ({ nodes }) => {
 
   const POST_WRAPPER_MAP = {
     [POST_MODE.ROWS]: ({ children, ...rest }) => (
-      <Grid templateColumns="repeat(3, 1fr)" gap={6} {...rest}>
+      <Grid
+        templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]}
+        gap={6}
+        {...rest}
+      >
         {children}
       </Grid>
     ),

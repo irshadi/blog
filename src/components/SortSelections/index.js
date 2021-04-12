@@ -12,7 +12,7 @@ export const SortSelections = () => {
   } = usePostModeContext();
 
   return (
-    <Flex w="100%" justifyContent="flex-end" alignItems="center">
+    <Flex w="100%" justifyContent={["start", "flex-end"]} alignItems="center">
       <IconButton
         onClick={() => setPostMode(POST_MODE.ROWS)}
         Icon={MdViewModule}

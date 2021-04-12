@@ -35,23 +35,44 @@ export const FooterPostSuggestion = ({ data, category }) => {
         justify="space-between"
         my="2em"
       >
-        <Text w="30%" fontWeight="bold" textTransform="capitalize">
+        <Text w={["100%", "30%"]} fontWeight="bold" textTransform="capitalize">
           More Article from Me
         </Text>
-        <Divider w="70%" ml=".5em" />
+        <Divider visibility={["hidden", "visible"]} w="70%" ml=".5em" />
       </Flex>
-      <HStack w="100%" spacing={8} align="start" h="27.5em" overflowY="hidden">
-        <Flex w="35%" align="center" flexDir="column" justify="space-between">
+      <HStack
+        w="100%"
+        spacing={[0, 8]}
+        align="start"
+        h={["100%", "27.5em"]}
+        overflowY="hidden"
+        display={["flex"]}
+        flexDir={["column", "row"]}
+      >
+        <Flex
+          w={["100%", "35%"]}
+          my={["1em", 0]}
+          align="center"
+          flexDir="column"
+          justify="space-between"
+        >
           {next && <FooterPost {...next} />}
         </Flex>
-        <Flex w="35%" align="center" flexDir="column" justify="space-between">
+        <Flex
+          w={["100%", "35%"]}
+          my={["1em", 0]}
+          align="center"
+          flexDir="column"
+          justify="space-between"
+        >
           {!isEmpty(previous) && <FooterPost {...previous} />}
         </Flex>
-        <Flex w="30%" flexDirection="column">
+        <Flex w={["100%", "35%"]} flexDirection="column">
           <Box
+            my={["1em", 0]}
             rounded="md"
             boxShadow={colorMode === TEXT_COLOR_MODE.DARK ? "lg" : "md"}
-            h="22.5em"
+            h={["100%", "22.5em"]}
             bgGradient={gradient}
           >
             {!similiarPost.length ? (
