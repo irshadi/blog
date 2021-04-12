@@ -91,7 +91,7 @@ export const PostPaginations = ({ pageInfo }) => {
       </HStack>
       <Flex w="50%" justify="flex-end">
         <Text color="gray" fontSize="smaller" fontWeight="bold">
-          Displaying {itemCount}/{perPage} out of {totalCount}
+          Page {currentPage} out of {pageCount}
         </Text>
       </Flex>
     </Flex>

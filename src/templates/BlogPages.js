@@ -9,7 +9,11 @@ const HomePage = data => {
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
-    allMdx(limit: $limit, skip: $skip) {
+    allMdx(
+      limit: $limit
+      skip: $skip
+      sort: { fields: frontmatter___createdAt, order: DESC }
+    ) {
       nodes {
         frontmatter {
           author

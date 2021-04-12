@@ -1,6 +1,6 @@
 import React from "react";
 import { SiBehance, SiLinkedin, SiGithub, SiTwitter } from "react-icons/si";
-import { Divider, Flex, Heading } from "@chakra-ui/react";
+import { Divider, Flex, Heading, Box } from "@chakra-ui/react";
 import { IconButton } from "../Button";
 import { navigate } from "@reach/router";
 
@@ -17,31 +17,42 @@ const externalSocialMediaLinks = [
 
 export const Footer = () => {
   return (
-    <Flex
-      w="100%"
-      as="footer"
-      flexDir={["column", "row"]}
-      justifyContent={["center", "space-between"]}
-      alignItems="center"
-    >
-      <Heading
-        w={["100%", "50%", "15%"]}
-        fontSize="1em"
-        fontWeight="semibold"
-        textAlign={["center", "start"]}
+    <Box w="100%">
+      <Divider w="100%" />
+
+      <Flex
+        w="100%"
+        mt="1.5em"
+        as="footer"
+        flexDir={["column", "row"]}
+        justifyContent={["center", "space-between"]}
+        alignItems="center"
       >
-        © {new Date().getFullYear()} irshadi.id
-      </Heading>
-      <Divider w="70%" visibility={["hidden", "visible"]} />
-      <Flex w="15%" justify={["center", "flex-end"]} pt={["1em", "0em"]}>
-        {externalSocialMediaLinks.map(({ name, icon, link }, id) => (
-          <IconButton
-            key={`${id}-${name}`}
-            Icon={icon}
-            onClick={() => navigate(link)}
-          />
-        ))}
+        <Flex w={["100%", "50%"]}>
+          <Heading
+            w="100%"
+            fontSize="1em"
+            fontWeight="semibold"
+            textAlign={["center", "start"]}
+          >
+            © {new Date().getFullYear()} irshadi.id
+          </Heading>
+        </Flex>
+
+        <Flex
+          w={["100%", "50%"]}
+          justify={["center", "flex-end"]}
+          pt={["1em", "0em"]}
+        >
+          {externalSocialMediaLinks.map(({ name, icon, link }, id) => (
+            <IconButton
+              key={`${id}-${name}`}
+              Icon={icon}
+              onClick={() => navigate(link)}
+            />
+          ))}
+        </Flex>
       </Flex>
-    </Flex>
+    </Box>
   );
 };

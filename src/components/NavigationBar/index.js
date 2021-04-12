@@ -31,7 +31,11 @@ export const NavigationBar = () => {
         <Flex w="100%" justify={["flex-end"]} flexDir="row" pr={["2em"]}>
           <Link as={GatsbyLink} to="/about" replace _hover={{ border: "none" }}>
             <Button variant="link" p={[0, "inherit"]}>
-              <Text textTransform="lowercase" fontWeight="extrabold">
+              <Text
+                textTransform="lowercase"
+                fontWeight="extrabold"
+                color="black"
+              >
                 About me
               </Text>
             </Button>
