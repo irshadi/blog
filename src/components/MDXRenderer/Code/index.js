@@ -7,12 +7,16 @@ import { MdContentCopy } from "react-icons/md";
 
 const CopyButton = ({ isCopied, ...props }) => {
   const color = useColorModeValue("gray.700", "gray.200");
+  const bgColor = useColorModeValue("gray.200", "gray.700");
   return (
     <Button
+      positon="absolute"
       colorScheme="gray"
       size="md"
       variant="solid"
+      float="right"
       color={color}
+      bg={bgColor}
       {...props}
     >
       <MdContentCopy />
@@ -56,15 +60,13 @@ export const CodeBlock = ({ codeString, language }) => {
           <Box
             as={"pre"}
             className={className}
-            borderRadius=".25em"
-            px={["1.5em"]}
-            py={["1em"]}
+            rounded=".25em"
+            px="1.5em"
+            py="1em"
             style={{ ...style }}
             overflowX="scroll"
           >
-            <Flex w="100%" justify="flex-end" mb={["-2em"]}>
-              <CopyButton isCopied={isCopied} onClick={handleClickCopy} />
-            </Flex>
+            <CopyButton isCopied={isCopied} onClick={handleClickCopy} />
             {tokens.map((line, i) => {
               return (
                 <Flex
