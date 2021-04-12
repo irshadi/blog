@@ -1,5 +1,8 @@
 import React from "react";
 import { Link as GatsbyLink } from "gatsby";
+import styled from "@emotion/styled";
+// import mediaqueries from "@st";
+
 import { IoMdMoon } from "react-icons/io";
 import { ImSun } from "react-icons/im";
 import {
@@ -7,10 +10,13 @@ import {
   Heading,
   Link,
   Button,
+  Box,
   useColorMode,
   useColorModeValue
 } from "@chakra-ui/react";
 import { IconButton } from "../Button";
+import { TEXT_COLOR_MODE } from "../../constants/theme";
+import { ThemeIconButton } from "../Button/ThemeButton";
 
 export const NavigationBar = () => {
   const { toggleColorMode } = useColorMode();
@@ -34,17 +40,18 @@ export const NavigationBar = () => {
         </Heading>
       </Link>
       <Flex w={["50%"]} justify="space-between">
-        <Flex w="100%" flexDir="row" justify="flex-end">
-          {/* <Link as={GatsbyLink} to="/blog/" replace _hover={{ border: "none" }}>
+        {/* <Flex w="100%" flexDir="row" justify="flex-end">
+          <Link as={GatsbyLink} to="/blog/" replace _hover={{ border: "none" }}>
             <Button variant="ghost">Blog</Button>
-          </Link> */}
+          </Link>
           <Link as={GatsbyLink} to="/about" replace _hover={{ border: "none" }}>
             <Button variant="ghost" fontSize="medium">
               About
             </Button>
           </Link>
-        </Flex>
-        <IconButton Icon={ThemeIcon} onClick={toggleColorMode} />
+        </Flex> */}
+        <ThemeIconButton />
+        {/* <IconButton Icon={ThemeIcon} onClick={toggleColorMode} /> */}
       </Flex>
     </Flex>
   );

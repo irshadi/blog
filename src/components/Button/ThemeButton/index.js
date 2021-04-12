@@ -1,0 +1,76 @@
+import React from "react";
+import { Flex, Button, useColorMode } from "@chakra-ui/react";
+import { TEXT_COLOR_MODE as THEME_COLOR_MODE } from "../../../constants/theme";
+
+// Animation Moon and Sun From
+// https://codepen.io/aaroniker/pen/KGpXZo
+//
+// Adapted from https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-minimal-blog/src/components/colormode-toggle.tsx
+export const ThemeIconButton = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === THEME_COLOR_MODE.DARK;
+
+  return (
+    <Button
+      onClick={toggleColorMode}
+      variant="unstyled"
+      opacity="0.65"
+      position="relative"
+      rounded="full"
+      w="40px"
+      h="25px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      transition="opacity 0.3s ease"
+      border="none"
+      bg="none"
+      cursor="pointer"
+      p={0}
+      appearance="none"
+      _hover={{ opacity: 1 }}
+      _focus={{ opacity: 1 }}
+    >
+      <Flex
+        position="relative"
+        w="24px"
+        h="24px"
+        rounded="full"
+        borderRadius="50%"
+        border={isDark ? `4px solid gray` : `none`}
+        bg={isDark ? `gray` : "transparent"}
+        transform={isDark ? "scale(0.55)" : "scale(1)"}
+        transition="all 0.45s ease"
+        overflow={isDark ? "visible" : "hidden"}
+        boxShadow={isDark ? "none" : "inset 8px -8px 0px 0px gray"}
+        _before={{
+          content: `""`,
+          position: "absolute",
+          right: "-9px",
+          top: "-9px",
+          height: "24px",
+          width: "24px",
+          border: isDark ? "2px solid white" : "none",
+          borderRadius: "50%",
+          transform: isDark ? "translate(14px, -14px)" : "translate(0, 0)",
+          opacity: isDark ? 0 : 1,
+          transition: "transform 0.45s ease"
+        }}
+        _after={{
+          content: `""`,
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          margin: "-4px 0 0 -4px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          boxShadow:
+            "0 -23px 0 gray, 0 23px 0 gray, 23px 0 0 gray, -23px 0 0 gray, 15px 15px 0 gray, -15px 15px 0 gray, 15px -15px 0 gray, -15px -15px 0 gray",
+          transform: isDark ? "scale(1)" : "scale(0)",
+          transition: "all 0.35s ease"
+        }}
+      />
+    </Button>
+  );
+};
