@@ -36,7 +36,9 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
       w="100%"
       mt={["2.5em", "3.5em"]}
     >
-      <Heading textAlign={["center"]}>{title}</Heading>
+      <Heading textAlign={["center"]} fontSize={["x-large", "xx-large"]}>
+        {title}
+      </Heading>
       <Flex justify="center">
         <CategoryTags mt="2em" mb=".5em">
           {category}

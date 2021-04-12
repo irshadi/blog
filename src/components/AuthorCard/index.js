@@ -2,12 +2,12 @@ import React from "react";
 import { Flex, Avatar, Text, Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
-export const AuthorCard = ({ name = "John Doe" }) => {
+export const AuthorCard = () => {
   return (
     <Flex w={["100%"]} alignItems="center" justify="space-between">
       <Flex w={["20%"]}>
         <Avatar
-          name={name}
+          name={"Irshadi Bagasputro"}
           size="lg"
           src={"/avatar/irshadi.png"}
           colorScheme="gray"
@@ -15,7 +15,7 @@ export const AuthorCard = ({ name = "John Doe" }) => {
       </Flex>
       <Flex w={["80%"]} flexDir="column" pl={["1.5em", 0]}>
         <Text pb="0.75em" fontWeight="semibold">
-          {name}
+          Irshadi Bagasputro
         </Text>
         <Text fontSize={["small", "medium"]}>
           Software Engineer from Jakarta, Indonesia. Currently working for
