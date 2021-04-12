@@ -1,25 +1,13 @@
 import React from "react";
 import { Link as GatsbyLink } from "gatsby";
-import { IoMdMoon } from "react-icons/io";
-import { ImSun } from "react-icons/im";
-import {
-  Flex,
-  Heading,
-  Link,
-  Button,
-  useColorMode,
-  useColorModeValue
-} from "@chakra-ui/react";
-import { IconButton } from "../Button";
+import { Flex, Heading, Link, Button, Text } from "@chakra-ui/react";
+import { ThemeIconButton } from "../Button/ThemeButton";
 
 export const NavigationBar = () => {
-  const { toggleColorMode } = useColorMode();
-  const ThemeIcon = useColorModeValue(ImSun, IoMdMoon);
-
   return (
     <Flex as="nav" w="100%" justifyContent="space-between" alignItems="center">
       <Link
-        w={["50%"]}
+        w={["100%", "50%"]}
         as={GatsbyLink}
         to="/"
         replace
@@ -33,18 +21,23 @@ export const NavigationBar = () => {
           irshadi.id
         </Heading>
       </Link>
-      <Flex w={["50%"]} justify="space-between">
-        <Flex w="100%" flexDir="row" justify="flex-end">
-          {/* <Link as={GatsbyLink} to="/blog/" replace _hover={{ border: "none" }}>
-            <Button variant="ghost">Blog</Button>
-          </Link> */}
+
+      <Flex
+        w={["100%", "50%"]}
+        flexDir="row"
+        justify={["flex-end"]}
+        align={["center"]}
+      >
+        <Flex w="100%" justify={["flex-end"]} flexDir="row" pr={["2em"]}>
           <Link as={GatsbyLink} to="/about" replace _hover={{ border: "none" }}>
-            <Button variant="ghost" fontSize="medium">
-              About
+            <Button variant="link" p={[0, "inherit"]}>
+              <Text textTransform="lowercase" fontWeight="extrabold">
+                About me
+              </Text>
             </Button>
           </Link>
         </Flex>
-        <IconButton Icon={ThemeIcon} onClick={toggleColorMode} />
+        <ThemeIconButton />
       </Flex>
     </Flex>
   );
