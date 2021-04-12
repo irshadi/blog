@@ -55,10 +55,7 @@ export const usePostSelection = () => {
   const [state, dispatch] = React.useReducer(postsReducer, {
     isLoading: true,
     selectedCategory: CATEGORY_MAP.ALL,
-    postMode:
-      typeof window !== undefined
-        ? JSON.parse(localStorage.getItem(STORAGE_VALUE.POST_MODE))
-        : POST_MODE.ROWS
+    postMode: POST_MODE.ROWS
   });
 
   const setPostMode = postMode => {
