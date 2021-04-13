@@ -63,6 +63,7 @@ export const TilePost = ({
         rounded="0.5em"
         src={img}
         objectFit="cover"
+        alt={title}
       />
       <Flex
         w={["100%", "60%"]}

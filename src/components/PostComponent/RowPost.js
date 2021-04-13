@@ -46,7 +46,7 @@ export const RowPost = ({
       >
         {category}
       </CategoryTags>
-      <Image roundedTop="0.5em" src={img} objectFit="cover" />
+      <Image roundedTop="0.5em" src={img} objectFit="cover" alt={title} />
       <Box p="2em">
         <Heading fontSize="xl" mb=".75em" noOfLines={1}>
           {title}
