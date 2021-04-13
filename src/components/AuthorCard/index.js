@@ -11,6 +11,7 @@ export const AuthorCard = () => {
           size="lg"
           src={"/avatar/irshadi.png"}
           colorScheme="gray"
+          objectFit="cover"
         />
       </Flex>
       <Flex w={["80%"]} flexDir="column" pl={["1.5em", 0]}>

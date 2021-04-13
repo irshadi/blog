@@ -1,9 +1,17 @@
 import React from "react";
 import { Link as GatsbyLink } from "gatsby";
-import { Flex, Heading, Link, Button, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Link,
+  Button,
+  Text,
+  useColorModeValue
+} from "@chakra-ui/react";
 import { ThemeIconButton } from "../Button/ThemeButton";
 
 export const NavigationBar = () => {
+  const color = useColorModeValue("gray.700", "gray.100");
   return (
     <Flex as="nav" w="100%" justifyContent="space-between" alignItems="center">
       <Link
@@ -34,7 +42,7 @@ export const NavigationBar = () => {
               <Text
                 textTransform="lowercase"
                 fontWeight="extrabold"
-                color="black"
+                color={color}
               >
                 About me
               </Text>

@@ -26,7 +26,9 @@ export const query = graphql`
       }
     }
     allMdx(
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: {
+        frontmatter: { category: { eq: $category }, published: { eq: true } }
+      }
       limit: 6
       sort: { order: ASC, fields: frontmatter___createdAt }
     ) {

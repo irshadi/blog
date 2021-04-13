@@ -13,6 +13,7 @@ export const query = graphql`
       limit: $limit
       skip: $skip
       sort: { fields: frontmatter___createdAt, order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
     ) {
       nodes {
         frontmatter {

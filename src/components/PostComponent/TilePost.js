@@ -57,7 +57,13 @@ export const TilePost = ({
       flexDir={["column", "row"]}
       {...props}
     >
-      <Image w={["100%", "40%"]} h={["auto"]} rounded="0.5em" src={img} />
+      <Image
+        w={["100%", "40%"]}
+        h={["auto"]}
+        rounded="0.5em"
+        src={img}
+        objectFit="cover"
+      />
       <Flex
         w={["100%", "60%"]}
         h="100%"
