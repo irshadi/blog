@@ -15,7 +15,7 @@ export const FooterPost = ({
   return (
     <PostLinkWrapper link={slug} replace={true}>
       <Box>
-        <Image src={img} borderRadius="md" />
+        <Image src={img} borderRadius="md" alt={title} />
         <CategoryTags
           my="1.5em"
           py=".25em"

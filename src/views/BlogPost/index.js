@@ -72,7 +72,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
         </Flex>
       </Flex>
 
-      <Image mt="1em" pb="2em" src={img} />
+      <Image my="1em" src={img} borderRadius=".5em" alt={title} />
 
       <Progress
         pos="fixed"
