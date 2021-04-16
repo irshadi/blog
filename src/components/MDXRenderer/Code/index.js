@@ -61,10 +61,11 @@ export const CodeBlock = ({ codeString, language }) => {
             as={"pre"}
             className={className}
             rounded=".25em"
+            my="1.5em"
             px="1.5em"
             py="1em"
             style={{ ...style }}
-            overflowX="scroll"
+            overflowX="auto"
           >
             <CopyButton isCopied={isCopied} onClick={handleClickCopy} />
             {tokens.map((line, i) => {
