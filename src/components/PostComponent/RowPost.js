@@ -18,7 +18,16 @@ export const RowPost = ({
   isLoading,
   ...props
 }) => {
-  const { title, img, createdAt, category } = frontmatter;
+  const {
+    articleTitle,
+    articleSummary,
+    articleIcon,
+    articleHeroImg,
+    articleCategory,
+    articleAuthor,
+    articlePublishedStatus,
+    articleDateCreatedAt
+  } = frontmatter;
   const {
     readingTime: { text: timeToRead }
   } = fields;
@@ -26,7 +35,8 @@ export const RowPost = ({
 
   if (isLoading) {
     return (
-      <Flex flexDir="column" justify="space-between">
+      <Flex flexDir="column" justify="space-between"
+      >
         <Skeleton h="8.5em" rounded="0.5em" />
         <Skeleton my="2em" h="1.5em" />
         <SkeletonText noOfLines={3} />
