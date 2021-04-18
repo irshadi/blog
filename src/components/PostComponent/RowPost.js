@@ -35,8 +35,7 @@ export const RowPost = ({
 
   if (isLoading) {
     return (
-      <Flex flexDir="column" justify="space-between"
-      >
+      <Flex flexDir="column" justify="space-between">
         <Skeleton h="8.5em" rounded="0.5em" />
         <Skeleton my="2em" h="1.5em" />
         <SkeletonText noOfLines={3} />
@@ -54,17 +53,24 @@ export const RowPost = ({
         ml="1.5em"
         fontSize="small"
       >
-        {category}
+        {articleCategory}
       </CategoryTags>
-      <Image roundedTop="0.5em" src={img} objectFit="cover" alt={title} />
+      <Image
+        roundedTop="0.5em"
+        src={articleHeroImg}
+        objectFit="cover"
+        alt={articleTitle}
+      />
       <Box p="2em">
         <Heading fontSize="xl" mb=".75em" noOfLines={1}>
-          {title}
+          {articleTitle}
         </Heading>
-        <Text noOfLines={3}>{excerpt}</Text>
+        <Text noOfLines={3}>
+          {articleSummary}. {excerpt}
+        </Text>
         <Flex alignItems="center" pt=".75em">
           <Text color="gray" fontSize="smaller" fontWeight="medium">
-            {createdAt} · {timeToRead}
+            {articleDateCreatedAt} · {timeToRead}
           </Text>
         </Flex>
       </Box>

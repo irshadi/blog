@@ -17,7 +17,16 @@ export const TilePost = ({
   isLoading,
   ...props
 }) => {
-  const { title, img, createdAt, category } = frontmatter;
+  const {
+    articleTitle,
+    articleSummary,
+    articleIcon,
+    articleHeroImg,
+    articleCategory,
+    articleAuthor,
+    articlePublishedStatus,
+    articleDateCreatedAt
+  } = frontmatter;
   const {
     readingTime: { text: timeToRead }
   } = fields;
@@ -61,9 +70,9 @@ export const TilePost = ({
         w={["100%", "40%"]}
         h={["auto"]}
         rounded="0.5em"
-        src={img}
+        src={articleHeroImg}
         objectFit="cover"
-        alt={title}
+        alt={articleTitle}
       />
       <Flex
         w={["100%", "60%"]}
@@ -84,22 +93,25 @@ export const TilePost = ({
           letterSpacing="wider"
           fontSize="small"
         >
-          {category}
+          {articleCategory}
         </CategoryTags>
         <Heading w="100%" fontSize="xl" pb={[0, ".5em"]} noOfLines={1}>
-          {title}
+          {articleTitle}
         </Heading>
-        <Flex w="100%" flexDir="column" justify="space-between" h="100%">
+        <Flex w="100%" flexDir="column" justify="center" h="100%">
           <Text w="100%" noOfLines={3}>
-            {excerpt}
+            {articleSummary}. {excerpt}
           </Text>
+        </Flex>
+        <Flex w="100%">
           <Text
             color="gray"
             my={[".5em", 0]}
             fontSize="smaller"
             fontWeight="medium"
+            textAlign="start"
           >
-            {createdAt} · {timeToRead}
+            {articleDateCreatedAt} · {timeToRead}
           </Text>
         </Flex>
       </Flex>
