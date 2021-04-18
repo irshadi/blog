@@ -1,0 +1,379 @@
+---
+articleTitle: React Hooks 101
+articleSummary: Let's get hooked up with React Hooks! An introduction to React Hooks
+articleIcon: react
+articleHeroImg: /react-hooks.png
+articleCategory: engineering
+articleAuthor: Irshadi Bagasputro
+articlePublishedStatus: true
+articleDateCreatedAt: 2020-12-04
+---
+
+## Introduction to Hooks
+
+Before we're going to talk about most use cases of React Hooks, I'm gonna tell you what is React Hooks is,—well, I'm not gonna write about what is react hooks in a full manner of explanation here. But I can tell you what the summary is.
+
+By definition from reactjs official website
+
+> Hooks are functions that let you “hook into” React state and lifecycle features from function components.
+
+So in short hooks are _functions that lets you use react state and lifecycle from components without making it a class components_. It completely replaces Classes React/OOP paradigm with a Functional Programming paradigm.
+
+### Why do I need to use Hooks ?
+
+Surely, it raised one question _Why do we use hooks now ?_ or _Why Dan ditch Classes based React for a Functional one ?_ I have a good article _(with full proof and explanation)_ that you can read [here](https://overreacted.io/how-are-function-components-different-from-classes/). But the main takeaway is React props or state are **always immutable**, but the concept of `this` in Javascript has always been **mutable**.
+
+### Important things when using React Hooks
+
+1. **Always call hooks in the top level of your component.**
+2. **Don't call hooks in a loop, conditions, or nested function.**
+
+By doing this, you'll most likely to prevent early return of your components. And your hooks are called in the same order each time your component renders.
+
+So, without further ado, let's talk about React Hooks, and their implementations.
+
+## React.useState
+
+The most common type of hooks that you'll use is `useState`. Pre-Hooks component has a built-in state object where you store property values that belongs to the component. `useState` basically do the same, it is used to store your data, so every-time your component re-render, you can store your data safely inside. If you want to store a data, `useState` is your _goto_ guy.
+
+Here's a text input component, designated to change my name, you can implement useState Hooks just like this.
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  // Call Hooks ALWAYS on Top Level on the Component
+  const [name, setName] = React.useState("");
+
+  const handleOnChangeName = e => setName(e.target.value);
+
+  return <input onChange={handleOnChangeName} />;
+};
+```
+
+`useState` hooks can holds anything, not just a primitive javascript data-type, this means you can also stores array or object. It also can be used with a callback function.
+
+```jsx
+import React from "react";
+
+const _userInfoInitialValue = {
+   name: "Irshadi",
+   age: 25,
+   address: "Cilandak"
+};
+
+const ReactComponent = () => {
+   const [userInfo, setUserInfo] = React.useState(_userInfoInitialValue);
+
+   const handleOnChangeUserInfo = ({ key, value }) => {
+      setUserInfo(currentUserInfo => {
+      // currentUserInfo holds current state of the data in the hooks
+      return {
+         ...currentUserInfo,
+         [key]: value
+      };
+   };
+
+   return (
+     <input
+      onChange={e => {
+         handleOnChangeUserInfo({ key: "address", value: e.target.value )}
+      }} />
+    );
+};
+```
+
+## React.useEffect
+
+Another common Hooks is `useEffect` , It used when you want to perform data fetching, subscriptions or anything that relates to DOM changes. React called this a _side effect—hence effect_ for short, because they can and will affect components. In React classes we use `componentDidMount` , `componentDidUpdate` and `componentWillUnmount` . The `useEffect` Hook replaces all of 3 above _(We'll get to that in a minute)_.
+
+> When you call useEffect, you’re telling React to run your “effect” function after flushing changes to the DOM.
+
+When you're using `useEffect` , you tell React that your component needs to do something after render. By default, `useEffect` **will run on the first and after every update**.
+
+Below, is a component to show whether the user has logged in or not. On component render React will Render this Component, if the `isLoggedIn` state is truthy.
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  const [isLoggedIn, setIsLogin] = React.useState(false);
+
+  // Runs on First and After every Update
+  React.useEffect(() => {
+    // Do Side Effects
+    setIsLogin(true);
+  });
+
+  return <div>{/* JSX Render */}</div>;
+};
+```
+
+### Array Dependencies
+
+The `useEffect` hooks receives two arguments, a function and it signature—array of dependencies. _What ?_ _what's that ?_ Well, in short it's a way of React to watch things to evaluate things and ask itself, "_Should I re-render ?_". Here's an example
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  const [count, setCount] = React.useState(0);
+  const [labelText, setLabelText] = React.useState(`Click ${count} Times`);
+
+  // Runs on when counter value changes
+  React.useEffect(() => {
+    // Do Side Effects
+    setLabelText(`Click ${count} Times`);
+  }, [count]);
+
+  return (
+    <div>
+      <span>Count {count} times</span>
+      <button onClick={() => setCount(count++)}>Click Me!</button>
+      {/* JSX Render */}
+    </div>
+  );
+};
+```
+
+What the code did above, is to tell React to compare the value of state `count` , whether there's a change between previous render and next render _(React does this by comparing DOM and V-DOM)_. If there aren't any differences in dependencies — in this case, `count` state remains the same, React will skip the side effects. If there are multiple items in the dependencies, _React will re-run the effect even if just one of them is different_. Oh and you might want to **avoid object** as dependency.
+
+### Cleanup Values
+
+`useEffect` can also be used for cleanup state or any values in the component. React performs the cleanup when the **component unmount**. All we need to do is to return a function on `useEffect` .
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  const [isLoggedIn, setIsLogin] = React.useState(false);
+  const [count, setCount] = React.useState(0);
+  const [labelText, setLabelText] = React.useState(`Click ${count} Times`);
+
+  // Runs on when counter value changes
+  React.useEffect(() => {
+    setLabelText(`Click ${count} Times`);
+  }, [count, isLoggedIn]);
+
+  // On component unmount reset every state back to 0
+  React.useEffect(() => {
+    return () => {
+      setCount(0);
+      setLabelText(`Click 0 Times`);
+    };
+  }, [isLoggedIn]);
+
+  return (
+    <div>
+      <button onClick={() => setIsLogin(false)}>Log Out</button>
+      {/* JSX Render */}
+    </div>
+  );
+};
+```
+
+## React.useCallback
+
+Remember this code ? Take a second look.
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  const [count, setCount] = React.useState(0);
+  const [labelText, setLabelText] = React.useState(`Click ${count} Times`);
+
+  // Runs on when counter value changes
+  React.useEffect(() => {
+    // Do Side Effects
+    setLabelText(`Click ${count} Times`);
+  }, [count]);
+
+  return (
+    <div>
+      <span>Count {count} times</span>
+      <button onClick={() => setCount(count++)}>Click Me!</button>
+      {/* JSX Render */}
+    </div>
+  );
+};
+```
+
+_Wait a minute, I realize something, the code above can be optimized, we can eliminate this_ `labelText` _state._
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  const [count, setCount] = React.useState(0);
+
+  const generateLabelText = () => `Click ${count} Times`;
+
+  // Runs on when counter value changes
+  React.useEffect(() => {
+    generateLabelText();
+  }, [count, generateLabelText]);
+
+  return (
+    <div>
+      <span>Count {count} times</span>
+      <button onClick={() => setCount(count++)}>Click Me!</button>
+      {/* JSX Render */}
+    </div>
+  );
+};
+```
+
+Well, technically you can, but you can't. Don't believe me ? Go try for yourself.
+
+So you encountered an infinite loop, but _why does this happen ? how can I fix this ?_ Okay, Let's start with what's happen. What just happen is—since we put a function in dependencies array—, React is comparing `generateLabelText` function from previous render, with the next render and—_here's the interesting part_— **functions will be re-created on every render.** Thus, React detect an endless state update which cause infinite loop.
+
+There's a several way you can fix this. I'll show you in a minute, but first some of you may be wonder, why you put a function in a dependency array ? The answer is _Why not_ ? _and linter told me so_. In React there are some rules that you'll need to follow in order for Hooks to work. React has some built-in _lint_-ing rules that will tell you when you're doing certain things wrong.
+
+```jsx
+// A Quick Fix would be
+React.useEffect(() => {
+  const generateLabelText = () => `Click ${count} Times`;
+  generateLabelText();
+}, [count]);
+```
+
+But what happen if we need `generateLabelText` function elsewhere ? Enter `useCallback` Hooks.
+
+What `useCallback` does, is to create a memoization of your function. This means when React compares between next and previous render, your function stays the same. In other words; React doesn't re-create `generateLabelText` function on every render. `useCallback` signature is similar with `useEffect` you have second arguments of dependencies, which acts the same like `useEffect` .
+
+```jsx
+import React from "react";
+
+const ReactComponent = () => {
+  const [count, setCount] = React.useState(0);
+
+  // Wrap fn inside a useCallback Hook
+  const generateLabelText = React.useCallback(() => {
+    return `Click ${count} Times`;
+  }, [count]);
+
+  // Runs on when counter value changes
+  React.useEffect(() => {
+    generateLabelText();
+  }, [count, generateLabelText]);
+
+  return (
+    <div>
+      <span>Count {count} times</span>
+      <button onClick={() => setCount(count++)}>Click Me!</button>
+      {/* JSX Render */}
+    </div>
+  );
+};
+```
+
+## React.useRef
+
+The last one I want to talk about is `useRef` basically it can be used to stores a value, that can be **mutated**, on every render. The value of your _"reference"_, will stay the same between component re-render. On top of that, updating or mutating your value in `useRef` does not trigger a re-render. Just remember ! Reference in `useRef` must be updated either; inside a `useEffect` or a function.
+
+My favorite common use cases for `useRef` are
+
+1. **Preserve Original Value**
+
+   Our first—and my common use case is to _preserve value within every render._ Imagine you have `GET` API, of some details and either `PUT` or `PATCH` API. You need to make a change first from the retrieved value from `GET` API, before you can call `PUT` or `PATCH` API. And the submit button have a condition if nothing changes, you can't call `PUT` or `PATCH` API. In short I want to compare original value— from the API, with my modified value — from the state; to control whether the button is disabled or not.
+
+   ```jsx
+   import React from "react";
+
+   const ReactComponent = () => {
+     const [data, setData] = React.useState();
+     const ref = React.useRef();
+
+     // Function for GET some data
+     const getData = React.useCallback(async () => {
+       // Fetch GET API Here
+       const data = await get();
+
+       // Save an original value of given data
+       ref.current = data;
+       setData(data);
+     }, []);
+
+     const handleOnDataInput = () => {
+       let newData = {};
+       // Process Data Here
+
+       // This will change state data, so the JSX <button /> above, will be enabled
+       setData(newData);
+     };
+
+     React.useEffect(() => {
+       getData();
+     }, [getData]);
+
+     return (
+       <div>
+         <Component data={data} />
+         <input onChange={handleOnDataInput} />
+         {/* Logic for disabled condition */}
+         <button
+           disabled={isEqual(ref.current, data)}
+           onClick={editDataToBackend}
+         >
+           Save
+         </button>
+       </div>
+     );
+   };
+   ```
+
+   Okay, imagine we have this code. On first `GET` API call, your data is still an original data. `const data = { name: "Irshadi Bagasputro", age: 25 };` and it stores at the `useRef` , when you're trying to change your state _(ie: change age)._ The state will be something like this:
+
+   ```jsx
+   // I did something, in this case change state value, to:
+   data = {
+     name: "Irshadi Bagasputro",
+     age: 26
+   };
+
+   // But the reference value, is an mutable object,
+   // and we don't call it anywhere,
+   // except on first Render (in useCallback Hooks that only runs one)
+
+   // Comparing Original Value and Modified Value
+
+   console.log(ref.current);
+   // { name: "Irshadi Bagasputro", age: 25 }
+
+   console.log(data);
+   // { name: "Irshadi Bagasputro", age: 26 }
+
+   // Hence, the button will be enabled
+   ```
+
+2. **Capture and Accessing DOM elements**
+
+   My second use case is to store DOM elements. Basically it's like `document.querySelector` in React way.
+
+   ```jsx
+   import React from "react";
+
+   const ReactComponent = () => {
+     const ref = React.useRef();
+
+     return <div ref={ref}>{/* JSX Render */}</div>;
+   };
+   ```
+
+   When you try to `console.log(ref.current)` it'll become a DOM.
+
+   ```jsx
+   // This log
+   console.log(ref.current);
+
+   // Will display you this
+   <div class="my_class" />;
+
+   // And you can basically do anything with vanilla DOM
+
+   console.log(ref.current.getClientBoundingRect());
+   // { x: 120, y: 120 }
+   ```
+
+Okay, I guess that's all I can share. I'll see you guys on my next writing ! CIAO~

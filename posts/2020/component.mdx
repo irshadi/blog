@@ -1,0 +1,196 @@
+---
+articleTitle: Component Example
+articleSummary: This is a Page Renderer for Component MDX Documentation and Demo
+articleIcon: null
+articleHeroImg: null
+articleCategory: design
+articleAuthor: Irshadi Bagasputro
+articlePublishedStatus: false
+articleDateCreatedAt: 2020-06-12
+---
+
+## Heading Demo
+
+---
+
+# H1 Styling Demo
+
+## H2 Styling Demo
+
+### H3 Styling Demo
+
+#### H4 Styling Demo
+
+##### H5 Styling Demo
+
+###### H6 Styling Demo
+
+---
+
+## Text Demo
+
+---
+
+##### 1. Paragraph
+
+To understand why _Figma_ is the best design tool for our company, you have to understand what we do.
+As a designer, I’ve been crafting digital experiences for the past ten years, having contributed to the growth of companies such as Hopper, Lightspeed, and Breather, among others.
+Throughout this journey, I’ve had the opportunity to meet the most talented designers, engineers, growth marketers, and build a world-class team to develop startups worldwide. We call this team `Narative`.
+
+**Easy migration**
+
+Not much to say here. You literally just have to copy your art-boards — or as they call it, frames — then paste them into Figma. Simple as that. The platform is very forgiving and prepared for transitions.
+
+**Zero file management**
+
+What does that mean? Sketch, Framer, Adobe XD or even Photoshop are native apps where you inherently need to save your work. Some tools have auto-save, of course, but you still end up with hundreds of megabytes and even gigabytes on your drive. And yes, if you lose your disk, break your computer somehow, or have your dog eat your SSD, you will lose your files completely.
+
+Not with Figma. Not having to command+s is a big deal. Figma is a web-based software, meaning you never need to upload, download, or worry about versions again. Imagine a Google Docs for design, keeping all my projects organized in one app, in the cloud. One single source of truth for design files.
+
+I probably saved more than 30GB of disk space by migrating my projects to Figma, and now I can access them from anywhere.
+
+**Figma is platform-agnostic**
+
+One of the best features of a web-based software is the fact you’re no longer stuck with an operating system. You can run it right from the browser or from their native app, that’s essentially a wrapper. I’m able to seamlessly start a project on my iMac Pro at my home office, and continue on my Surface Book 2 on the go. That’s huge.
+
+**Performance**
+
+You may be thinking that running a full-fledged design app from the web has huge performance drawbacks. I thought the same, but was I ever wrong.
+
+I’ve always had full-spec computers running Sketch, still, ever so often I’d run into performance hiccups or memory drainage. That’s never happened with Figma, which is pretty magical.
+
+##### 2. Inline Code
+
+`const a = "HELLO"`
+
+##### 3. Quotes
+
+> Narative is a studio based in 3 different cities around the world; so right off the bat we’re already facing a challenge; **geography**.
+>
+> We came across Figma a few weeks before engaging in our first project. It’s worth noting that, I’ve been using Sketch for several years before Narative, and getting out of your comfort zone can be **_scary_**.
+
+##### 4. Code JSX
+
+```jsx
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import styled from "@emotion/styled";
+
+const icons = {
+  dribbble: SocialIcons.DribbbleIcon,
+  linkedin: SocialIcons.LinkedinIcon,
+  twitter: SocialIcons.TwitterIcon,
+  facebook: SocialIcons.FacebookIcon,
+  instagram: SocialIcons.InstagramIcon,
+  github: SocialIcons.GithubIcon
+};
+
+const socialQuery = graphql`
+  {
+    allSite {
+      edges {
+        node {
+          siteMetadata {
+            social {
+              name
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+function SocialLinks({ fill = "#73737D" }: { fill: string }) {
+  const result = useStaticQuery(socialQuery);
+  const socialOptions = result.allSite.edges[0].node.siteMetadata.social;
+
+  return (
+    <>
+      {socialOptions.map(option => {
+        const Icon = icons[option.name];
+
+        return (
+          <SocialIconContainer
+            key={option.name}
+            target="_blank"
+            rel="noopener"
+            data-a11y="false"
+            aria-label={`Link to ${option.name}`}
+            href={option.url}
+          >
+            <Icon fill={fill} />
+          </SocialIconContainer>
+        );
+      })}
+    </>
+  );
+}
+```
+
+---
+
+## List Renderer
+
+---
+
+##### 1. Ordered List
+
+1. Easy migration
+2. Zero file management
+3. Figma is platform-agnostic
+4. Performance
+
+##### 2. Unordered List
+
+- Easy migration
+- Zero file management
+- Figma is platform-agnostic
+- Performance
+
+---
+
+## Additional Markdown Test
+
+---
+
+##### 1. Table
+
+Below is the _sample table_ that need to be test to be rendered
+
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+
+<caption>This is My table caption</caption>
+
+##### 2. Link
+
+All of those you can get it here [Heading IDs](https://www.freecodecamp.org/news/build-a-developer-blog-from-scratch-with-gatsby-and-mdx/)
+
+##### 3. Picture
+
+Open Linux Penguin Sitting
+![Tux](https://d33wubrfki0l68.cloudfront.net/e7ed9fe4bafe46e275c807d63591f85f9ab246ba/e2d28/assets/images/tux.png)
+
+##### 4. Horizontal Line Test
+
+Below is Horizontal Line Test as a Demo
+
+###### H6 My Title
+
+---
+
+This is my Text, For compatibility, put blank lines before and after horizontal rules. You can optionally add a title for a link. This will appear as a tooltip when the user hovers over the link. To add a title, enclose it in parentheses after the URL.
+
+##### 5. Formatting Emails
+
+<myemail@123.com>
+
+##### 6. Keyboard
+
+<span>
+  <kbd>ctrl</kbd>+<kbd>S</kbd>
+</span>
