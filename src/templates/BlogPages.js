@@ -12,17 +12,19 @@ export const query = graphql`
     allMdx(
       limit: $limit
       skip: $skip
-      sort: { fields: frontmatter___createdAt, order: DESC }
-      filter: { frontmatter: { published: { eq: true } } }
+      sort: { fields: frontmatter___articleDateCreatedAt, order: DESC }
+      filter: { frontmatter: { articlePublishedStatus: { eq: true } } }
     ) {
       nodes {
         frontmatter {
-          author
-          category
-          createdAt(formatString: "DD MMMM YYYY")
-          img
-          published
-          title
+          articleTitle
+          articleSummary
+          articleIcon
+          articleHeroImg
+          articleCategory
+          articleAuthor
+          articlePublishedStatus
+          articleDateCreatedAt(formatString: "DD MMMM YYYY")
         }
         excerpt(pruneLength: 200)
         fields {

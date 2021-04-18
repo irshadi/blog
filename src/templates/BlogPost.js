@@ -8,14 +8,17 @@ const PostPage = data => {
 };
 
 export const query = graphql`
-  query PostBySlug($slug: String!, $category: String!) {
+  query PostBySlug($slug: String!, $articleCategory: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
-        title
-        createdAt(formatString: "DD MMMM YYYY")
-        img
-        author
-        category
+        articleTitle
+        articleSummary
+        articleIcon
+        articleHeroImg
+        articleCategory
+        articleAuthor
+        articlePublishedStatus
+        articleDateCreatedAt(formatString: "DD MMMM YYYY")
       }
       body
       fields {
@@ -27,19 +30,25 @@ export const query = graphql`
     }
     allMdx(
       filter: {
-        frontmatter: { category: { eq: $category }, published: { eq: true } }
+        frontmatter: {
+          articleCategory: { eq: $articleCategory }
+          articlePublishedStatus: { eq: true }
+        }
       }
       limit: 6
-      sort: { order: ASC, fields: frontmatter___createdAt }
+      sort: { order: ASC, fields: frontmatter___articleDateCreatedAt }
     ) {
       nodes {
         excerpt(truncate: true, pruneLength: 150)
         frontmatter {
-          img
-          author
-          createdAt(formatString: "DD MMMM YYYY")
-          category
-          title
+          articleTitle
+          articleSummary
+          articleIcon
+          articleHeroImg
+          articleCategory
+          articleAuthor
+          articlePublishedStatus
+          articleDateCreatedAt(formatString: "DD MMMM YYYY")
         }
         fields {
           slug

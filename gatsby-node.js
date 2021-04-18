@@ -13,18 +13,21 @@ exports.createPages = async ({ actions, graphql }) => {
   return graphql(`
     query getAllPosts {
       allMdx(
-        sort: { fields: [frontmatter___createdAt], order: DESC }
+        sort: { fields: [frontmatter___articleDateCreatedAt], order: DESC }
         filter: { frontmatter: {} }
       ) {
         nodes {
           id
           excerpt(pruneLength: 250)
           frontmatter {
-            title
-            createdAt
-            category
-            img
-            author
+            articleTitle
+            articleSummary
+            articleIcon
+            articleHeroImg
+            articleCategory
+            articleAuthor
+            articlePublishedStatus
+            articleDateCreatedAt
           }
           fields {
             slug
@@ -60,12 +63,12 @@ exports.createPages = async ({ actions, graphql }) => {
     const pageCount = Math.ceil(totalCount / perPage);
 
     // Create Page for Each Mdx File
-    nodes.forEach(({ fields, frontmatter: { category } }) => {
+    nodes.forEach(({ fields, frontmatter: { articleCategory } }) => {
       createPage({
         path: fields.slug,
         component: blogPostComponent,
         context: {
-          category,
+          articleCategory,
           slug: fields.slug
         }
       });

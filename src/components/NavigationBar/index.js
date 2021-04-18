@@ -25,8 +25,9 @@ export const NavigationBar = () => {
           cursor="pointer"
           fontSize={["1.5em", "1.75em"]}
           fontWeight="bold"
+          letterSpacing="tight"
         >
-          irshadi.id
+          irshadibagas.com
         </Heading>
       </Link>
 
@@ -43,6 +44,7 @@ export const NavigationBar = () => {
                 textTransform="lowercase"
                 fontWeight="extrabold"
                 color={color}
+                letterSpacing="tight"
               >
                 About me
               </Text>
