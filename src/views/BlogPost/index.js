@@ -17,7 +17,7 @@ import { CategoryTags } from "../../components/CategoryTags";
 export const BlogPost = ({ query: { data, pageContext } }) => {
   const {
     mdx: {
-      frontmatter: { createdAt, category, img, author, title },
+      frontmatter,
       body,
       fields: {
         readingTime: { text: readingTime }
@@ -25,6 +25,16 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
     },
     allMdx
   } = data;
+  const {
+    articleTitle,
+    articleSummary,
+    articleIcon,
+    articleHeroImg,
+    articleCategory,
+    articleAuthor,
+    articlePublishedStatus,
+    articleDateCreatedAt
+  } = frontmatter;
   const { previous, next } = pageContext;
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
@@ -36,19 +46,12 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
       w="100%"
       mt={["2.5em", "3.5em"]}
     >
-      <Heading textAlign={["center"]} fontSize={["x-large", "xx-large"]}>
-        {title}
-      </Heading>
       <Flex justify="center">
-        <CategoryTags mt="2em" mb=".5em">
-          {category}
-        </CategoryTags>
+        <CategoryTags my="2em">{articleCategory}</CategoryTags>
       </Flex>
-      <Flex justify="center" w="100%">
-        <Text fontSize={["6xl"]} fontWeight="700">
-          {data.title}
-        </Text>
-      </Flex>
+      <Heading textAlign={["center"]} fontSize={["x-large", "xx-large"]}>
+        {articleTitle}
+      </Heading>
       <Flex
         py="2.5em"
         justify="center"
@@ -57,22 +60,27 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
         color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
       >
         <Avatar
-          name={author}
+          name={articleAuthor}
           src={"/avatar/irshadi.png"}
           mr=".5em"
           colorScheme="gray"
         />
         <Flex flexDir={["column", "row"]} alignItems={["center"]}>
           <Text fontSize={["xl"]} fontWeight="bold" px="1em">
-            {author}
+            {articleAuthor}
           </Text>
           <Text fontSize={["lg"]} paddingX="0.5em">
-            {createdAt} · {readingTime}
+            {articleDateCreatedAt} · {readingTime}
           </Text>
         </Flex>
       </Flex>
 
-      <Image my="1em" src={img} borderRadius=".5em" alt={title} />
+      <Image
+        my="1em"
+        src={articleHeroImg}
+        borderRadius=".5em"
+        alt={articleTitle}
+      />
 
       <Progress
         pos="fixed"

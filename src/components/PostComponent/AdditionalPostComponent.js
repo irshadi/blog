@@ -9,13 +9,23 @@ export const FooterPost = ({
     readingTime: { text: timeToRead }
   },
   excerpt,
-  frontmatter: { img, title, category, createdAt },
+  frontmatter,
   ...rest
 }) => {
+  const {
+    articleTitle,
+    articleSummary,
+    articleIcon,
+    articleHeroImg,
+    articleCategory,
+    articleAuthor,
+    articlePublishedStatus,
+    articleDateCreatedAt
+  } = frontmatter;
   return (
     <PostLinkWrapper link={slug} replace={true}>
       <Box>
-        <Image src={img} borderRadius="md" alt={title} />
+        <Image src={articleHeroImg} borderRadius="md" alt={articleTitle} />
         <CategoryTags
           my="1.5em"
           py=".25em"
@@ -25,16 +35,16 @@ export const FooterPost = ({
           fontWeight="bold"
           letterSpacing="wider"
         >
-          {category}
+          {articleCategory}
         </CategoryTags>
 
-        <Heading fontSize="medium">{title}</Heading>
+        <Heading fontSize="medium">{articleTitle}</Heading>
         <Text pt="1em" noOfLines={2}>
           {excerpt}
         </Text>
         <Flex pt="1em" flexDir="column" justify="space-between">
           <Text color="gray" fontSize="smaller" fontWeight="medium">
-            {createdAt} · {timeToRead}
+            {articleDateCreatedAt} · {timeToRead}
           </Text>
         </Flex>
       </Box>
@@ -44,7 +54,7 @@ export const FooterPost = ({
 
 export const CompactPost = ({
   id,
-  frontmatter: { title, createdAt },
+  frontmatter: { articleTitle, articleDateCreatedAt },
   fields: {
     slug,
     readingTime: { text: timeToRead }
@@ -54,11 +64,11 @@ export const CompactPost = ({
     <PostLinkWrapper key={id} link={slug} replace={true}>
       <Flex flexDir="column" py=".5em">
         <Text fontSize={["xs", "medium"]} fontWeight="bold" py=".25em">
-          {title}
+          {articleTitle}
         </Text>
         <Flex>
           <Text color="gray" fontSize="smaller" fontWeight="medium">
-            {createdAt} · {timeToRead}
+            {articleDateCreatedAt} · {timeToRead}
           </Text>
         </Flex>
       </Flex>
