@@ -6,6 +6,7 @@ import { Posts } from "../../components/PostComponent";
 import { Box } from "@chakra-ui/react";
 import { PostPaginations } from "./section/PostPaginations";
 import { PostCategory } from "./section/PostCategory";
+import { Title } from "../../components/Title";
 
 export const HomeView = data => {
   const {
@@ -19,6 +20,7 @@ export const HomeView = data => {
 
   return (
     <Box py="2em">
+      <Title />
       <TextHero />
       <PostSortHeader />
       {/* <PostCategory /> */}
