@@ -9,6 +9,7 @@ module.exports = {
     title: "Irshadi Bagasputro"
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
     {
       resolve: "@chakra-ui/gatsby-plugin",
       options: {
