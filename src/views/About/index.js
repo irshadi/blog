@@ -11,6 +11,7 @@ import {
   useColorModeValue
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { Title } from "../../components/Title";
 
 const LICENSE_AND_CERTIFICATIONS_MAP = {
   GOOGLE_CLOUD_ENGINEER: {
@@ -95,6 +96,7 @@ export const AboutView = () => {
 
   return (
     <Flex my="2.5em" flexDir="column" justify={["center", "start"]}>
+      <Title title="Irshadi Bagas - About Me" />
       <Heading w="100%" textAlign={["center", "start"]}>
         About Me
       </Heading>
