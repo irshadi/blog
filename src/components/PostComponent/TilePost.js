@@ -20,11 +20,8 @@ export const TilePost = ({
   const {
     articleTitle,
     articleSummary,
-    articleIcon,
     articleHeroImg,
     articleCategory,
-    articleAuthor,
-    articlePublishedStatus,
     articleDateCreatedAt
   } = frontmatter;
   const {
@@ -99,7 +96,7 @@ export const TilePost = ({
           {articleTitle}
         </Heading>
         <Flex w="100%" flexDir="column" justify="center" h="100%">
-          <Text w="100%" noOfLines={3}>
+          <Text w="100%" noOfLines={3} fontSize={["small", "md"]}>
             {articleSummary}. {excerpt}
           </Text>
         </Flex>
