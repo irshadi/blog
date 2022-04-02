@@ -1,12 +1,10 @@
 import React from "react";
-import { Flex, Heading, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { ThemeIconButton } from "../Button/ThemeButton";
 import { MobileMenuButton } from "./MobileMenuButton";
 import { LinkWrapper } from "../Link";
 
 export const NavigationBar = () => {
-  const color = useColorModeValue("gray.700", "gray.100");
-
   return (
     <Flex
       as="nav"
