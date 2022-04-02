@@ -35,7 +35,7 @@ export const Footer = () => {
             fontWeight="semibold"
             textAlign={["center", "start"]}
           >
-            © {new Date().getFullYear()} irshadi.id
+            © {new Date().getFullYear()} irshadibagas.com
           </Heading>
         </Flex>
 

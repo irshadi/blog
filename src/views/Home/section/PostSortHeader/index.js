@@ -9,7 +9,12 @@ export const PostSortHeader = () => {
       <Flex w={["100%", "75%"]}>
         <AuthorCard />
       </Flex>
-      <Flex w={["100%", "25%"]} mt={["2em", 0]} align={["center"]}>
+      <Flex
+        w={["100%", "25%"]}
+        mt={["2em", 0]}
+        align={["center"]}
+        display={["none", "flex"]}
+      >
         <Text
           w={"50%"}
           visibility={["visible", "hidden"]}
