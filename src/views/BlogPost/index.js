@@ -71,7 +71,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
           <Text fontSize={["xl"]} fontWeight="bold" px="1em">
             {articleAuthor}
           </Text>
-          <Text fontSize={["lg"]} paddingX="0.5em">
+          <Text paddingX="0.5em" fontSize={["small", "lg"]}>
             {articleDateCreatedAt} · {readingTime}
           </Text>
         </Flex>
