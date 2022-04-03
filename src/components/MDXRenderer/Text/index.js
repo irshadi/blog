@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, Code as _Code, Alert as BoxQuote, Kbd } from "@chakra-ui/react";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { TEXT_COLOR_MODE } from "../../../constants/theme";
+import { useColorModeValue } from "@chakra-ui/react";
 
 export const P = ({ children }) => <Text py="0.25em">{children}</Text>;
 
