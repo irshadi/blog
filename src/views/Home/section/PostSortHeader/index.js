@@ -6,12 +6,11 @@ import { SortSelections } from "../../../../components/SortSelections";
 export const PostSortHeader = () => {
   return (
     <Box w="100%" py="2em">
-      <Flex w={["100%", "75%"]}>
-        <AuthorCard />
-      </Flex>
+      <AuthorCard />
+
       <Flex
         w="100%"
-        mt={["2em"]}
+        mt={["2.5em"]}
         justify="space-between"
         align={["center"]}
         display={["none", "flex"]}
