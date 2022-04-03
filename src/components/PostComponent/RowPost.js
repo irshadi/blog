@@ -21,11 +21,8 @@ export const RowPost = ({
   const {
     articleTitle,
     articleSummary,
-    articleIcon,
     articleHeroImg,
     articleCategory,
-    articleAuthor,
-    articlePublishedStatus,
     articleDateCreatedAt
   } = frontmatter;
   const {
@@ -65,7 +62,7 @@ export const RowPost = ({
         <Heading fontSize="xl" mb=".75em" noOfLines={1}>
           {articleTitle}
         </Heading>
-        <Text noOfLines={3}>
+        <Text noOfLines={3} fontSize={["small", "md"]}>
           {articleSummary}. {excerpt}
         </Text>
         <Flex alignItems="center" pt=".75em">
