@@ -7,8 +7,6 @@ export const LinkWrapper = ({ children, ...props }) => {
   const hasChild = React.isValidElement(children);
   const { title, to } = props;
 
-  console.log(hasChild, "<<< hasChild");
-
   if (!hasChild) {
     return (
       <Link
