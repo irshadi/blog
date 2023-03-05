@@ -2,7 +2,7 @@ import React from "react";
 import { usePostModeContext } from "../../contexts/postMode";
 import { OutlineButton } from "../Button";
 
-export const PostPagination = () => {
+export const ArticlesPagination = () => {
   const {
     state: {
       pageConfig: { currentPage, hasNextPage, hasPreviousPage }

@@ -5,7 +5,7 @@ import { IconButton } from "../Button";
 import { POST_MODE } from "../../constants/postMode";
 import { MdViewList, MdViewModule } from "react-icons/md";
 
-export const PostDisplayMode = () => {
+export const ArticlesDisplayMode = () => {
   const {
     state: { postMode: selectedPostMode },
     setPostMode
