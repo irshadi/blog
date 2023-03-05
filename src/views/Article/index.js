@@ -8,12 +8,12 @@ import {
   Progress,
   Heading
 } from "@chakra-ui/react";
-import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
-import { useWindowScrollPosition } from "../../hooks/useWindowScrollPosition";
+import { TEXT_COLOR_MODE_STYLE } from "src/constants/theme";
+import { useWindowScrollPosition } from "src/hooks/useWindowScrollPosition";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { FooterPostSuggestion } from "../../components/PostComponent/FooterPostSuggestion";
-import { CategoryTags } from "../../components/CategoryTags";
-import { Title } from "../../components/Title";
+import { CategoryTags } from "src/components/CategoryTags";
+import { TabTitle } from "src/components/TabTitle";
 
 export const BlogPost = ({ query: { data, pageContext } }) => {
   const {
@@ -47,7 +47,7 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
       w="100%"
       mt={["2.5em", "3.5em"]}
     >
-      <Title title={`Irshadi Bagas - ${articleTitle}`} />
+      <TabTitle title={`Irshadi Bagas - ${articleTitle}`} />
       <Flex justify="center">
         <CategoryTags my="2em">{articleCategory}</CategoryTags>
       </Flex>

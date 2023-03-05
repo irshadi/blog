@@ -1,6 +1,9 @@
 import React from "react";
-import { POST_MODE } from "../constants/articleDisplayMode";
-import { STORAGE_VALUE } from "../constants/storageValue";
+import {
+  ARTICLE_DISPLAY_MODE_MAP,
+  CATEGORY_MAP
+} from "src/constants/articleDisplayMode";
+import { STORAGE_VALUE } from "src/constants/storageValue";
 
 export const POST_ACTION = {
   SET_ARTICLE_DISPLAY_MODE: "SET_ARTICLE_DISPLAY_MODE",
@@ -47,7 +50,7 @@ export const useArticlesConfig = () => {
   const [state, dispatch] = React.useReducer(postsReducer, {
     isLoading: true,
     selectedCategory: CATEGORY_MAP.ALL,
-    articleDisplayMode: POST_MODE.ROWS
+    articleDisplayMode: ARTICLE_DISPLAY_MODE_MAP.ROWS
   });
 
   const setArticleDisplayMode = articleDisplayMode => {

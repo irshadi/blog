@@ -1,8 +1,8 @@
 import React from "react";
 import { Flex, Heading } from "@chakra-ui/react";
-import { ThemeIconButton } from "../Button/ThemeButton";
-import { MobileMenuButton } from "./MobileMenuButton";
+import { ThemeIconButton } from "src/components/ButtonThemeMode";
 import { LinkWrapper } from "../Link";
+import { NavigationMenuButton } from "./Fragments/NavigationMenuButton";
 
 export const NavigationBar = () => {
   return (
@@ -24,7 +24,7 @@ export const NavigationBar = () => {
           </Heading>
         </LinkWrapper>
 
-        <MobileMenuButton visibility={["visible", "hidden"]} w="100%" />
+        <NavigationMenuButton visibility={["visible", "hidden"]} w="100%" />
       </Flex>
 
       <Flex w="50%" flexDir="row" justify="flex-end" align={"center"}>

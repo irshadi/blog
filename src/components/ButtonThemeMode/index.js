@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Button, useColorMode } from "@chakra-ui/react";
-import { TEXT_COLOR_MODE as THEME_COLOR_MODE } from "src/constants/theme";
+import { THEME_COLOR_MODE } from "src/constants/theme";
 
 // Animation Moon and Sun From
 // https://codepen.io/aaroniker/pen/KGpXZo

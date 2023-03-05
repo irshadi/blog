@@ -8,10 +8,11 @@ import {
   Link,
   Avatar,
   Button,
-  useColorModeValue
+  useColorModeValue,
+  Icon
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { Title } from "../../components/Title";
+import { RxExternalLink } from "react-icons/rx";
+import { TabTitle } from "src/components/TabTitle";
 
 const LICENSE_AND_CERTIFICATIONS_MAP = {
   GOOGLE_CLOUD_ENGINEER: {
@@ -82,9 +83,7 @@ export const AboutView = () => {
               h="1.75em"
               my=".5em"
               rounded="full"
-              rightIcon={
-                <ExternalLinkIcon fontSize="small" mt="-2px" px="1px" />
-              }
+              rightIcon={<RxExternalLink />}
             >
               <Text fontSize="x-small">View Credential</Text>
             </Link>
@@ -95,7 +94,7 @@ export const AboutView = () => {
 
   return (
     <Flex my="2.5em" flexDir="column" justify={["center", "start"]}>
-      <Title title="Irshadi Bagas - About Me" />
+      <TabTitle title="Irshadi Bagas - About Me" />
       <Heading w="100%" textAlign={["center", "start"]}>
         About Me
       </Heading>
@@ -135,7 +134,7 @@ export const AboutView = () => {
                 isExternal
                 px="4px"
               >
-                work <ExternalLinkIcon fontSize="small" mt="-2px" />
+                work <Icon as={RxExternalLink} />
               </Link>
               . My main focus is in Front End Development, anything from Web
               Application into Mobile Application. If you want to work together

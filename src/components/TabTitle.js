@@ -1,10 +1,10 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 export const TabTitle = ({ title = "Irshadi Bagas" }) => {
   return (
-    <Helmet>
+    <Head>
       <title>{title}</title>
-    </Helmet>
+    </Head>
   );
 };

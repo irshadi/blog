@@ -1,11 +1,14 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import { PostModeContextProvider } from "../../contexts/postMode";
 import { Footer } from "./Footer";
 import { NavigationBar } from "./NavigationBar";
+import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
 
-// eslint-disable-next-line react/prop-types
-export const PageWrapper = ({ Views, query }) => {
+export const PageWrapper = ({ Views, ...rest }) => {
+  const hasProps = Boolean(rest);
+  // Parse back the result from `getStaticProps`
+  const props = { ...(hasProps && { data: JSON.parse(rest.data.json) }) };
+
   return (
     <Box
       pt={["2.5em", "6.5em"]}
@@ -13,9 +16,9 @@ export const PageWrapper = ({ Views, query }) => {
       px={["10vw", "12.5vw", "17.5vw"]}
     >
       <NavigationBar />
-      <PostModeContextProvider>
-        <Views query={query} />
-      </PostModeContextProvider>
+      <ArticleDisplayModeContextProvider>
+        <Views {...props} />
+      </ArticleDisplayModeContextProvider>
       <Footer />
     </Box>
   );

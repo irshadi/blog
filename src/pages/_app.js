@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import "@/styles/globals.css";
+
+import "src/styles/theme-button.css";
 
 const _App = ({ Component, pageProps }) => (
   <ChakraProvider>

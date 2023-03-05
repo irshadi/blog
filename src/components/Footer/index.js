@@ -1,8 +1,6 @@
 import React from "react";
 import { SiBehance, SiLinkedin, SiGithub, SiTwitter } from "react-icons/si";
-import { Divider, Flex, Heading, Box } from "@chakra-ui/react";
-import { IconButton } from "../Button";
-import { navigate } from "@reach/router";
+import { Divider, Flex, Heading, Box, IconButton } from "@chakra-ui/react";
 
 const externalSocialMediaLinks = [
   { name: "GitHub", icon: SiGithub, link: "https://github.com/irshadi" },
@@ -45,11 +43,7 @@ export const Footer = () => {
           pt={["1em", "0em"]}
         >
           {externalSocialMediaLinks.map(({ name, icon, link }, id) => (
-            <IconButton
-              key={`${id}-${name}`}
-              Icon={icon}
-              onClick={() => navigate(link)}
-            />
+            <IconButton key={`${id}-${name}`} Icon={icon} />
           ))}
         </Flex>
       </Flex>

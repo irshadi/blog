@@ -1,31 +1,21 @@
 import React from "react";
-import "../../css/index.css";
-import { TextHero } from "./section/TextHero";
-import { PostSortHeader } from "./section/PostSortHeader";
-import { Posts } from "../../components/PostComponent";
+import { TextHero } from "./Fragments/TextHero";
+// import { PostSortHeader } from "./section/PostSortHeader";
+// import { Posts } from "../../components/PostComponent";
 import { Box } from "@chakra-ui/react";
-import { PostPaginations } from "./section/PostPaginations";
+// import { PostPaginations } from "./section/PostPaginations";
 // import { PostCategory } from "./section/PostCategory";
-import { Title } from "../../components/Title";
+import { TabTitle } from "src/components/TabTitle";
 
-export const HomeView = data => {
-  const {
-    query: {
-      data: {
-        allMdx: { nodes, pageInfo }
-      },
-      pageContext
-    }
-  } = data;
-
+export const HomeView = ({ data }) => {
   return (
     <Box py="2em">
-      <Title />
+      <TabTitle />
       <TextHero />
-      <PostSortHeader />
+      {/* <PostSortHeader /> */}
       {/* <PostCategory /> */}
-      <Posts nodes={nodes} />
-      <PostPaginations pageInfo={pageInfo} pageContext={pageContext} />
+      {/* <Posts nodes={nodes} />
+      <PostPaginations pageInfo={pageInfo} pageContext={pageContext} /> */}
     </Box>
   );
 };

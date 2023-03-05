@@ -1,6 +1,6 @@
 import React from "react";
-import { Flex, Text, Link } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { Flex, Text, Link, Icon } from "@chakra-ui/react";
+import { RxExternalLink } from "react-icons/rx";
 // import { HomePageAvatar } from "./Fragments/HomePageAvatar";
 
 export const AuthorCard = () => {
@@ -14,7 +14,7 @@ export const AuthorCard = () => {
         <Text fontSize={["small", "medium"]}>
           Software Engineer from Jakarta, Indonesia. Currently working for
           <Link href="https://delman.io" color="blue.300" isExternal px="4px">
-            delman.io <ExternalLinkIcon fontSize="small" mt="-2px" />
+            delman.io <Icon as={RxExternalLink} />
           </Link>
           . I have a love-hate relationship with Javascript.
         </Text>
