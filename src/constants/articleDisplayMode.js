@@ -1,0 +1,4 @@
+export const SET_ARTICLE_DISPLAY_MODE_MAP = {
+  ROWS: "ROWS",
+  TILES: "TILES"
+};

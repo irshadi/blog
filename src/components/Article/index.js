@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, useColorMode } from "@chakra-ui/react";
 import { Link } from "gatsby";
-import { POST_MODE } from "../../constants/postMode";
+import { POST_MODE } from "../../constants/articleDisplayMode";
 import { TEXT_COLOR_MODE_STYLE } from "../../constants/theme";
 import { usePostModeContext } from "../../contexts/postMode";
 import { RowPost } from "./RowPost";
