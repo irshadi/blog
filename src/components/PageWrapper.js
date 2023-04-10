@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 import { NavigationBar } from "./NavigationBar";
 import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
@@ -10,16 +10,17 @@ export const PageWrapper = ({ Views, ...rest }) => {
   const props = { ...(hasProps && { data: JSON.parse(rest.data.json) }) };
 
   return (
-    <Box
-      pt={["2.5em", "6.5em"]}
-      pb={["5em", "6.5em"]}
+    <Flex
+      height="100%"
+      flexDir="column"
       px={["10vw", "12.5vw", "17.5vw"]}
+      overflow="auto"
     >
-      <NavigationBar />
-      <ArticleDisplayModeContextProvider>
+      <NavigationBar height={["7.5em"]} zIndex={2} />
+      <Flex h="auto" flexDir="column">
         <Views {...props} />
-      </ArticleDisplayModeContextProvider>
-      <Footer />
-    </Box>
+      </Flex>
+      <Footer height={["7.5em"]} />
+    </Flex>
   );
 };

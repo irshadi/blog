@@ -12,23 +12,28 @@ export const AuthorCard = ({ ...props }) => {
       justify="space-between"
       gap={2}
       bg="gray.100"
-      p="1.5em"
       borderRadius="md"
+      maxW="37.5em "
+      height="7.5em"
+      p="1em"
+      {...props}
     >
-      <AspectRatio w="25%" ratio={1}>
+      <Flex w="20%" h="100%" align="center" justify="center">
         <Image
-          w="100px"
+          width="80px"
+          height="80px"
           rounded="full"
           src={AuthorAvatar}
           alt="Author Image: Irshadi Bagasputro"
         />
-      </AspectRatio>
-      <Flex w="75%" flexDir="column" justify="center">
-        <Text pb="0.75em" fontWeight="semibold">
+      </Flex>
+
+      <Flex minWidth="80%" h="100%" flexDir="column" justify="center" px=".5em">
+        <Text pb=".5em" fontWeight="semibold">
           Irshadi Bagasputro
         </Text>
 
-        <Text fontSize={["small", "medium"]}>
+        <Text fontSize={["small"]} lineHeight="1.25" noOfLines={3}>
           Software Engineer from Jakarta, Indonesia. Currently working for
           <Link href="https://delman.io" color="blue.300" isExternal px="4px">
             delman.io <Icon as={RxExternalLink} />

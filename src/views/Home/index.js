@@ -1,23 +1,24 @@
 import React from "react";
 import { TextHero } from "./Fragments/TextHero";
-// import { PostSortHeader } from "./section/PostSortHeader";
-// import { Posts } from "../../components/PostComponent";
-import { Box, Flex } from "@chakra-ui/react";
-// import { PostPaginations } from "./section/PostPaginations";
-// import { PostCategory } from "./section/PostCategory";
+import { Box } from "@chakra-ui/react";
 import { TabTitle } from "src/components/TabTitle";
+import { ArticleDisplayModeSection } from "./Fragments/ArticleDisplayModeSection";
+import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
+import { ListOfArticles } from "./Fragments/ListOfArticles";
 
 export const HomeView = ({ data }) => {
   return (
-    <Box py="2em">
-      <TabTitle />
-      <Flex h={["100vh", "40vh"]}>
+    <ArticleDisplayModeContextProvider>
+      <Box py="2em">
+        <TabTitle />
         <TextHero />
-      </Flex>
-      {/* <PostSortHeader /> */}
-      {/* <PostCategory /> */}
-      {/* <Posts nodes={nodes} />
+        <ArticleDisplayModeSection />
+
+        <ListOfArticles articles={data.data} />
+        {/* <PostCategory /> */}
+        {/* <Posts nodes={nodes} />
       <PostPaginations pageInfo={pageInfo} pageContext={pageContext} /> */}
-    </Box>
+      </Box>
+    </ArticleDisplayModeContextProvider>
   );
 };

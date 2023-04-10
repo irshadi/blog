@@ -13,9 +13,9 @@ const externalSocialMediaLinks = [
   }
 ];
 
-export const Footer = () => {
+export const Footer = ({ ...props }) => {
   return (
-    <Box w="100%">
+    <Box w="100%" {...props}>
       <Divider w="100%" />
 
       <Flex

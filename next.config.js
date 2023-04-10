@@ -16,6 +16,11 @@ const nextConfig = phase => {
 
   // next.config.js object
   return {
+    images: {
+      formats: ["image/avif", "image/webp"],
+      domains: ["127.0.0.1"]
+    },
+
     reactStrictMode: true,
     output: "standalone",
     swcMinify: true,

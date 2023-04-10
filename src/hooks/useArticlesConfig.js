@@ -3,7 +3,7 @@ import {
   ARTICLE_DISPLAY_MODE_MAP,
   CATEGORY_MAP
 } from "src/constants/articleDisplayMode";
-import { STORAGE_VALUE } from "src/constants/storageValue";
+import { STORAGE_VALUE_MAP } from "src/constants/storageValue";
 
 export const POST_ACTION = {
   SET_ARTICLE_DISPLAY_MODE: "SET_ARTICLE_DISPLAY_MODE",
@@ -55,7 +55,7 @@ export const useArticlesConfig = () => {
 
   const setArticleDisplayMode = articleDisplayMode => {
     localStorage.setItem(
-      STORAGE_VALUE.ARTICLE_DISPLAY_MODE,
+      STORAGE_VALUE_MAP.ARTICLE_DISPLAY_MODE,
       JSON.stringify(articleDisplayMode)
     );
 
