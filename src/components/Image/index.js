@@ -1,4 +1,4 @@
-import { AspectRatio, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import NextImage from "next/image";
 
 export const Image = ({ src, alt, imageStyle, imageProps = {}, ...props }) => (

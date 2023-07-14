@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Heading, useColorMode } from "@chakra-ui/react";
+import { Grid, GridItem, Flex, Heading, useColorMode } from "@chakra-ui/react";
 import HeroImageLight from "../../../../public/images/hero/hero_image_light.png";
 import HeroImageDark from "../../../../public/images/hero/hero_image_dark.png";
 import { THEME_COLOR_MODE } from "src/constants/theme";
@@ -12,39 +12,34 @@ export const TextHero = ({ ...props }) => {
     colorMode === THEME_COLOR_MODE.DARK ? HeroImageDark : HeroImageLight;
 
   return (
-    <Flex
+    <Grid
       w="100%"
-      h={"25em"}
-      align={["start", "end"]}
       py="1em"
-      flexDir={["column", "row"]}
+      templateColumns="repeat(2, 1fr)"
+      templateRows="repeat(2, 1fr)"
       {...props}
     >
-      <Flex
-        w={["100%", "50%"]}
-        h="100%"
-        justify={["start", "end"]}
-        flexDir="column"
-        borderRadius="md"
-      >
-        <Flex align="center" flexGrow={1}>
-          <Heading fontSize={["4xl", "6xl"]}>
-            I write, <br /> to taste life twice.
-          </Heading>
-        </Flex>
+      <GridItem rowSpan={1}>
+        <Heading fontSize={["4xl", "6xl"]}>
+          I write, <br /> to taste life twice.
+        </Heading>
+      </GridItem>
 
+      <GridItem rowSpan={2} colSpan={1}>
+        <Image
+          w="100%"
+          height="100%"
+          src={HeroImage}
+          imageStyle={{
+            objectFit: "cover"
+          }}
+          alt="Welcome to irshadibagas.com"
+        />
+      </GridItem>
+
+      <GridItem as={Flex} rowSpan={1} align="flex-end">
         <AuthorCard maxH="7.5em" />
-      </Flex>
-
-      <Image
-        w={["100%", "50%"]}
-        height={"100%"}
-        src={HeroImage}
-        imageStyle={{
-          objectFit: "cover"
-        }}
-        alt="Welcome to irshadibagas.com"
-      />
-    </Flex>
+      </GridItem>
+    </Grid>
   );
 };

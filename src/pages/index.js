@@ -3,7 +3,7 @@ import { PageWrapper } from "src/components/PageWrapper";
 import { get, STATION_HOSTNAME } from "src/utils/request";
 import { HomeView } from "src/views/Home";
 
-export const getStaticProps = async context => {
+export const getStaticProps = async () => {
   const data = await get(`${STATION_HOSTNAME}/articles?populate=*`);
 
   return {
