@@ -1,5 +1,5 @@
 import React from "react";
-import { MDXProvider } from "@mdx-js/react";
+import { MDXRemote } from "next-mdx-remote";
 import { H1, H2, H3, H4, H5, H6 } from "./Heading";
 import { BlockQuote, Code, Keyboard, P } from "./Text";
 import { List } from "./Lists";
@@ -89,9 +89,10 @@ const components = {
         />
       );
     }
+    return null;
   }
 };
 
-export const MDXRenderer = ({ children }) => {
-  return <MDXProvider components={components}>{children}</MDXProvider>;
+export const MDXRenderer = ({ source }) => {
+  return <MDXRemote {...source} components={components} />;
 };

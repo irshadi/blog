@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Flex,
-  Image,
   Avatar,
   Text,
   useColorMode,
@@ -13,15 +12,24 @@ import { useWindowScrollPosition } from "src/hooks/useWindowScrollPosition";
 import { CategoryTag } from "src/components/CategoryTag";
 import { TabTitle } from "src/components/TabTitle";
 import { MDXRenderer } from "src/components/MDXRenderer";
+import { Image } from "src/components/Image";
 
-export const BlogPost = ({ data }) => {
+export const BlogPost = ({ data: { data } }) => {
+  // console.log(data);
+  // return null;
+  // return null;
   const {
     data: { attributes, id }
   } = data;
 
   const {
-    articleContent,
+    // articleContent,
+    articleContentMDX,
     articleDescription,
+    articleHeroImage: {
+      data: { attributes: articleHeroImageAttribute }
+    },
+    categories,
     articleTitle,
     createdAt: articleDateCreatedAt,
     slug,
@@ -69,12 +77,16 @@ export const BlogPost = ({ data }) => {
         </Flex>
       </Flex>
 
-      {/* <Image
-        my="1em"
-        src={articleHeroImg}
-        borderRadius=".5em"
+      <Image
+        fill={true}
+        imageProps={{
+          width: articleHeroImageAttribute.width,
+          height: articleHeroImageAttribute.height
+        }}
+        src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
         alt={articleTitle}
-      /> */}
+        style={{ objectFit: "cover" }}
+      />
 
       <Progress
         pos="fixed"
@@ -88,7 +100,7 @@ export const BlogPost = ({ data }) => {
         colorScheme={"gray"}
       />
 
-      <MDXRenderer>{articleContent}</MDXRenderer>
+      <MDXRenderer source={articleContentMDX} />
       {/* 
       <FooterPostSuggestion
         category={pageContext.category}

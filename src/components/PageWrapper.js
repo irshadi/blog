@@ -8,7 +8,7 @@ import { isEmpty } from "src/utils/isEmpty";
 export const PageWrapper = ({ Views, data = {} }) => {
   const hasProps = !isEmpty(data);
   // Parse back the result from `getStaticProps`
-  const props = { ...(hasProps && { data: JSON.parse(data.json) }) };
+  const props = { ...(hasProps && { data }) };
 
   return (
     <Flex
