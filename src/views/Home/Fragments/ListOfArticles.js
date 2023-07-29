@@ -3,7 +3,6 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import { ArticleGridItem } from "src/components/Article/ArticleGrid";
 
 export const ListOfArticles = ({ articles }) => {
-  console.log(articles, "<<< ARTICLES");
   return (
     <Grid templateColumns="repeat(3, 1fr)" width="100%" height="100%" gap="1em">
       {articles.map(

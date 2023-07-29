@@ -1,13 +1,13 @@
 import React from "react";
 import { PageWrapper } from "src/components/PageWrapper";
-import { get, STATION_HOSTNAME } from "src/utils/request";
 import { HomeView } from "src/views/Home";
+import { getListOfAtricles } from "./api/getListofArticles";
 
 export const getStaticProps = async () => {
-  const data = await get(`${STATION_HOSTNAME}/articles?populate=*`);
+  const data = await getListOfAtricles();
 
   return {
-    props: { data } // will be passed to the page component as props
+    props: { data }
   };
 };
 

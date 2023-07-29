@@ -38,7 +38,7 @@ export const TextHero = ({ ...props }) => {
       </GridItem>
 
       <GridItem as={Flex} rowSpan={1} align="flex-end">
-        <AuthorCard maxH="7.5em" />
+        <AuthorCard h="7.5em" />
       </GridItem>
     </Grid>
   );

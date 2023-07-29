@@ -1,6 +1,5 @@
 import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/nightOwl";
+import Highlight, { defaultProps, theme } from "prism-react-renderer";
 import { Button, Text, Flex, Box, useColorModeValue } from "@chakra-ui/react";
 import { useClipboardCopy } from "../../../hooks/useClipboardCopy";
 import { MdContentCopy } from "react-icons/md";
@@ -53,7 +52,7 @@ export const CodeBlock = ({ codeString, language }) => {
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={theme}
+      theme={theme.nightOwl}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (

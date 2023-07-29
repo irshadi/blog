@@ -3,11 +3,12 @@ import { Box, Flex } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 import { NavigationBar } from "./NavigationBar";
 import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
+import { isEmpty } from "src/utils/isEmpty";
 
-export const PageWrapper = ({ Views, ...rest }) => {
-  const hasProps = Boolean(rest);
+export const PageWrapper = ({ Views, data = {} }) => {
+  const hasProps = !isEmpty(data);
   // Parse back the result from `getStaticProps`
-  const props = { ...(hasProps && { data: JSON.parse(rest.data.json) }) };
+  const props = { ...(hasProps && { data: JSON.parse(data.json) }) };
 
   return (
     <Flex

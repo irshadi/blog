@@ -33,4 +33,3 @@ export const useClipboardCopy = () => {
     copyToClipboard
   };
 };
-Footer;

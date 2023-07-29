@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text, Link, Icon, AspectRatio } from "@chakra-ui/react";
+import { Flex, Text, Link, Icon } from "@chakra-ui/react";
 import { RxExternalLink } from "react-icons/rx";
 import { Image } from "../Image";
 import AuthorAvatar from "../../../public/images/avatar/irshadi.png";
@@ -20,8 +20,8 @@ export const AuthorCard = ({ ...props }) => {
     >
       <Flex w="20%" h="100%" align="center" justify="center">
         <Image
-          width="80px"
-          height="80px"
+          width="10em"
+          height="auto"
           rounded="full"
           src={AuthorAvatar}
           alt="Author Image: Irshadi Bagasputro"

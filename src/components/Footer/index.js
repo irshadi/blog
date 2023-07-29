@@ -41,9 +41,10 @@ export const Footer = ({ ...props }) => {
           w={["100%", "50%"]}
           justify={["center", "flex-end"]}
           pt={["1em", "0em"]}
+          gap=".5em"
         >
-          {externalSocialMediaLinks.map(({ name, icon, link }, id) => (
-            <IconButton key={`${id}-${name}`} Icon={icon} />
+          {externalSocialMediaLinks.map(({ name, icon: Icon, link }, id) => (
+            <IconButton key={`${id}-${name}`} icon={<Icon />} />
           ))}
         </Flex>
       </Flex>

@@ -10,33 +10,24 @@ import {
 } from "@chakra-ui/react";
 import { TEXT_COLOR_MODE_STYLE } from "src/constants/theme";
 import { useWindowScrollPosition } from "src/hooks/useWindowScrollPosition";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import { FooterPostSuggestion } from "../../components/PostComponent/FooterPostSuggestion";
-import { CategoryTags } from "src/components/CategoryTags";
+import { CategoryTag } from "src/components/CategoryTag";
 import { TabTitle } from "src/components/TabTitle";
+import { MDXRenderer } from "src/components/MDXRenderer";
 
-export const BlogPost = ({ query: { data, pageContext } }) => {
+export const BlogPost = ({ data }) => {
   const {
-    mdx: {
-      frontmatter,
-      body,
-      fields: {
-        readingTime: { text: readingTime }
-      }
-    },
-    allMdx
+    data: { attributes, id }
   } = data;
+
   const {
+    articleContent,
+    articleDescription,
     articleTitle,
-    articleSummary,
-    articleIcon,
-    articleHeroImg,
-    articleCategory,
-    articleAuthor,
-    articlePublishedStatus,
-    articleDateCreatedAt
-  } = frontmatter;
-  const { previous, next } = pageContext;
+    createdAt: articleDateCreatedAt,
+    slug,
+    updatedAt: articleDateUpdatedAt
+  } = attributes;
+
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
 
@@ -49,40 +40,41 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
     >
       <TabTitle title={`Irshadi Bagas - ${articleTitle}`} />
       <Flex justify="center">
-        <CategoryTags my="2em">{articleCategory}</CategoryTags>
+        {/* <CategoryTag my="2em">{articleCategory}</CategoryTag> */}
       </Flex>
       <Heading textAlign={["center"]} fontSize={["x-large", "xx-large"]}>
-        {articleTitle}
+        {articleDescription}
       </Heading>
       <Flex
         py="2.5em"
         justify="center"
         alignItems="center"
         w="100%"
-        color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
+        // color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
       >
         <Avatar
-          name={articleAuthor}
+          name="Irshadi Bagasputro"
           src={"/avatar/irshadi.png"}
           mr=".5em"
           colorScheme="gray"
         />
         <Flex flexDir={["column", "row"]} alignItems={["center"]}>
           <Text fontSize={["xl"]} fontWeight="bold" px="1em">
-            {articleAuthor}
+            Irshadi Bagasputro
           </Text>
           <Text paddingX="0.5em" fontSize={["small", "lg"]}>
-            {articleDateCreatedAt} · {readingTime}
+            {articleDateCreatedAt}
+            {/* · {readingTime} */}
           </Text>
         </Flex>
       </Flex>
 
-      <Image
+      {/* <Image
         my="1em"
         src={articleHeroImg}
         borderRadius=".5em"
         alt={articleTitle}
-      />
+      /> */}
 
       <Progress
         pos="fixed"
@@ -96,13 +88,13 @@ export const BlogPost = ({ query: { data, pageContext } }) => {
         colorScheme={"gray"}
       />
 
-      <MDXRenderer>{body}</MDXRenderer>
-
+      <MDXRenderer>{articleContent}</MDXRenderer>
+      {/* 
       <FooterPostSuggestion
         category={pageContext.category}
         data={allMdx}
         morePost={[previous, next]}
-      />
+      /> */}
     </Flex>
   );
 };

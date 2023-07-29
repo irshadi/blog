@@ -1,3 +1,4 @@
+const nextMdx = require("@next/mdx");
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 const nextConfig = phase => {
@@ -27,4 +28,13 @@ const nextConfig = phase => {
     env
   };
 };
+
+const withMdx = nextMdx({
+  // By default only the .mdx extension is supported.
+  extension: /\.mdx?$/,
+  options: {
+    /* providerImportSource: …, otherOptions… */
+  }
+});
+
 module.exports = nextConfig;
