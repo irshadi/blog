@@ -4,14 +4,13 @@ import { get, STATION_HOSTNAME } from "src/utils/request";
 import { getListOfAtricles } from "../api/getListofArticles";
 import { BlogPost } from "src/views/Article";
 import { serialize } from "next-mdx-remote/serialize";
-
-const parser = _json => JSON.parse(_json);
+import { JSONParser } from "src/utils/JSONParser";
 
 export const getStaticPaths = async () => {
   const articles = await getListOfAtricles();
 
   return {
-    paths: parser(articles.json).data.map(({ id, attributes }) => ({
+    paths: JSONParser(articles.json).data.map(({ attributes }) => ({
       params: { slug: attributes.slug }
     })),
     fallback: true
@@ -23,7 +22,7 @@ export const getStaticProps = async ({ params }) => {
     `${STATION_HOSTNAME}/articles/${params.slug}?populate=*`
   );
 
-  const json = parser(_json);
+  const json = JSONParser(_json);
   const d = {
     ...json,
     data: {
