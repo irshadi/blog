@@ -35,7 +35,6 @@ export const BlogPost = ({ data }) => {
 
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
-  console.log(categories);
 
   const articleReadDuration = `${getArticleReadingTimeDuration(
     articleContent
