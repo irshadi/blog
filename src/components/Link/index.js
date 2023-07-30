@@ -17,12 +17,7 @@ export const LinkWrapper = ({ children, ...props }) => {
         {...props}
       >
         <Button variant="link" p="inherit" w="100%">
-          <Text
-            textTransform="lowercase"
-            fontWeight="extrabold"
-            color={color}
-            letterSpacing="tight"
-          >
+          <Text textTransform="lowercase" fontWeight="bold" color={color}>
             {title}
           </Text>
         </Button>
