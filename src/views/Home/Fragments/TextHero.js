@@ -26,7 +26,7 @@ export const TextHero = ({ ...props }) => {
         </Heading>
       </GridItem>
 
-      <GridItem rowSpan={2} colSpan={1}>
+      <GridItem rowSpan={2} colSpan={1} order={[-1, 0]}>
         <Image
           w="100%"
           height="100%"
