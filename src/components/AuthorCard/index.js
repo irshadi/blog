@@ -1,15 +1,17 @@
 import React from "react";
-import { Flex, Text, Link, Icon, Avatar } from "@chakra-ui/react";
+import { Flex, Text, Link, Icon, Avatar, useColorMode } from "@chakra-ui/react";
 import { RxExternalLink } from "react-icons/rx";
+import { TEXT_COLOR_MODE_STYLE } from "src/constants/theme";
 
 export const AuthorCard = ({ ...props }) => {
+  const { colorMode } = useColorMode();
   return (
     <Flex
       w="100%"
       alignItems="center"
       justify="space-between"
       gap={2}
-      bg="gray.100"
+      bg={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
       borderRadius="md"
       maxW="37.5em "
       height="7.5em"
@@ -24,7 +26,14 @@ export const AuthorCard = ({ ...props }) => {
         />
       </Flex>
 
-      <Flex minWidth="80%" h="100%" flexDir="column" justify="center" px=".5em">
+      <Flex
+        minWidth="80%"
+        h="100%"
+        flexDir="column"
+        justify="center"
+        px=".5em"
+        color={TEXT_COLOR_MODE_STYLE.TEXT[colorMode]}
+      >
         <Text pb=".5em" fontWeight="semibold">
           Irshadi Bagasputro
         </Text>
