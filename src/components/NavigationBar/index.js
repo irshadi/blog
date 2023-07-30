@@ -30,7 +30,7 @@ export const NavigationBar = ({ ...props }) => {
 
       <Flex w="50%" flexDir="row" justify="flex-end" align={"center"}>
         <LinkWrapper
-          to="/about"
+          to="/about-me"
           title="about me"
           display={["none", "flex"]}
           px="1em"
