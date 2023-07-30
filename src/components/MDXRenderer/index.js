@@ -15,8 +15,6 @@ import {
 } from "./Table";
 import { Link } from "./Link";
 import { CodeBlock } from "./Code";
-import { STATION_HOSTNAME } from "src/utils/request";
-// import { Image } from "../Image";
 import { Flex, Image, Text } from "@chakra-ui/react";
 
 const components = {
@@ -84,18 +82,15 @@ const components = {
     return <Keyboard>{children}</Keyboard>;
   },
   pre: ({ children: { props } }) => {
-    const { mdxType, children, className } = props;
-    if (mdxType === "code") {
-      const codeString = children.trim();
-      return (
-        <CodeBlock
-          codeString={codeString}
-          language={className && className.replace("language-", "")}
-          {...props}
-        />
-      );
-    }
-    return null;
+    const { children, className } = props;
+    const codeString = children.trim();
+    return (
+      <CodeBlock
+        codeString={codeString}
+        language={className && className.replace("language-", "")}
+        {...props}
+      />
+    );
   },
   img: props => {
     return (
