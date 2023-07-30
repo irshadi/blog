@@ -21,7 +21,7 @@ export const AuthorCard = ({ ...props }) => {
       <Flex w="20%" h="100%" align="center" justify="center">
         <Avatar
           name="Irshadi Bagasputro"
-          size="xl"
+          size="lg"
           src="/images/avatar/irshadi.png"
         />
       </Flex>
