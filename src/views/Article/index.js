@@ -13,12 +13,14 @@ import { CategoryTag } from "src/components/CategoryTag";
 import { TabTitle } from "src/components/TabTitle";
 import { MDXRenderer } from "src/components/MDXRenderer";
 import { Image } from "src/components/Image";
+import { getArticleReadingTimeDuration } from "src/utils/getArticleReadingTimeDuration";
+import { formatDate } from "src/utils/formatDate";
 
 export const BlogPost = ({ data }) => {
   const { attributes, id } = data;
 
   const {
-    // articleContent,
+    articleContent,
     articleContentMDX,
     articleDescription,
     articleHeroImage: {
@@ -26,13 +28,22 @@ export const BlogPost = ({ data }) => {
     },
     categories,
     articleTitle,
-    createdAt: articleDateCreatedAt,
-    slug,
-    updatedAt: articleDateUpdatedAt
+    createdAt
+    // slug,
+    // updatedAt: articleDateUpdatedAt
   } = attributes;
 
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
+  console.log(categories);
+
+  const articleReadDuration = `${getArticleReadingTimeDuration(
+    articleContent
+  )} min read`;
+  const articleDateCreatedAt = formatDate(createdAt);
+  const articleCategories = categories.data.map(
+    ({ id, attributes: { category } }) => ({ id, category })
+  );
 
   return (
     <Flex
@@ -42,8 +53,12 @@ export const BlogPost = ({ data }) => {
       mt={["2.5em", "3.5em"]}
     >
       <TabTitle title={`Irshadi Bagas - ${articleTitle}`} />
-      <Flex justify="center">
-        {/* <CategoryTag my="2em">{articleCategory}</CategoryTag> */}
+      <Flex justify="center" gap=".75em">
+        {articleCategories.map(({ id, category }) => (
+          <CategoryTag key={id} my="2em">
+            {category}
+          </CategoryTag>
+        ))}
       </Flex>
       <Heading textAlign={["center"]} fontSize={["x-large", "xx-large"]}>
         {articleDescription}
@@ -53,7 +68,7 @@ export const BlogPost = ({ data }) => {
         justify="center"
         alignItems="center"
         w="100%"
-        // color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
+        color={TEXT_COLOR_MODE_STYLE.TEXT.SECONDARY[colorMode]}
       >
         <Avatar
           name="Irshadi Bagasputro"
@@ -66,8 +81,7 @@ export const BlogPost = ({ data }) => {
             Irshadi Bagasputro
           </Text>
           <Text paddingX="0.5em" fontSize={["small", "lg"]}>
-            {articleDateCreatedAt}
-            {/* · {readingTime} */}
+            {articleDateCreatedAt} · {articleReadDuration}
           </Text>
         </Flex>
       </Flex>
@@ -81,6 +95,8 @@ export const BlogPost = ({ data }) => {
         src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
         alt={articleTitle}
         style={{ objectFit: "cover" }}
+        mt="1em"
+        mb="3em"
       />
 
       <Progress
