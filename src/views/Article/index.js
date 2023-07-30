@@ -5,7 +5,8 @@ import {
   Text,
   useColorMode,
   Progress,
-  Heading
+  Heading,
+  Spacer
 } from "@chakra-ui/react";
 import { TEXT_COLOR_MODE_STYLE } from "src/constants/theme";
 import { useWindowScrollPosition } from "src/hooks/useWindowScrollPosition";
@@ -122,6 +123,8 @@ export const BlogPost = ({ data }) => {
       />
 
       <MDXRenderer source={articleContentMDX} />
+
+      <Spacer pt="5em" />
       {/* 
       <FooterPostSuggestion
         category={pageContext.category}
