@@ -6,6 +6,7 @@ import { getArticleBySlug } from "../api/getArticleBySlug";
 
 export const getStaticPaths = async () => {
   const result = await getListOfAtricles();
+  // console.log(result, "getStaticPaths");
   const listOfArticles = result.map(({ attributes }) => ({
     params: { slug: attributes.slug }
   }));
@@ -18,7 +19,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const result = await getArticleBySlug({ slug: params.slug });
-
   return {
     props: { data: result }
   };

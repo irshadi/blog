@@ -111,6 +111,7 @@ export const AboutView = () => {
           w={["100%", "30%"]}
           h="100%"
           src="./images/avatar/irshadi.png"
+          alt="Author: Irshadi Bagasputro"
           rounded="0.25em"
         />
 
@@ -168,7 +169,7 @@ export const AboutView = () => {
           code for client-side performance, resulting in an improved user
           experience. I also demonstrated my skills in testing the front-end
           code, using react-testing-libraries and cypress, to ensure the
-          product's functionality and usability. Furthermore, I conducted
+          product&apos;s functionality and usability. Furthermore, I conducted
           research and implemented the latest technologies on the front-end
           codebase, which kept the product up-to-date and competitive in the
           market, for example; I dealt with web virtualized lists to create data
@@ -176,7 +177,7 @@ export const AboutView = () => {
           <br />
           <br />
           Later down the line, I played a key role in leading the development of
-          Delman's product by working closely with the product manager and
+          Delman&apos;s product by working closely with the product manager and
           stakeholders to develop new features and improvements. I help the
           company by made effective hiring decisions while lead a team of 5
           engineers and mentored them. Additionally, I created a systematic

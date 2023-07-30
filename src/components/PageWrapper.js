@@ -1,14 +1,19 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Footer } from "./Footer";
 import { NavigationBar } from "./NavigationBar";
-import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
 import { isEmpty } from "src/utils/isEmpty";
+import { useRouter } from "next/router";
 
 export const PageWrapper = ({ Views, data = {} }) => {
+  const { isFallback } = useRouter();
   const hasProps = !isEmpty(data);
   // Parse back the result from `getStaticProps`
   const props = { ...(hasProps && { data }) };
+
+  if (isFallback) {
+    return null;
+  }
 
   return (
     <Flex
