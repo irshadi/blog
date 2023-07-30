@@ -71,7 +71,7 @@ export const BlogPost = ({ data }) => {
       >
         <Avatar
           name="Irshadi Bagasputro"
-          src={"/avatar/irshadi.png"}
+          src={"/images/avatar/irshadi.png"}
           mr=".5em"
           colorScheme="gray"
         />
@@ -93,7 +93,7 @@ export const BlogPost = ({ data }) => {
         }}
         src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
         alt={articleTitle}
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", borderRadius: ".25em" }}
         mt="1em"
         mb="3em"
       />

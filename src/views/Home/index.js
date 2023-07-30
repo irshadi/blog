@@ -1,6 +1,6 @@
 import React from "react";
 import { TextHero } from "./Fragments/TextHero";
-import { Box } from "@chakra-ui/react";
+import { Box, Spacer } from "@chakra-ui/react";
 import { TabTitle } from "src/components/TabTitle";
 import { ArticleDisplayModeSection } from "./Fragments/ArticleDisplayModeSection";
 import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
@@ -12,7 +12,8 @@ export const HomeView = ({ data }) => {
       <Box py="2em">
         <TabTitle />
         <TextHero />
-        <ArticleDisplayModeSection />
+        {/* <ArticleDisplayModeSection /> */}
+        <Spacer height="10em" />
 
         <ListOfArticles articles={data} />
         {/* <PostCategory /> */}

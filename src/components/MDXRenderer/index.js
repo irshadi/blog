@@ -41,8 +41,11 @@ const components = {
   blockquote: ({ children }) => {
     return <BlockQuote>{children}</BlockQuote>;
   },
+  code: ({ children }) => {
+    return <Code p=".25em">{children}</Code>;
+  },
   "p.inlineCode": ({ children }) => {
-    return <Code>{children}</Code>;
+    return <Code p=".25em">{children}</Code>;
   },
   li: ({ children }) => {
     return <List>{children}</List>;

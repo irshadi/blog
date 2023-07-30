@@ -9,7 +9,7 @@ const customTheme = {
   breakpoints: ["30em", "48em", "62em", "80em"],
   fonts: {
     heading: '"Avenir Next", sans-serif',
-    body: "Cabin, sans-serif",
+    body: "Avenir Next, sans-serif",
     mono: "Menlo, monospace"
   },
   fontSizes: {
