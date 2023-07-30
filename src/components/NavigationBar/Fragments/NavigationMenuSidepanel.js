@@ -24,7 +24,7 @@ export const NavigationMenuSidepanel = ({ ...props }) => {
 
         <DrawerBody py="1em" w="100%" as={Box}>
           <LinkWrapper to="/" title="home" py=".5em" />
-          <LinkWrapper to="/about" title="about me" py=".5em" />
+          <LinkWrapper to="/about-me" title="about me" py=".5em" />
         </DrawerBody>
 
         <DrawerFooter>
