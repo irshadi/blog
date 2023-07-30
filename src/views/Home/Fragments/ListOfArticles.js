@@ -16,9 +16,7 @@ export const ListOfArticles = ({ articles }) => {
             categories,
             createdAt,
             articleHeroImage: {
-              data: {
-                attributes: { url }
-              }
+              data: { attributes }
             }
           }
         }) => (
@@ -36,7 +34,7 @@ export const ListOfArticles = ({ articles }) => {
               articleContent={articleContent}
               createdAt={createdAt}
               categories={categories}
-              url={url}
+              articleHeroImageAttribute={attributes}
             />
           </GridItem>
         )

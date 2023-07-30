@@ -1,14 +1,14 @@
 import { Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { LinkWrapper } from "src/components/Link";
 import { formatDate } from "src/utils/formatDate";
 import { getArticleReadingTimeDuration } from "src/utils/getArticleReadingTimeDuration";
 import { TEXT_COLOR_MODE_STYLE } from "src/constants/theme";
 import { CategoriesTag } from "src/components/CategoriesTag";
+import { Image } from "src/components/Image";
 
 export const ArticleGridItem = ({
-  url,
+  articleHeroImageAttribute,
   articleTitle,
   articleDescription,
   articleContent,
@@ -40,11 +40,21 @@ export const ArticleGridItem = ({
         boxShadow="md"
         overflow="hidden"
       >
-        <Flex height="60%" w="100%" position="relative">
+        <Flex
+          height="60%"
+          w="100%"
+          position="relative"
+          borderTopRadius="lg"
+          overflow="hidden"
+        >
           <CategoriesTag categories={articleCategories} zIndex={2} />
           <Image
             fill={true}
-            src={`http://127.0.0.1:1337${url}`}
+            imageProps={{
+              width: articleHeroImageAttribute.width,
+              height: articleHeroImageAttribute.height
+            }}
+            src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
             alt={articleTitle}
             style={{ objectFit: "cover" }}
           />

@@ -5,25 +5,14 @@ import {
   toBase64
 } from "./utils/generateSVGImageShimmer";
 
-export const Image = ({ src, alt, imageStyle, imageProps = {}, ...props }) => (
-  <Flex
-    w="100%"
-    h="100%"
-    overflow="hidden"
-    justify="center"
-    align="center"
+export const Image = ({ src, alt, imageStyle, ...props }) => (
+  <NextImage
+    placeholder="blur"
+    blurDataURL={`data:image/svg+xml;base64,${toBase64(
+      generateSVGImageShimmer(props.width, props.height)
+    )}`}
+    src={src}
+    alt={alt}
     {...props}
-  >
-    <NextImage
-      maxHeight="100%"
-      width="auto"
-      placeholder="blur"
-      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-        generateSVGImageShimmer(imageProps.width, imageProps.height)
-      )}`}
-      {...imageProps}
-      src={src}
-      alt={alt}
-    />
-  </Flex>
+  />
 );

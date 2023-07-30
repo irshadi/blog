@@ -85,18 +85,29 @@ export const BlogPost = ({ data }) => {
         </Flex>
       </Flex>
 
-      <Image
-        fill={true}
-        imageProps={{
-          width: articleHeroImageAttribute.width,
-          height: articleHeroImageAttribute.height
-        }}
-        src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
-        alt={articleTitle}
-        style={{ objectFit: "cover", borderRadius: ".25em" }}
-        mt="1em"
-        mb="3em"
-      />
+      <Flex
+        w="100%"
+        h="100%"
+        overflow="hidden"
+        justify="center"
+        align="center"
+        borderRadius="lg"
+        mb="2.5em"
+      >
+        <Image
+          width={articleHeroImageAttribute.width}
+          height={articleHeroImageAttribute.height}
+          imageProps={{
+            width: articleHeroImageAttribute.width,
+            height: articleHeroImageAttribute.height
+          }}
+          src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
+          alt={articleTitle}
+          style={{ objectFit: "cover", borderRadius: ".25em" }}
+          mt="1em"
+          mb="3em"
+        />
+      </Flex>
 
       <Progress
         pos="fixed"
