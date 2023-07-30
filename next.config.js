@@ -19,6 +19,15 @@ const prodEnv = {
 const env = isDev ? devEnv : prodEnv;
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/article",
+        destination: "/",
+        permanent: true
+      }
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["127.0.0.1"]
