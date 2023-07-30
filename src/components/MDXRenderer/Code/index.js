@@ -47,7 +47,6 @@ export const CodeBlock = ({ codeString, language }) => {
     }, 1000);
   }, [isCopied, setIsCopied]);
 
-  console.log(codeString, language);
   return (
     <Highlight
       {...defaultProps}
