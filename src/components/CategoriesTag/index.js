@@ -17,6 +17,7 @@ export const CategoriesTag = ({
           boxShadow="md"
           fontSize="small"
           m="0"
+          align="center"
         >
           {category}
         </CategoryTag>

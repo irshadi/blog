@@ -4,7 +4,7 @@ import { Tag } from "@chakra-ui/react";
 export const CategoryTag = ({ children, ...props }) => (
   <Tag
     my="1.5em"
-    py=".25em"
+    py=".5em"
     px="1em"
     borderRadius="full"
     textTransform="uppercase"
