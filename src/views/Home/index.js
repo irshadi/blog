@@ -14,7 +14,7 @@ export const HomeView = ({ data }) => {
         <TextHero />
         <ArticleDisplayModeSection />
 
-        <ListOfArticles articles={data.data} />
+        <ListOfArticles articles={data} />
         {/* <PostCategory /> */}
         {/* <Posts nodes={nodes} />
       <PostPaginations pageInfo={pageInfo} pageContext={pageContext} /> */}

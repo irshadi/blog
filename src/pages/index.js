@@ -4,10 +4,10 @@ import { HomeView } from "src/views/Home";
 import { getListOfAtricles } from "./api/getListofArticles";
 
 export const getStaticProps = async () => {
-  const data = await getListOfAtricles();
+  const result = await getListOfAtricles();
 
   return {
-    props: { data }
+    props: { data: result }
   };
 };
 

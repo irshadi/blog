@@ -14,13 +14,8 @@ import { TabTitle } from "src/components/TabTitle";
 import { MDXRenderer } from "src/components/MDXRenderer";
 import { Image } from "src/components/Image";
 
-export const BlogPost = ({ data: { data } }) => {
-  // console.log(data);
-  // return null;
-  // return null;
-  const {
-    data: { attributes, id }
-  } = data;
+export const BlogPost = ({ data }) => {
+  const { attributes, id } = data;
 
   const {
     // articleContent,
