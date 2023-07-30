@@ -1,5 +1,5 @@
 import { theme } from "@chakra-ui/react";
-import customIcons from "./icons/customIcons";
+import customIcons from "./icons";
 
 const customTheme = {
   ...theme,
@@ -9,7 +9,7 @@ const customTheme = {
   breakpoints: ["30em", "48em", "62em", "80em"],
   fonts: {
     heading: '"Avenir Next", sans-serif',
-    body: "system-ui, sans-serif",
+    body: "Cabin, sans-serif",
     mono: "Menlo, monospace"
   },
   fontSizes: {

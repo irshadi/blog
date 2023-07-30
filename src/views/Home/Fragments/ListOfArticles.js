@@ -12,6 +12,9 @@ export const ListOfArticles = ({ articles }) => {
             slug,
             articleTitle,
             articleDescription,
+            articleContent,
+            categories,
+            createdAt,
             articleHeroImage: {
               data: {
                 attributes: { url }
@@ -19,11 +22,20 @@ export const ListOfArticles = ({ articles }) => {
             }
           }
         }) => (
-          <GridItem key={id} width="100%" height="30em">
+          <GridItem
+            key={id}
+            width="100%"
+            height="30em"
+            opacity="100%"
+            _hover={{ opacity: "90%" }}
+          >
             <ArticleGridItem
               slug={slug}
               articleTitle={articleTitle}
               articleDescription={articleDescription}
+              articleContent={articleContent}
+              createdAt={createdAt}
+              categories={categories}
               url={url}
             />
           </GridItem>
