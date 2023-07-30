@@ -50,10 +50,6 @@ export const ArticleGridItem = ({
           <CategoriesTag categories={articleCategories} zIndex={2} />
           <Image
             fill={true}
-            imageProps={{
-              width: articleHeroImageAttribute.width,
-              height: articleHeroImageAttribute.height
-            }}
             src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
             alt={articleTitle}
             style={{ objectFit: "cover" }}

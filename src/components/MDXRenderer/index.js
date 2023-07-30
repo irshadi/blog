@@ -15,6 +15,9 @@ import {
 } from "./Table";
 import { Link } from "./Link";
 import { CodeBlock } from "./Code";
+import { STATION_HOSTNAME } from "src/utils/request";
+// import { Image } from "../Image";
+import { Flex, Image, Text } from "@chakra-ui/react";
 
 const components = {
   h1: ({ children }) => {
@@ -93,6 +96,14 @@ const components = {
       );
     }
     return null;
+  },
+  img: props => {
+    return (
+      <Flex w="100%" align="center" py="1em" flexDir="column">
+        <Image src={`http://127.0.0.1:1337${props.src}`} alt={props.alt} />
+        <Text>{props.alt}</Text>
+      </Flex>
+    );
   }
 };
 

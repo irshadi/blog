@@ -18,7 +18,7 @@ import { getArticleReadingTimeDuration } from "src/utils/getArticleReadingTimeDu
 import { formatDate } from "src/utils/formatDate";
 
 export const BlogPost = ({ data }) => {
-  const { attributes, id } = data;
+  const { attributes } = data;
 
   const {
     articleContent,
@@ -33,6 +33,8 @@ export const BlogPost = ({ data }) => {
     // slug,
     // updatedAt: articleDateUpdatedAt
   } = attributes;
+
+  // console.log(articleContent, articleContentMDX);
 
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
