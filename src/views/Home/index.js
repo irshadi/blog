@@ -13,7 +13,7 @@ export const HomeView = ({ data }) => {
         <TabTitle />
         <TextHero />
         {/* <ArticleDisplayModeSection /> */}
-        <Spacer height="10em" />
+        <Spacer height={["2.5em", "10em"]} />
 
         <ListOfArticles articles={data} />
         {/* <PostCategory /> */}

@@ -4,7 +4,12 @@ import { ArticleGridItem } from "src/components/Article/ArticleGrid";
 
 export const ListOfArticles = ({ articles }) => {
   return (
-    <Grid templateColumns="repeat(3, 1fr)" width="100%" height="100%" gap="1em">
+    <Grid
+      templateColumns={["repeat(1, 1fr)", "repeat(3, 1fr)"]}
+      width="100%"
+      height="100%"
+      gap="1em"
+    >
       {articles.map(
         ({
           id,

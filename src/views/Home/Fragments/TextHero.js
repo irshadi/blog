@@ -15,8 +15,9 @@ export const TextHero = ({ ...props }) => {
     <Grid
       w="100%"
       py="1em"
-      templateColumns="repeat(2, 1fr)"
-      templateRows="repeat(2, 1fr)"
+      templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
+      templateRows={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
+      gap={["2.5em", 0]}
       {...props}
     >
       <GridItem rowSpan={1}>
