@@ -67,7 +67,6 @@ export const get = async (url, payload, type = RESPONSE_TYPE_MAP.JSON) => {
     });
     return await _getHeaderAndPayloadFromResponse(response, type);
   } catch (error) {
-    console.log(error, "<<< ERROR");
     await _handleHTTPError(error);
   }
 };

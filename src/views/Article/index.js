@@ -34,8 +34,6 @@ export const BlogPost = ({ data }) => {
     // updatedAt: articleDateUpdatedAt
   } = attributes;
 
-  // console.log(articleContent, articleContentMDX);
-
   const { colorMode } = useColorMode();
   const { scrollPosition } = useWindowScrollPosition();
 
