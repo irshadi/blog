@@ -1,8 +1,6 @@
 import React from "react";
-import { Flex, Text, Link, Icon } from "@chakra-ui/react";
+import { Flex, Text, Link, Icon, Avatar } from "@chakra-ui/react";
 import { RxExternalLink } from "react-icons/rx";
-import { Image } from "../Image";
-import AuthorAvatar from "../../../public/images/avatar/irshadi.png";
 
 export const AuthorCard = ({ ...props }) => {
   return (
@@ -19,12 +17,10 @@ export const AuthorCard = ({ ...props }) => {
       {...props}
     >
       <Flex w="20%" h="100%" align="center" justify="center">
-        <Image
-          width="10em"
-          height="auto"
-          rounded="full"
-          src={AuthorAvatar}
-          alt="Author Image: Irshadi Bagasputro"
+        <Avatar
+          name="Irshadi Bagasputro"
+          size="xl"
+          src="/images/avatar/irshadi.png"
         />
       </Flex>
 
@@ -34,11 +30,12 @@ export const AuthorCard = ({ ...props }) => {
         </Text>
 
         <Text fontSize={["small"]} lineHeight="1.25" noOfLines={3}>
-          Software Engineer from Jakarta, Indonesia. Currently working for
+          Software Engineer from Jakarta, Indonesia. Specialized in Front End &
+          Automated Testing. Currently working for
           <Link href="https://delman.io" color="blue.300" isExternal px="4px">
             delman.io <Icon as={RxExternalLink} />
           </Link>
-          . I have a love-hate relationship with Javascript.
+          .
         </Text>
       </Flex>
     </Flex>
