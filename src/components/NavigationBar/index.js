@@ -1,16 +1,17 @@
 import React from "react";
 import { Flex, Heading } from "@chakra-ui/react";
-import { ThemeIconButton } from "../Button/ThemeButton";
-import { MobileMenuButton } from "./MobileMenuButton";
+import { ThemeIconButton } from "src/components/ButtonThemeMode";
 import { LinkWrapper } from "../Link";
+import { NavigationMenuButton } from "./Fragments/NavigationMenuButton";
 
-export const NavigationBar = () => {
+export const NavigationBar = ({ ...props }) => {
   return (
     <Flex
       as="nav"
       w="100%"
       justifyContent={["flex-start", "space-between"]}
       alignItems="center"
+      {...props}
     >
       <Flex w="50%">
         <LinkWrapper to="/" display={["none", "flex"]}>
@@ -24,12 +25,12 @@ export const NavigationBar = () => {
           </Heading>
         </LinkWrapper>
 
-        <MobileMenuButton visibility={["visible", "hidden"]} w="100%" />
+        <NavigationMenuButton visibility={["visible", "hidden"]} w="100%" />
       </Flex>
 
       <Flex w="50%" flexDir="row" justify="flex-end" align={"center"}>
         <LinkWrapper
-          to="/about"
+          to="/about-me"
           title="about me"
           display={["none", "flex"]}
           px="1em"

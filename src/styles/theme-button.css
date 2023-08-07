@@ -1,0 +1,27 @@
+.dark {
+  --color-bg-card: #4a5568;
+  --color-bg-secondary: #2d3748;
+  --color-text-primary: #f7fafc;
+  --color-text-secondary: #cbd5e0;
+  --color-text-accent: #81e6d9;
+  --color-text-icon: #718096;
+  --color-text-hover: #f7fafc;
+
+  animation-name: animate-dark;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+.light {
+  --color-bg-card: #f7fafc;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #2d3748;
+  --color-text-secondary: #718096;
+  --color-text-accent: #2b6cb0;
+  --color-text-icon: #a0aec0;
+  --color-text-hover: #2d3748;
+
+  animation-name: animate-light;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import { FourOFour } from "../views/404";
+import { _404 } from "../views/Error/404.js";
 import { PageWrapper } from "../components/PageWrapper";
 
-const FoF = () => <PageWrapper Views={FourOFour} />;
+const Error404 = () => <PageWrapper Views={_404} />;
 
-export default FoF;
+export default Error404;

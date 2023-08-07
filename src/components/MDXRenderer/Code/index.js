@@ -1,6 +1,5 @@
 import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/nightOwl";
+import { defaultProps, themes, Highlight } from "prism-react-renderer";
 import { Button, Text, Flex, Box, useColorModeValue } from "@chakra-ui/react";
 import { useClipboardCopy } from "../../../hooks/useClipboardCopy";
 import { MdContentCopy } from "react-icons/md";
@@ -53,7 +52,7 @@ export const CodeBlock = ({ codeString, language }) => {
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={theme}
+      theme={themes.nightOwl}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (
@@ -71,6 +70,7 @@ export const CodeBlock = ({ codeString, language }) => {
             {tokens.map((line, i) => {
               return (
                 <Flex
+                  key={i}
                   {...getLineProps({ line, key: i })}
                   fontSize={[".5em", ".85em"]}
                 >
@@ -78,7 +78,7 @@ export const CodeBlock = ({ codeString, language }) => {
                     {i + 1}
                   </Text>
                   {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} />
+                    <span key={key} {...getTokenProps({ token, key })} />
                   ))}
                 </Flex>
               );

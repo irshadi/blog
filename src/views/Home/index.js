@@ -1,31 +1,25 @@
 import React from "react";
-import "../../css/index.css";
-import { TextHero } from "./section/TextHero";
-import { PostSortHeader } from "./section/PostSortHeader";
-import { Posts } from "../../components/PostComponent";
-import { Box } from "@chakra-ui/react";
-import { PostPaginations } from "./section/PostPaginations";
-// import { PostCategory } from "./section/PostCategory";
-import { Title } from "../../components/Title";
+import { TextHero } from "./Fragments/TextHero";
+import { Box, Spacer } from "@chakra-ui/react";
+import { TabTitle } from "src/components/TabTitle";
+import { ArticleDisplayModeSection } from "./Fragments/ArticleDisplayModeSection";
+import { ArticleDisplayModeContextProvider } from "src/contexts/articleDisplayMode";
+import { ListOfArticles } from "./Fragments/ListOfArticles";
 
-export const HomeView = data => {
-  const {
-    query: {
-      data: {
-        allMdx: { nodes, pageInfo }
-      },
-      pageContext
-    }
-  } = data;
-
+export const HomeView = ({ data }) => {
   return (
-    <Box py="2em">
-      <Title />
-      <TextHero />
-      <PostSortHeader />
-      {/* <PostCategory /> */}
-      <Posts nodes={nodes} />
-      <PostPaginations pageInfo={pageInfo} pageContext={pageContext} />
-    </Box>
+    <ArticleDisplayModeContextProvider>
+      <Box py="2em">
+        <TabTitle />
+        <TextHero />
+        {/* <ArticleDisplayModeSection /> */}
+        <Spacer height={["2.5em", "10em"]} />
+
+        <ListOfArticles articles={data} />
+        {/* <PostCategory /> */}
+        {/* <Posts nodes={nodes} />
+      <PostPaginations pageInfo={pageInfo} pageContext={pageContext} /> */}
+      </Box>
+    </ArticleDisplayModeContextProvider>
   );
 };

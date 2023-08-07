@@ -1,3 +1,8 @@
+export const THEME_COLOR_MODE = {
+  LIGHT: "light",
+  DARK: "dark"
+};
+
 export const TEXT_COLOR_MODE = {
   LIGHT: "light",
   DARK: "dark"
@@ -23,5 +28,3 @@ export const TEXT_COLOR_MODE_STYLE = {
     }
   }
 };
-
-export const isUsingDarkMode = colorMode => colorMode === TEXT_COLOR_MODE.LIGHT;
