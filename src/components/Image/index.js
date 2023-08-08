@@ -1,4 +1,3 @@
-import { Flex } from "@chakra-ui/react";
 import NextImage from "next/image";
 import {
   generateSVGImageShimmer,
@@ -13,7 +12,6 @@ export const Image = ({ src, alt, imageStyle, ...props }) => (
     )}`}
     src={src}
     alt={alt}
-    loader={({ src }) => src}
     {...props}
   />
 );

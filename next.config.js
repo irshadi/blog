@@ -32,11 +32,13 @@ const nextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["127.0.0.1", process.env.NEXT_PUBLIC_HOSTNAME, "irshadibagas.com"]
+    loader: "custom",
+    loaderFile: "./src/utils/imageOptimizationLoader.js",
+    domains: [process.env.NEXT_PUBLIC_HOSTNAME]
   },
 
   reactStrictMode: true,
-  output: "standalone",
+  output: "export",
   swcMinify: true,
   env
 };
