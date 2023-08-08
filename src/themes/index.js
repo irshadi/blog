@@ -3,10 +3,17 @@ import customIcons from "./icons";
 
 const customTheme = {
   ...theme,
+
   colors: {
     ...theme.colors
   },
-  breakpoints: ["30em", "48em", "62em", "80em"],
+  breakpoints: {
+    sm: "30em", // 480px
+    md: "45em", // 720px
+    lg: "48em", // 768px
+    xl: "80em", // 1280px
+    "2xl": "96em" // 1536px
+  },
   fonts: {
     heading: '"Avenir Next", sans-serif',
     body: "Avenir Next, sans-serif",
@@ -27,6 +34,32 @@ const customTheme = {
   icons: {
     ...theme.icons,
     ...customIcons
+  },
+  styles: {
+    ...theme.styles,
+    global: props => {
+      return {
+        ...theme.styles.global,
+        // Light mode styles
+        "#mdx-table": {
+          borderCollapse: "collapse",
+          width: "100%",
+          backgroundColor: props.colorMode === "light" ? "#ffffff" : "#1a202c",
+          border:
+            props.colorMode === "light" ? "1px solid #ccc" : "1px solid #444"
+        },
+        "#mdx-table th, #mdx-table td": {
+          border:
+            props.colorMode === "light" ? "1px solid #ccc" : "1px solid #444",
+          padding: "8px"
+        },
+
+        "#mdx-table th": {
+          backgroundColor: props.colorMode === "light" ? "#f6f8fb" : "#2d3748",
+          padding: "8px"
+        }
+      };
+    }
   }
 };
 

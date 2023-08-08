@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
+import { Flex, Heading, Spacer, Text, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { LinkWrapper } from "src/components/Link";
 import { formatDate } from "src/utils/formatDate";
@@ -29,7 +29,7 @@ export const ArticleGridItem = ({
   );
 
   return (
-    <LinkWrapper href={`${pathname}/article/${slug}`} _hover={{ opacity: 0.8 }}>
+    <LinkWrapper href={`${pathname}article/${slug}`} _hover={{ opacity: 0.8 }}>
       <Flex
         w="100%"
         h="100%"
@@ -41,7 +41,7 @@ export const ArticleGridItem = ({
         overflow="hidden"
       >
         <Flex
-          height="60%"
+          height="50%"
           w="100%"
           position="relative"
           borderTopRadius="lg"
@@ -56,19 +56,20 @@ export const ArticleGridItem = ({
           />
         </Flex>
         <Flex
-          height="40%"
+          height="50%"
           w="100%"
           p="1em"
           flexDir="column"
           bgColor={TEXT_COLOR_MODE_STYLE.BACKGROUND[colorMode]}
         >
-          <Heading fontSize="xl" pb={[0, ".5em"]} noOfLines={2} pt=".5em">
+          <Heading fontSize={["lg", "xl"]} pb={[0, ".5em"]} pt=".5em">
             {articleTitle}
           </Heading>
-          <Text noOfLines={3} mt=".5em" fontSize="lg">
+          <Text noOfLines={3} mt=".5em" fontSize={["md", "lg"]}>
             {articleDescription}
           </Text>
 
+          <Spacer />
           <Flex w="100%" pt="1em">
             <Text
               color="gray"

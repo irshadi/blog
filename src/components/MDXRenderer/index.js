@@ -52,7 +52,7 @@ const components = {
     return <List>{children}</List>;
   },
   table: ({ children }) => {
-    return <Table>{children}</Table>;
+    return <Table variant="striped">{children}</Table>;
   },
   thead: ({ children }) => {
     return <TableHead>{children}</TableHead>;

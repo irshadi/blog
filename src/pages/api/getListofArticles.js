@@ -4,7 +4,7 @@ import { get, STATION_HOSTNAME } from "src/utils/request";
 export const getListOfAtricles = async (params = {}) => {
   try {
     const { json } = await get(`${STATION_HOSTNAME}/articles`, {
-      params: { populate: "*", ...params }
+      params: { populate: "*", sort: "createdAt:desc", ...params }
     });
 
     const { data } = JSONParser(json);
@@ -13,6 +13,4 @@ export const getListOfAtricles = async (params = {}) => {
   } catch (error) {
     throw error;
   }
-
-  return data;
 };

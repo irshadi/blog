@@ -28,7 +28,7 @@ export const ListOfArticles = ({ articles }) => {
           <GridItem
             key={id}
             width="100%"
-            height="30em"
+            height={["35em"]}
             opacity="100%"
             _hover={{ opacity: "90%" }}
           >

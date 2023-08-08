@@ -11,7 +11,7 @@ const CopyButton = ({ isCopied, ...props }) => {
     <Button
       positon="absolute"
       colorScheme="gray"
-      size="md"
+      size={["xs", "md"]}
       variant="solid"
       float="right"
       color={color}

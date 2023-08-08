@@ -18,7 +18,8 @@ export const getArticleBySlug = async ({ slug, params = {} }) => {
       attributes: {
         ..._resultData.attributes,
         articleContentMDX: await serialize(
-          _resultData.attributes.articleContent
+          _resultData.attributes.articleContent,
+          { parseFrontmatter: true }
         )
       }
     };

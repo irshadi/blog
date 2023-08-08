@@ -13,7 +13,7 @@ const devEnv = {
 };
 
 const prodEnv = {
-  REACT_APP_ANALYTIC_HOSTNAME: process.env.NEXT_PUBLIC_HOSTNAME
+  REACT_APP_ANALYTIC_HOSTNAME: `${process.env.NEXT_PUBLIC_HOSTNAME}/api`
 };
 
 const env = isDev ? devEnv : prodEnv;

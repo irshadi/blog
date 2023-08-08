@@ -15,7 +15,7 @@ export const CategoriesTag = ({
           key={category}
           variant={variant}
           boxShadow="md"
-          fontSize="small"
+          fontSize="xs"
           m="0"
           align="center"
         >

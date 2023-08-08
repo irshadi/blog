@@ -25,7 +25,11 @@ export const TableHeader = ({ children }) => <Th>{children}</Th>;
 
 export const TableData = ({ children }) => {
   const isNumber = !isNaN(+children);
-  return <Td isNumeric={isNumber}>{children}</Td>;
+  return (
+    <Td isNumeric={isNumber} textAlign="center">
+      {children}
+    </Td>
+  );
 };
 
 export const TableCaption = ({ children }) => {
