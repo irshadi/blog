@@ -30,7 +30,7 @@ const nextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["127.0.0.1"]
+    domains: ["127.0.0.1", process.env.NEXT_PUBLIC_HOSTNAME, "irshadibagas.com"]
   },
 
   reactStrictMode: true,
