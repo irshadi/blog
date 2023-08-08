@@ -102,7 +102,7 @@ export const BlogPost = ({ data }) => {
             width: articleHeroImageAttribute.width,
             height: articleHeroImageAttribute.height
           }}
-          src={`http://127.0.0.1:1337${articleHeroImageAttribute.url}`}
+          src={`${process.env.BASE_IMAGE_PATH}${articleHeroImageAttribute.url}`}
           alt={articleTitle}
           style={{ objectFit: "cover", borderRadius: ".25em" }}
           mt="1em"

@@ -95,7 +95,10 @@ const components = {
   img: props => {
     return (
       <Flex w="100%" align="center" py="1em" flexDir="column">
-        <Image src={`http://127.0.0.1:1337${props.src}`} alt={props.alt} />
+        <Image
+          src={`${process.env.BASE_IMAGE_PATH}${props.src}`}
+          alt={props.alt}
+        />
         <Text>{props.alt}</Text>
       </Flex>
     );

@@ -13,6 +13,7 @@ export const Image = ({ src, alt, imageStyle, ...props }) => (
     )}`}
     src={src}
     alt={alt}
+    loader={({ src }) => src}
     {...props}
   />
 );
